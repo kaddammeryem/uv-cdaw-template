@@ -1,0 +1,50 @@
+.container-fluid{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: black;
+
+}
+.brand{
+    color:white;
+}
+#navbarSupportedContent{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.formu{
+    display : flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width:90%;
+}
+.sign{
+    display : flex;
+    flex-direction: row;
+    justify-content:space-between;
+    align-items: center;
+}
+#navbarDropdown{
+    font-size: 25;
+}
+.formulaire{
+    display : flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: inherit;
+    width:60%;
+    margin-top: 15;
+}
+#in{
+color:white;
+border-color: black;
+}
+.drop{
+ border-color: white;
+}
+
