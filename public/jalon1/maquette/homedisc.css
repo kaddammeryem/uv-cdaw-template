@@ -1,48 +1,26 @@
-#container{
-    display: flex;
-    justify-content: row;
-    align-items: center;
-    justify-content: center;
-    align-items: stretch;
-    width: 100%;
-}
-.conteneur{
-    display: flex;
-    justify-content: row;
-    align-items: center;
-    justify-content: center;
-    overflow-x: scroll;
-    width: 100%;
-}
-#info{
-    display:flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    background-color: #EEE8AA;
 
-}
-.boutton{
-    display:flex;
-    flex-direction: column;
+#conteneur{
+    display: flex;
+    justify-content: row;
+    align-items: center;
     justify-content: center;
-}
-image{
-size: inherit;
-}
-.btn{
-    color:#DAA520;
-}
-.scrolling-wrapper{
-	overflow-x: auto;
+    width: 100%;
 }
 .container-fluid{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    background-color: black;
+    background-color:black
+    
 
 }
+.scrolling-wrapper{
+    margin-left:1600px;
+    margin-right:20px;
+}
+
+
 #brand{
     color:white;
 }
@@ -87,6 +65,51 @@ border-color: black;
 #navbarDropdown{
     color: white;
 }
+html,body{
+    background-color: black;
+  }
+
+.title {
+    font: bold italic large serif;
+    font-size: 2em;
+    text-shadow:0 0 2px #FFD100,0 0 30px #FFD100,0px 0px 5px #FFD100, 0 0 150px #FFD100;color:#000000;
+    
+  }  
+
+img {
+    height: 400px; 
+    width: 200px;
+  }
+  .carousel-control-prev{
+    background-color: transparent;
+    border-width:0 ;
+
+}
+  .carousel-control-next{
+    background-color: transparent;
+    border-width:0 ;
+}
+
+
+#boutton{
+
+    width: 400px;
+}
+.infos{
+    background-color: #EEE8AA;
+    width:93%
+}
+#collapseOne{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#first{
+ margin-left: 30;
+}
+
+  
 
 
 
+  
