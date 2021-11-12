@@ -2,7 +2,7 @@
     <head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-        <link rel="stylesheet" href="homedisc.css">
+        <link rel="stylesheet" href="homeco.css">
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -12,14 +12,36 @@
                     <div class='formu'>    
                         <form class='formulaire'>
                             <input class="form-control me-2"  type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-primary" type="submit" id='drop'>
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                  </a>
-                            </button>
+                            <ul class="navbar-nav mr-auto">
+                            <li class="nav-item dropdown" style=" list-style-type: none">
+                                <a class="btn btn-outline-primary dropdown-toggle" style="color:white"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                  <a class="dropdown-item" href="#">Title</a>
+                                  <a class="dropdown-item" href="#">Actor</a>
+                                  <a class="dropdown-item" href="#">Type</a>
+                                  <a class="dropdown-item" href="#">Genre</a>
+                                </div>
+                              </li>
+                            </ul>
+                            <button class="btn btn-outline-primary" style="margin-left:10">
+                                <span style="color:white">All</span>
+                          </button>
                           </form>
-                    </div>      
+                          
+                          <div class="history">
+                            <button class="btn btn-link" id='in' type="submit">
+                                <span style="color:white">History</span>
+                            </button>
+                            <button class="btn btn-link" id='in' type="submit">
+                                <span style="color:white">Playlist</span>
+                            </button>
+                        </div> 
+                    </div>   
                     <div class='sign'>
-                        <button class="btn btn-outline-primary" id='in' type="submit">Signin</button>
+                        <button class="btn btn-outline-primary" id='in' type="submit">
+                            <i class="fas fa-user" style="color: white;"></i>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -67,14 +89,14 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
         <div style="display: flex;justify-content:center;align-items:center;margin:10">
             <h1 style="color:white">
-                Top Movies
+                Suggestions
             </h1>
         </div>
         <div class="container-fluid">
             <div class="scrolling-wrapper row flex-row flex-nowrap justify-content-flex-start">
                 <div id="accordion" class="first">
                     <div  class="col-4" classe="image"> 
-                                <img id='boutton' data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" src='https://fr.web.img6.acsta.net/pictures/21/08/10/12/20/4633954.jpg'/>
+                        <img id='boutton' data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" src='https://fr.web.img6.acsta.net/pictures/21/08/10/12/20/4633954.jpg'/>
                     </div>
                     <div id="collapseOne" class="collapse show" aria-labelledby="boutton" data-parent="#accordion">
                         <div class="infos">
@@ -108,6 +130,9 @@
                             </div>
                             <hr style="margin:10">
                             <div class='detadd'>
+                                <button type="button" id='details' class="btn" >
+                                    <i class="far fa-eye"></i>
+                                </button>
                                 <button type="button" id='details' class="btn" >
                                     <i class="fas fa-info"></i>
                                 </button>
@@ -155,6 +180,9 @@
                             <hr style="margin:10">
                             <div class='detadd'>
                                 <button type="button" id='details' class="btn" >
+                                    <i class="far fa-eye"></i>
+                                </button>
+                                <button type="button" id='details' class="btn" >
                                     <i class="fas fa-info"></i>
                                 </button>
                                 <button type="button" id='details' class="btn" >
@@ -201,6 +229,9 @@
                             <hr style="margin:10">
                             <div class='detadd'>
                                 <button type="button" id='details' class="btn" >
+                                    <i class="far fa-eye"></i>
+                                </button>
+                                <button type="button" id='details' class="btn" >
                                     <i class="fas fa-info"></i>
                                 </button>
                                 <button type="button" id='details' class="btn" >
@@ -246,6 +277,9 @@
                             </div>
                             <hr style="margin:10">
                             <div class='detadd'>
+                                <button type="button" id='details' class="btn" >
+                                    <i class="far fa-eye"></i>
+                                </button>
                                 <button type="button" id='details' class="btn" >
                                     <i class="fas fa-info"></i>
                                 </button>
@@ -293,6 +327,9 @@
                             <hr style="margin:10">
                             <div class='detadd'>
                                 <button type="button" id='details' class="btn" >
+                                    <i class="far fa-eye"></i>
+                                </button>
+                                <button type="button" id='details' class="btn" >
                                     <i class="fas fa-info"></i>
                                 </button>
                                 <button type="button" id='details' class="btn" >
@@ -339,6 +376,9 @@
                             <hr style="margin:10">
                             <div class='detadd'>
                                 <button type="button" id='details' class="btn" >
+                                    <i class="far fa-eye"></i>
+                                </button>
+                                <button type="button" id='details' class="btn" >
                                     <i class="fas fa-info"></i>
                                 </button>
                                 <button type="button" id='details' class="btn" >
@@ -384,6 +424,9 @@
                             </div>
                             <hr style="margin:10">
                             <div class='detadd'>
+                                <button type="button" id='details' class="btn" >
+                                    <i class="far fa-eye"></i>
+                                </button>
                                 <button type="button" id='details' class="btn" >
                                     <i class="fas fa-info"></i>
                                 </button>
@@ -398,7 +441,7 @@
         </div>
         <div style="display: flex;justify-content:center;align-items:center;margin:10">
             <h1 style="color:white">
-                Top Series
+                Comics
             </h1>
         </div>
         <div class="container-fluid">
@@ -439,6 +482,9 @@
                             </div>
                             <hr style="margin:10">
                             <div class='detadd'>
+                                <button type="button" id='details' class="btn" >
+                                    <i class="far fa-eye"></i>
+                                </button>
                                 <button type="button" id='details' class="btn" >
                                     <i class="fas fa-info"></i>
                                 </button>
@@ -486,6 +532,9 @@
                             <hr style="margin:10">
                             <div class='detadd'>
                                 <button type="button" id='details' class="btn" >
+                                    <i class="far fa-eye"></i>
+                                </button>
+                                <button type="button" id='details' class="btn" >
                                     <i class="fas fa-info"></i>
                                 </button>
                                 <button type="button" id='details' class="btn" >
@@ -532,6 +581,9 @@
                             <hr style="margin:10">
                             <div class='detadd'>
                                 <button type="button" id='details' class="btn" >
+                                    <i class="far fa-eye"></i>
+                                </button>
+                                <button type="button" id='details' class="btn" >
                                     <i class="fas fa-info"></i>
                                 </button>
                                 <button type="button" id='details' class="btn" >
@@ -577,6 +629,9 @@
                             </div>
                             <hr style="margin:10">
                             <div class='detadd'>
+                                <button type="button" id='details' class="btn" >
+                                    <i class="far fa-eye"></i>
+                                </button>
                                 <button type="button" id='details' class="btn" >
                                     <i class="fas fa-info"></i>
                                 </button>
@@ -624,6 +679,9 @@
                             <hr style="margin:10">
                             <div class='detadd'>
                                 <button type="button" id='details' class="btn" >
+                                    <i class="far fa-eye"></i>
+                                </button>
+                                <button type="button" id='details' class="btn" >
                                     <i class="fas fa-info"></i>
                                 </button>
                                 <button type="button" id='details' class="btn" >
@@ -670,6 +728,9 @@
                             <hr style="margin:10">
                             <div class='detadd'>
                                 <button type="button" id='details' class="btn" >
+                                    <i class="far fa-eye"></i>
+                                </button>
+                                <button type="button" id='details' class="btn" >
                                     <i class="fas fa-info"></i>
                                 </button>
                                 <button type="button" id='details' class="btn" >
@@ -715,6 +776,9 @@
                             </div>
                             <hr style="margin:10">
                             <div class='detadd'>
+                                <button type="button" id='details' class="btn" >
+                                    <i class="far fa-eye"></i>
+                                </button>
                                 <button type="button" id='details' class="btn" >
                                     <i class="fas fa-info"></i>
                                 </button>

@@ -81,6 +81,7 @@ html,body{
   }  
 
 img {
+  
     height: 400px; 
     width: 200px;
   }
@@ -126,7 +127,6 @@ img {
     background-color: #FFD100;
     border-color: transparent;
 }
-
 footer {
     padding: 7rem 0;
     background-size: cover;
@@ -163,3 +163,5 @@ footer h3 {
     align-items: flex-start; 
 }
               
+
+  
