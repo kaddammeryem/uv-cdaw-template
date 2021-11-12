@@ -11,9 +11,14 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    background-color:black
-    
-
+    background-color:black;
+    margin-top: 10;
+}
+#details{
+    background-color: #FFC312;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .scrolling-wrapper{
     margin-left:1600px;
@@ -96,7 +101,7 @@ img {
     width: 400px;
 }
 .infos{
-    background-color: #EEE8AA;
+    background-color: #FFD700;
     width:93%
 }
 #collapseOne{
@@ -106,6 +111,12 @@ img {
 }
 #first{
  margin-left: 30;
+}
+.detadd{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 8
 }
 
   
