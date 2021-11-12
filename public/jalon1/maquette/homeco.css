@@ -162,6 +162,19 @@ footer h3 {
     justify-content: space-between;
     align-items: flex-start; 
 }
+.dropdown-item{
+    color:white;
+
+}
+.dropdown-item:hover{
+    color:gray;
+    
+}
+.dropdown-menu{
+   border-top-color:#FFD100;
+   border-top-width:5px;
+   background-color:#333333
+}
               
 
   
