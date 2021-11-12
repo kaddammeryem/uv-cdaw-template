@@ -2296,3 +2296,4 @@
 172.18.0.1 - - [12/Nov/2021:18:15:07 +0000] "GET /jalon1/maquette/homedisc.css HTTP/1.1" 200 1172 "http://localhost:8080/jalon1/maquette/homedisc.html" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Safari/605.1.15"
 172.18.0.1 - - [12/Nov/2021:18:15:11 +0000] "GET /jalon1/maquette/homedisc.html HTTP/1.1" 200 3684 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Safari/605.1.15"
 172.18.0.1 - - [12/Nov/2021:18:15:11 +0000] "GET /jalon1/maquette/homedisc.css HTTP/1.1" 200 1171 "http://localhost:8080/jalon1/maquette/homedisc.html" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Safari/605.1.15"
+172.18.0.1 - - [12/Nov/2021:18:15:59 +0000] "-" 408 0 "-" "-"
