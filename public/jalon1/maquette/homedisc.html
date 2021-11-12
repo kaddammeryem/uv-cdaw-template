@@ -13,7 +13,7 @@
                 <a class="navbar-brand" href="#" id='brand'>Logo</a>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">   
                     <div class='formu'>    
-                        <form class='formulaire'>
+                        <form class='formulaire' action="auth.html">
                             <input class="form-control me-2"  type="search" placeholder="Search" aria-label="Search">
                             <<ul class="navbar-nav mr-auto">
                                 <li class="nav-item dropdown" style=" list-style-type: none">
@@ -21,7 +21,9 @@
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                       <a class="dropdown-item" href="#">Title</a>
+                                      <hr>
                                       <a class="dropdown-item" href="#">Actor</a>
+                                      <hr>
                                       <a class="dropdown-item" href="#">Genre</a>
                                     </div>
                                   </li>
@@ -41,7 +43,7 @@
                           </form>
                     </div>      
                     <div class='sign'>
-                        <button class="btn btn-outline-primary" id='in' type="submit">Signin</button>
+                        <button onclick="location.href = 'http://localhost:8080/jalon1/maquette/auth.html';"class="btn btn-outline-primary" style="color:white">Signin</button>
                     </div>
                 </div>
             </div>
@@ -762,10 +764,10 @@
                 <div class="col-md">
                   <h3>Discover</h3>
                   <ul class="list-unstyled" id="discover">
-                    <li><a href="#">Home</a></li>
+                    <li><a href="homedisc.html">Home</a></li>
                     <li><a href="#">Playlist</a></li>
                     <li><a href="#">History</a></li>
-                    <li><a href="#">Profile</a></li>
+                    <li><a href="auth.html">Profile</a></li>
                   </ul>
                 </div>
                 <div class="col-md">

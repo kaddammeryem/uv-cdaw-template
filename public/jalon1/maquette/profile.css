@@ -1,7 +1,4 @@
-body{margin-top:50px;
-    color: #F5F5DC;
-        background: #FFF5EE;
-    }
+
 .account-settings .user-profile {
         margin: 0 0 1rem 0;
         padding-bottom: 1rem;
@@ -48,3 +45,183 @@ body{margin-top:50px;
         background: #28282B;
         color: #bcd0f7;
     }
+
+ 
+#conteneur{
+    display: flex;
+    justify-content: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.container-fluid{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color:black;
+    margin-top: 10;
+}
+#details{
+    background-color: #FFC312;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.scrolling-wrapper{
+    margin-left:1600px;
+    margin-right:20px;
+}
+
+
+#brand{
+    color:white;
+}
+#navbarSupportedContent{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.formu{
+    display : flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width:90%;
+}
+.sign{
+    display : flex;
+    flex-direction: row;
+    justify-content:space-between;
+    align-items: center;
+}
+#navbarDropdown{
+    font-size: 25;
+    color: white;
+}
+.formulaire{
+    display : flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: inherit;
+    width:60%;
+    margin-top: 15;
+}
+#in{
+color:white;
+border-color: black;
+}
+#drop{
+ border-color: white;
+}
+
+
+
+.title {
+    font: bold italic large serif;
+    font-size: 2em;
+    text-shadow:0 0 2px #FFD100,0 0 30px #FFD100,0px 0px 5px #FFD100, 0 0 150px #FFD100;color:#000000;
+    
+  }  
+
+img {
+  
+    height: 400px; 
+    width: 200px;
+  }
+  .carousel-control-prev{
+    background-color: transparent;
+    border-width:0 ;
+
+}
+  .carousel-control-next{
+    background-color: transparent;
+    border-width:0 ;
+}
+
+
+#boutton{
+
+    width: 400px;
+}
+.infos{
+    background-color: #FFD700;
+    width:93%
+}
+#collapseOne{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#first{
+ margin-left: 30;
+}
+.detadd{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 8
+}
+
+  
+.btn{
+    border-color: transparent;
+}
+.btn:hover{
+    background-color: #FFD100;
+    border-color: transparent;
+}
+footer {
+    padding: 7rem 0;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    color: #777;
+    position: relative;
+    font-family: "Poppins", sans-serif; 
+}
+footer h3 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 30px; 
+}
+
+#aboutus {
+    font-size: 1.5rem;
+    color: #fff; }
+
+#discover {
+    margin-bottom: 10px; 
+}
+#discover a{
+    color: #999999; 
+}
+.copyright {
+    border-top: 1px solid #595959; 
+}
+.social{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start; 
+}
+.dropdown-item{
+    color:white;
+
+}
+.dropdown-item:hover{
+    color:gray;
+    
+}
+.dropdown-menu{
+   border-top-color:#FFD100;
+   border-top-width:5px;
+   background-color:#333333
+}
+
+              
+
+  
