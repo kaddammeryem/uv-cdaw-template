@@ -1,3 +1,6 @@
+body {
+    color: #F5F5DC;
+}
 
 .account-settings .user-profile {
         margin: 0 0 1rem 0;
@@ -59,8 +62,8 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-
 }
+
 #details{
     background-color: #FFC312;
     display: flex;
@@ -103,7 +106,7 @@
 }
 #navbarDropdown{
     font-size: 25;
-    color: white;
+    color:white;
 }
 .formulaire{
     display : flex;
@@ -186,6 +189,7 @@ footer {
     color: #777;
     position: relative;
     font-family: "Poppins", sans-serif; 
+    margin-top: 30px;
 }
 footer h3 {
     font-size: 16px;
@@ -227,6 +231,6 @@ footer h3 {
    background-color:#333333
 }
 
-              
+       
 
   
