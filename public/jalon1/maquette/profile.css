@@ -59,8 +59,7 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    background-color:black;
-    margin-top: 10;
+
 }
 #details{
     background-color: #FFC312;
@@ -72,6 +71,12 @@
     margin-left:1600px;
     margin-right:20px;
 }
+#navigation {
+    background-color: black;
+    margin:0;
+    background-size: cover;
+}
+
 
 
 #brand{
