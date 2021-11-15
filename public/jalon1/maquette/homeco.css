@@ -14,6 +14,9 @@
     background-color:black;
     margin-top: 10;
 }
+.container{
+    background-color: black;
+}
 #details{
     background-color: #FFC312;
     display: flex;
