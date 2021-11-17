@@ -16,16 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/long', function () {
-    return view('long');
+Route::get('/homeco', function () {
+    return view('homeco');
 });
-Route::get('/{firstname}/{lastname}', function ($firstname,$lastname) {
-    return "Welcome $firstname $lastname";
-});
-Route::get('/{title}', function ($title) {
-    return "this is $title";
-})->where('title', '[A-Za-z]+');
-Route::get('/listeFilms', function () {
-    return "Liste des films";
-});
-
