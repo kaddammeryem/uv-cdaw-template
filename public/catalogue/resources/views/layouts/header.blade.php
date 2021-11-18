@@ -45,32 +45,10 @@
                                 </li>
                                 </ul>
                         </form>
-                        
-                        <div class="history">
-                            <button class="btn btn-link" id='in' type="submit" onclick="window.location= '{{ route('history') }}'">
-                                <span style="color:white">History</span>
-                            </button>
-                            <button class="btn btn-link" id='in' type="submit">
-                                <span style="color:white">Playlist</span>
-                            </button>
-                        </div> 
+                        @yield('history')  
                     </div>   
-                    <div class='sign'>
-                        <ul class="navbar-nav mr-auto">
-                            <li class="nav-item dropdown" style=" list-style-type: none">
-                                <button class="btn btn-outline-primary " style="color:white" id='in'   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fas fa-user" style="color: white;"></i>
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Profile</a>
-                                <hr>
-                                <a class="dropdown-item" href=<?php print_r($urlHomeDisc)?>>Log out</a>
-                                </div>
-                            </li>
-                            </ul>
-                        
-                        
-                    </div>
+                    @yield('sign')
+                    
                 </div>
             </div>
         </nav>

@@ -13,6 +13,11 @@
         <?php $urlHistory = route('history');?>
         <?php $urlHomeCo = route('homeco');?>
        @endsection
+       @section('sign')
+       <div class='sign'>
+            <button onclick="location.href = 'http://localhost:8080/jalon1/maquette/auth.html';"class="btn btn-outline-primary" style="color:white">Signin</button>
+        </div>
+       @endsection
        @section('content')
         <div class="container">
             <div id="carouselExample" class="carousel slide w-100" data-bs-ride="carousel" data-bs-interval="3000">
