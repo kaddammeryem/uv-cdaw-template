@@ -16,6 +16,22 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/auth', function () {
+    return view('auth');
+})->name('auth');
 Route::get('/homeco', function () {
     return view('homeco');
+})->name('homeco');
+Route::get('/homedisc', function () {
+    return view('homedisc');
+})->name('homedisc');
+Route::get('/profile', function () {
+    return view('profile');
+})->name('profile');
+Route::get('/history', function () {
+    return view('historique');
+})->name('history');
+Route::get('/admins', function () {
+    return view('admins');
 });
+

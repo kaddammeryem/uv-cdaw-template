@@ -2,20 +2,22 @@
     <head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-        <link href="homedisc.css" rel="stylesheet">
+        <link href="../../public/css/homedisc.css" rel="stylesheet">
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light" >
+    <?php $urlAuth = route('auth');?>
+    <?php $urlHistory = route('history');?>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#" id='brand'>Logo</a>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">   
                     <div class='formu'>    
-                        <form class='formulaire' action="auth.html">
+                        <form class='formulaire'>
                             <input class="form-control me-2"  type="search" placeholder="Search" aria-label="Search">
-                            <<ul class="navbar-nav mr-auto">
+                            <ul class="navbar-nav mr-auto">
                                 <li class="nav-item dropdown" style=" list-style-type: none">
                                     <a class="btn btn-outline-primary dropdown-toggle" style="color:white"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     </a>
@@ -43,7 +45,7 @@
                           </form>
                     </div>      
                     <div class='sign'>
-                        <button onclick="location.href = 'http://localhost:8080/jalon1/maquette/auth.html';"class="btn btn-outline-primary" style="color:white">Signin</button>
+                        <button onclick="window.location= '{{ route('auth') }}'" class="btn btn-outline-primary" style="color:white">Signin</button>
                     </div>
                 </div>
             </div>
@@ -764,10 +766,10 @@
                 <div class="col-md">
                   <h3>Discover</h3>
                   <ul class="list-unstyled" id="discover">
-                    <li><a href="homedisc.html">Home</a></li>
-                    <li><a href="#">Playlist</a></li>
-                    <li><a href="#">History</a></li>
-                    <li><a href="auth.html">Profile</a></li>
+                    <li><a href="#">Home</a></li>
+                    <li><a href=<?php print_r($urlAuth)?>>Playlist</a></li>
+                    <li><a href=<?php print_r($urlAuth)?>>History</a></li>
+                    <li><a href=<?php print_r($urlAuth)?>>Profile</a></li>
                   </ul>
                 </div>
                 <div class="col-md">

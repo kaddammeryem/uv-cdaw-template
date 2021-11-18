@@ -1,3 +1,4 @@
+
 #conteneur{
     display: flex;
     justify-content: row;
@@ -5,21 +6,47 @@
     justify-content: center;
     width: 100%;
 }
+.historique{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    width:100%;
+    background-size:cover;
+    margin:10px;
+}
+.vl{
 
+        border-left: 3px solid black;
+        height: 500px;
+
+}
+.card-img-top{
+    width: 30%;
+    height: inherit;
+}
+.card-body{
+    background-color: gold;
+}
+.inform{
+    display: flex;
+    flex-direction: row;
+    margin:10px
+}
 .container-fluid{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    background-color:black;
-    border-radius: 5px;
-   
+    background-color: black;
 }
 #details{
     background-color: #FFC312;
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 .scrolling-wrapper{
     margin-left:1600px;
@@ -62,7 +89,10 @@
     width:60%;
     margin-top: 15;
 }
-
+#in{
+color:white;
+border-color: black;
+}
 #drop{
  border-color: white;
 }
@@ -79,10 +109,9 @@ html,body{
   }  
 
 img {
+  
     height: 400px; 
     width: 200px;
-    object-fit: cover;
-
   }
   .carousel-control-prev{
     background-color: transparent;
@@ -126,7 +155,6 @@ img {
     background-color: #FFD100;
     border-color: transparent;
 }
-
 footer {
     padding: 7rem 0;
     background-size: cover;
@@ -135,6 +163,7 @@ footer {
     color: #777;
     position: relative;
     font-family: "Poppins", sans-serif; 
+    margin : 20px;
 }
 footer h3 {
     font-size: 16px;
@@ -142,7 +171,6 @@ footer h3 {
     color: #fff;
     margin-bottom: 30px; 
 }
-
 
 #aboutus {
     font-size: 1.5rem;
@@ -176,4 +204,7 @@ footer h3 {
    border-top-width:5px;
    background-color:#333333
 }
-     
+
+              
+
+  

@@ -1,3 +1,57 @@
+body {
+    color: #F5F5DC;
+}
+
+.account-settings .user-profile {
+        margin: 0 0 1rem 0;
+        padding-bottom: 1rem;
+        text-align: center;
+    }
+.account-settings .user-profile .user-avatar {
+        margin: 0 0 1rem 0;
+    }
+.account-settings .user-profile .user-avatar img {
+        width: 90px;
+        height: 90px;
+        -webkit-border-radius: 100px;
+        -moz-border-radius: 100px;
+        border-radius: 100px;
+    }
+.account-settings .user-profile h5.user-name {
+        margin: 0 0 0.5rem 0;
+    }
+.account-settings .user-profile h6.user-email {
+        margin: 0;
+        font-size: 0.8rem;
+        font-weight: 400;
+    }
+.account-settings .about {
+        margin: 1rem 0 0 0;
+        font-size: 0.8rem;
+        text-align: center;
+    }
+    
+.card {
+        background: #1B1212	;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        border: 0;
+        margin-bottom: 1rem;
+    }
+.form-control {
+        border: 1px solid #596280;
+        -webkit-border-radius: 2px;
+        -moz-border-radius: 2px;
+        border-radius: 2px;
+        font-size: .825rem;
+        background: #28282B;
+        color: #bcd0f7;
+    }
+
+ .container{
+     margin-top:30px;
+ }
 #conteneur{
     display: flex;
     justify-content: row;
@@ -5,16 +59,13 @@
     justify-content: center;
     width: 100%;
 }
-
 .container-fluid{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    background-color:black;
-    border-radius: 5px;
-   
 }
+
 #details{
     background-color: #FFC312;
     display: flex;
@@ -25,6 +76,12 @@
     margin-left:1600px;
     margin-right:20px;
 }
+#navigation {
+    background-color: black;
+    margin:0;
+    background-size: cover;
+}
+
 
 
 #brand{
@@ -51,7 +108,7 @@
 }
 #navbarDropdown{
     font-size: 25;
-    color: white;
+    color:white;
 }
 .formulaire{
     display : flex;
@@ -62,14 +119,15 @@
     width:60%;
     margin-top: 15;
 }
-
+#in{
+color:white;
+border-color: black;
+}
 #drop{
  border-color: white;
 }
 
-html,body{
-    background-color: black;
-  }
+
 
 .title {
     font: bold italic large serif;
@@ -79,10 +137,9 @@ html,body{
   }  
 
 img {
+  
     height: 400px; 
     width: 200px;
-    object-fit: cover;
-
   }
   .carousel-control-prev{
     background-color: transparent;
@@ -126,7 +183,6 @@ img {
     background-color: #FFD100;
     border-color: transparent;
 }
-
 footer {
     padding: 7rem 0;
     background-size: cover;
@@ -135,6 +191,7 @@ footer {
     color: #777;
     position: relative;
     font-family: "Poppins", sans-serif; 
+    margin-top: 30px;
 }
 footer h3 {
     font-size: 16px;
@@ -142,7 +199,6 @@ footer h3 {
     color: #fff;
     margin-bottom: 30px; 
 }
-
 
 #aboutus {
     font-size: 1.5rem;
@@ -176,4 +232,7 @@ footer h3 {
    border-top-width:5px;
    background-color:#333333
 }
-     
+
+       
+
+  
