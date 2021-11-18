@@ -140,6 +140,9 @@
         @endsection
         @section('footer')
         @parent
+        @section('home')
+        <li><a href=<?php print_r($urlHomeCo)?>>Home</a></li>
+        @endsection
         @endsection
     </body>
 </html>

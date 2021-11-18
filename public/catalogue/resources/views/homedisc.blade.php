@@ -15,7 +15,7 @@
        @endsection
        @section('sign')
        <div class='sign'>
-            <button onclick="location.href = 'http://localhost:8080/jalon1/maquette/auth.html';"class="btn btn-outline-primary" style="color:white">Signin</button>
+            <button onclick="window.location= '{{ route('auth') }}'" class="btn btn-outline-primary" style="color:white">Signin</button>
         </div>
        @endsection
        @section('content')
@@ -725,6 +725,9 @@
         @endsection
         @section('footer')
         @parent
+        @section('home')
+        <li><a href=<?php print_r($urlHomeDisc)?>>Home</a></li>
+        @endsection
         @endsection
         <script>
             var b = document.getElementById("boutton");

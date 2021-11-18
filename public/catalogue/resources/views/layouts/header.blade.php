@@ -1,8 +1,11 @@
 <html>
     @section('head')
     <head>
+        <?php $urlProfile = route('profile');?>
+        <?php $urlHomeDisc = route('homedisc');?> 
+        <?php $urlHistory = route('history');?>
+        <?php $urlHomeCo = route('homeco');?>
         <title>M&S - @yield('title')</title>
-       
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -68,7 +71,7 @@
                 <div class="col-md">
                   <h3>Discover</h3>
                   <ul class="list-unstyled" id="discover">
-                    <li><a href="#">Home</a></li>
+                    @yield('home')
                     <li><a href="#">Playlist</a></li>
                     <li><a href=<?php print_r($urlHistory)?>>History</a></li>
                     <li><a href=<?php print_r($urlProfile)?>>Profile</a></li>

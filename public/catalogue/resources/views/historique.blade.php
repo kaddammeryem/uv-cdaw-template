@@ -1,4 +1,4 @@
-<html>
+
 @extends('layouts.header')
 @section('title', 'Home')
 <html>
@@ -22,6 +22,7 @@
                 <span style="color:white">Playlist</span>
             </button>
         </div> 
+        @endsection
         @section('sign')
         <div class='sign'>
             <ul class="navbar-nav mr-auto">
@@ -30,14 +31,13 @@
                         <i class="fas fa-user" style="color: white;"></i>
                     </button>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Profile</a>
+                        <a class="dropdown-item" href=<?php print_r($urlProfile)?>>Profile</a>
                         <hr>
                         <a class="dropdown-item" href=<?php print_r($urlHomeDisc)?>>Log out</a>
                     </div>
                 </li>
              </ul>
         </div>
-        @endsection
         @endsection
        @endsection
        @section('content')
@@ -122,6 +122,9 @@
         @endsection
         @section('footer')
         @parent
+        @section('home')
+        <li><a href=<?php print_r($urlHomeCo)?>>Home</a></li>
+        @endsection
         @endsection
         <script>
             var b = document.getElementById("boutton");

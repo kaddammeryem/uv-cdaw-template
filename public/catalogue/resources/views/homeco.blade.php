@@ -21,6 +21,7 @@
                 <span style="color:white">Playlist</span>
             </button>
         </div> 
+        @endsection
         @section('sign')
         <div class='sign'>
              <ul class="navbar-nav mr-auto">
@@ -36,7 +37,6 @@
                 </li>
             </ul>
         </div>      
-        @endsection
         @endsection
        @endsection
        @section('content')
@@ -788,6 +788,9 @@
         @endsection
         @section('footer')
         @parent
+        @section('home')
+        <li><a href=<?php print_r($urlHomeCo)?>>Home</a></li>
+        @endsection
         @endsection
         <script>
             var b = document.getElementById("boutton");
