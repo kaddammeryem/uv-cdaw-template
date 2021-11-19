@@ -1,0 +1,238 @@
+body {
+    color: #F5F5DC;
+}
+
+.account-settings .user-profile {
+        margin: 0 0 1rem 0;
+        padding-bottom: 1rem;
+        text-align: center;
+    }
+.account-settings .user-profile .user-avatar {
+        margin: 0 0 1rem 0;
+    }
+.account-settings .user-profile .user-avatar img {
+        width: 90px;
+        height: 90px;
+        -webkit-border-radius: 100px;
+        -moz-border-radius: 100px;
+        border-radius: 100px;
+    }
+.account-settings .user-profile h5.user-name {
+        margin: 0 0 0.5rem 0;
+    }
+.account-settings .user-profile h6.user-email {
+        margin: 0;
+        font-size: 0.8rem;
+        font-weight: 400;
+    }
+.account-settings .about {
+        margin: 1rem 0 0 0;
+        font-size: 0.8rem;
+        text-align: center;
+    }
+    
+.card {
+        background: #1B1212	;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        border: 0;
+        margin-bottom: 1rem;
+    }
+.form-control {
+        border: 1px solid #596280;
+        -webkit-border-radius: 2px;
+        -moz-border-radius: 2px;
+        border-radius: 2px;
+        font-size: .825rem;
+        background: #28282B;
+        color: #bcd0f7;
+    }
+
+ .container{
+     margin-top:30px;
+ }
+#conteneur{
+    display: flex;
+    justify-content: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.container-fluid{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#details{
+    background-color: #FFC312;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.scrolling-wrapper{
+    margin-left:1600px;
+    margin-right:20px;
+}
+#navigation {
+    background-color: black;
+    margin:0;
+    background-size: cover;
+}
+
+
+
+#brand{
+    color:white;
+}
+#navbarSupportedContent{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.formu{
+    display : flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width:90%;
+}
+.sign{
+    display : flex;
+    flex-direction: row;
+    justify-content:space-between;
+    align-items: center;
+}
+#navbarDropdown{
+    font-size: 25;
+    color:white;
+}
+.formulaire{
+    display : flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: inherit;
+    width:60%;
+    margin-top: 15;
+}
+#in{
+color:white;
+border-color: black;
+}
+#drop{
+ border-color: white;
+}
+
+
+
+.title {
+    font: bold italic large serif;
+    font-size: 2em;
+    text-shadow:0 0 2px #FFD100,0 0 30px #FFD100,0px 0px 5px #FFD100, 0 0 150px #FFD100;color:#000000;
+    
+  }  
+
+img {
+  
+    height: 400px; 
+    width: 200px;
+  }
+  .carousel-control-prev{
+    background-color: transparent;
+    border-width:0 ;
+
+}
+  .carousel-control-next{
+    background-color: transparent;
+    border-width:0 ;
+}
+
+
+#boutton{
+
+    width: 400px;
+}
+.infos{
+    background-color: #FFD700;
+    width:93%
+}
+#collapseOne{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#first{
+ margin-left: 30;
+}
+.detadd{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 8
+}
+
+  
+.btn{
+    border-color: transparent;
+}
+.btn:hover{
+    background-color: #FFD100;
+    border-color: transparent;
+}
+footer {
+    padding: 7rem 0;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    color: #777;
+    position: relative;
+    font-family: "Poppins", sans-serif; 
+    margin-top: 30px;
+}
+footer h3 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 30px; 
+}
+
+#aboutus {
+    font-size: 1.5rem;
+    color: #fff; }
+
+#discover {
+    margin-bottom: 10px; 
+}
+#discover a{
+    color: #999999; 
+}
+.copyright {
+    border-top: 1px solid #595959; 
+}
+.social{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start; 
+}
+.dropdown-item{
+    color:white;
+
+}
+.dropdown-item:hover{
+    color:gray;
+    
+}
+.dropdown-menu{
+   border-top-color:#FFD100;
+   border-top-width:5px;
+   background-color:#333333
+}
+
+       
+
+  
