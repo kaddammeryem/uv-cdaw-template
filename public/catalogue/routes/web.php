@@ -36,3 +36,4 @@ Route::get('/admins', function () {
 });
 Route::get('homeco', 'App\Http\controllers\listeMediaController@getListeMedias')->name('homeco');
 
+
