@@ -20,7 +20,8 @@
                     <tr>
                         <th scope="col">Name</th>
                         <th scope="col">Categorie</th>
-                        <th scope="col">Image</th>
+                        <th scope="col">Path</th>
+                        <th scope="col">Director</th>
                     </tr>
                 </thead>
                 <tbody id="tbody">
@@ -29,11 +30,15 @@
                         <td>
                            {{ $film->name}}
                         </td>
+                       
                         <td>
                             {{$cat=App\Models\Category::where('id',$film->categorie_id)->first()->name}}
                         </td>
                         <td>
-                           {{ $film->image}}
+                           {{ $film->path}}
+                        </td>
+                        <td>
+                           {{ $film->director}}
                         </td>
                     </tr>
                     @endforeach
