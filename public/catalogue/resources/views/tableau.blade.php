@@ -1,50 +1,55 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-	    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	    <title>Movies</title>
-	   
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Films</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.0/css/bulma.min.css">
     </head>
-    <body>
-        <div style="display: flex;justify-content:center;align-items:center">
-            <h1>All Movies</h1>
+    <div style="display:flex;flex-direction:column;justify-content:center;align-items:center;margin-top:50px">
+                @if(session()->has('info'))
+                <div class="notification is-success">
+                    <p> {{session('info')}}</p>
+                </div>
+                @endif
+            </div>  
+    <div class="card">
+        <header class="card-header">
+            
+            <p class="card-header-title">Films</p>
+        </header>
+        <div class="card-content">
+            <div class="content">
+                <table class="table is-hoverable">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Titre</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($films as $film)
+                            <tr>
+                                <td>{{ $film->id }}</td>
+                                <td><strong>{{ $film->name }}</strong></td>
+                                <td><a class="button is-primary" href="{{route('film',['film'=>$film->id])}}">Voir</a></td>
+                                <td><a class="button is-warning" href="{{route('formuUp',['id'=>$film->id])}}">Modifier</a></td>
+                                <td>
+                                    <form action="film/{{$film->id}}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <input class="button is-danger" type="submit" value="Supprimer"></input>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <div>
-            <table class="table table-dark">
-                <thead>
-                    <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Categorie</th>
-                        <th scope="col">Path</th>
-                        <th scope="col">Director</th>
-                    </tr>
-                </thead>
-                <tbody id="tbody">
-                    @foreach($films as $film)
-                    <tr>
-                        <td>
-                           {{ $film->name}}
-                        </td>
-                       
-                        <td>
-                            {{$cat=App\Models\Category::where('id',$film->categorie_id)->first()->name}}
-                        </td>
-                        <td>
-                           {{ $film->path}}
-                        </td>
-                        <td>
-                           {{ $film->director}}
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-              </table>
-        </div>
-       
+    </div>
     </body>
 </html>
