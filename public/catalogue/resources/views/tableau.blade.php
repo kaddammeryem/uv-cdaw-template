@@ -13,6 +13,9 @@
                 </div>
                 @endif
             </div>  
+    <div style= "text-align : right ; margin-bottom : 25px; margin-right: 25px ">
+         <a href= "{{route('formu')}}" type="button" class="btn btn-primary " >Ajouter</a>
+    </div>
     <div class="card">
         <header class="card-header">
             

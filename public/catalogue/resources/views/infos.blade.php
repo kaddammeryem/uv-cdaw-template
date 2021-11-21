@@ -7,6 +7,10 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 <body>
+    
+    <div style= "text-align : right ; margin-bottom : 25px; margin-right: 25px ; margin-top: 25px">   
+         <a href= "{{route('tableau')}}" type="button" class="btn btn-primary " >Retour</a>
+    </div>
    
     <div style="display:flex;flex-direction:column;justify-content:center;align-items:center;margin-top:50px">
         <h1 style="font-weight:bold">Film infos</h1>
