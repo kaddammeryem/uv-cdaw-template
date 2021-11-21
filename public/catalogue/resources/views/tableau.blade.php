@@ -36,7 +36,7 @@
                                 <td>{{ $film->id }}</td>
                                 <td><strong>{{ $film->name }}</strong></td>
                                 <td><a class="button is-primary" href="{{route('film',['film'=>$film->id])}}">Voir</a></td>
-                                <td><a class="button is-warning" href="{{route('formuUp',['id'=>$film->id])}}">Modifier</a></td>
+                                <td><a class="button is-warning" href="{{route('formuUp',['film'=>$film->id])}}">Modifier</a></td>
                                 <td>
                                     <form action="film/{{$film->id}}" method="post">
                                         @csrf

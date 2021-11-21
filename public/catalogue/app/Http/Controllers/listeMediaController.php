@@ -21,10 +21,9 @@ class listeMediaController extends Controller
             'director'=>$directeur,
             'path'=>$path,
         ];
-        print_r($data);
-      // Film::create($data);
-       //$films = Film::all();
-       // return redirect()->route('tableau')->with('info','Le film a été bien ajouté');
+       Film::create($data);
+       $films = Film::all();
+        return redirect()->route('tableau')->with('info','Le film a été bien ajouté');
         
 
     }
@@ -36,26 +35,20 @@ class listeMediaController extends Controller
         $infos=Film::where('id',$film->id)->first();
         return view('infos',['infos'=> $film]);
     }
-    public function updateFilm(int $film){
-        print_r('hey');
-    }
-    /*
-$film=new Film();
-        $film->name=$request->input('nom');
-        $film->cat1=$request->input('cat1');
-        $film->directeur=$request->input('directeur');
-        $film->path=$request->input('path');
-        /*$data=[
-            'name'=>$name,
+    public function updateFilm(int $id,Request $request){
+        $name=$request->input('nom');
+        $cat1=$request->input('cat1');
+        $directeur=$request->input('directeur');
+        $path=$request->input('path');
+        Film::where('id', $id)->update(
+            ['name' => $name,
             'categorie_id'=>$cat1,
-            'director'=>$directeur,
             'path'=>$path,
-        ];*/
-       // $film->save();
+            'director'=>$directeur           
+            ]
+        );
+        $films = Film::all();
+        return redirect()->route('tableau')->with('info','Le film a été bien modifié');
+    }
 
-
-    
-  
-    
-    //
 }

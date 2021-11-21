@@ -44,9 +44,11 @@ Route::get('formu', function () {
     return view('formulaire');
 })->name('formu');
 
-Route::get('formuUp/{id}', function () {
-    return view('formulaireUpdate',['id'=>route('id')]);
+Route::get('formuUp/{film}', function (int $id) {
+    return view('formulaireUpdate',['id'=>$id]);
 })->name('formuUp');
+
+
 
 Route::get('info', function () {
     return view('info')->name(info);
@@ -56,7 +58,7 @@ Route::get('info', function () {
 Route::post('film', 'App\Http\controllers\listeMediaController@addFilm');
 Route::get('tableau', 'App\Http\controllers\listeMediaController@getListeMedias')->name('tableau');
 Route::get('film/{film}', 'App\Http\controllers\listeMediaController@getFilmById')->name('film');
-Route::put('film/{film}', 'App\Http\controllers\listeMediaController@updateFilm')->name('updatefilm');
+Route::put('formuUp/film/{id}', 'App\Http\controllers\listeMediaController@updateFilm')->name('updatefilm');
 Route::delete('film/{film}', 'App\Http\controllers\listeMediaController@destroy')->name('films.destroy');
 
 
