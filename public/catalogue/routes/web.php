@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 /*Route::get('/', function () {
     return view('welcome');
-});
+});*/
 Route::get('/auth', function () {
     return view('auth');
 })->name('auth');
@@ -30,14 +30,14 @@ Route::get('profile', function () {
 })->name('profile');
 Route::get('tableau', function () {
     return view('tableau');
-})->name('tableau');
+})->name('tableau')->name('table');
 Route::get('/history', function () {
     return view('historique');
 })->name('history');
 Route::get('admins', function () {
     return view('admins');
 });
-*/
+
 
 
 Route::get('formu', function () {
