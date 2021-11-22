@@ -30,7 +30,7 @@ Route::get('profile', function () {
 })->name('profile');
 Route::get('tableau', function () {
     return view('tableau');
-})->name('tableau')->name('table');
+})->name('tableau');
 Route::get('/history', function () {
     return view('historique');
 })->name('history');
