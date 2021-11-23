@@ -37,6 +37,9 @@ Route::get('/history', function () {
 Route::get('admins', function () {
     return view('admins');
 });
+Route::get('details', function () {
+    return view('details');
+})->name('details');
 
 
 
@@ -51,7 +54,7 @@ Route::get('formuUp/{film}', function (int $id) {
 
 
 Route::get('info', function () {
-    return view('info')->name(info);
+    return view('info')->name('info');
 });
 
 
