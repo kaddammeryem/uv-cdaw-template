@@ -19,6 +19,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/auth', function () {
     return view('auth');
 })->name('auth');
+Route::get('javas', function () {
+    return view('javas');
+});
 Route::get('/homeco', function () {
     return view('homeco');
 })->name('homeco');

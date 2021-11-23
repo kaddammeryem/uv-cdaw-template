@@ -1,0 +1,1 @@
+alert(maVar1 - maVar2)

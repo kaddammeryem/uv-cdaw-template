@@ -26,7 +26,7 @@
                             <input class="form-control me-2"  type="search" placeholder="Search" aria-label="Search">
                             <ul class="navbar-nav mr-auto">
                             <li class="nav-item dropdown" style=" list-style-type: none">
-                                <a class="btn btn-outline-primary dropdown-toggle" style="color:white"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a class="btn btn-outline dropdown-toggle" style="color:white"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="#">Title</a>
@@ -39,7 +39,7 @@
                             </ul>
                             <ul class="navbar-nav mr-auto">
                                 <li class="nav-item dropdown" style=" list-style-type: none">
-                                    <button class="btn btn-outline-primary dropdown-toggle"  style="color:white"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <button class="btn btn-outline dropdown-toggle"  style="color:white"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         All
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown" >

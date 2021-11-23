@@ -32,7 +32,7 @@
         <div class='sign'>
              <ul class="navbar-nav mr-auto">
                 <li class="nav-item dropdown" style=" list-style-type: none">
-                    <button class="btn btn-outline-primary " style="color:white" id='in'   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button class="btn btn-outline " style="color:white" id='in'   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-user" style="color: white;"></i>
                     </button>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -210,34 +210,55 @@
         </div>
         <div class="content-item" id="comments"> 
             <div class="col-sm-8">   
+                <h3  >New Comment</h3>
                 <form>
-                	<h3 class="pull-left">New Comment</h3>
-                	<button type="submit" class="btn btn-outline-primary pull-right">Submit</button>
-                    <fieldset>
-                        <div class="row">
-                            <div class="media">
-                                <img class="img-thumbnail" src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="">
-                            </div>
-                                <div class="form-group col-xs-12 col-sm-9 col-m-10">
-                                <textarea class="form-control" id="message" placeholder="Your message" required=""></textarea>
-                            </div>
-                        </div>  	
-                    </fieldset>
-                </form>
-                
-                <h3>1 Comments</h3>
+                    <div class="media">
+                        <div class="user-avatar">
+                            <img src="https://i.pinimg.com/736x/8b/41/8d/8b418d2b374298028c4a312ade587afc.jpg">
+                        </div>                        
+                        <div class="media-body" style="margin-left:10px">
+                            <textarea class="form-control" placeholder="Your comment here"></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-outline pull-right" style="background-color:#FFD100" >Submit</button>
+                </form>               
+                <h3 style="color:white">1 Comments</h3>
                 <div class="media">
-                    <img class="img-thumbnail" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
-                    <div class="media-body">
-                        <h4 class="media-heading">John Doe</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <div class="user-avatar">
+                            <img src="https://i.pinimg.com/736x/8b/41/8d/8b418d2b374298028c4a312ade587afc.jpg">
+                        </div>                     <div class="media-body" style="margin-left:10px">
+                        <p class="media-heading" style="color:white">Pierre Donald</p>
+                        <p style="  color: #777;">Exciting film like it.</p>
                         <ul class="list-unstyled list-inline media-detail pull-left">
-                            <li><i class="fa fa-calendar"></i>27/02/2014</li>
+                            <li><i class="fa fa-calendar" style="color:#FFD100"></i><span style="  color: #777;"> 27/02/2014</span></li>
                         </ul>
                     </div>
                 </div>
-</div>
-</div>
+                <div class="media">
+                        <div class="user-avatar">
+                            <img src="https://i.pinimg.com/736x/8b/41/8d/8b418d2b374298028c4a312ade587afc.jpg">
+                        </div>                     <div class="media-body" style="margin-left:10px">
+                        <p class="media-heading" style="color:white">Jean Camille</p>
+                        <p style="  color: #777;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                        <ul class="list-unstyled list-inline media-detail pull-left">
+                            <li><i class="fa fa-calendar" style="color:#FFD100"></i><span  style="color: #777;"> 27/02/2014</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="media">
+                        <div class="user-avatar">
+                            <img src="https://i.pinimg.com/736x/8b/41/8d/8b418d2b374298028c4a312ade587afc.jpg">
+                        </div>                       
+                        <div class="media-body" style="margin-left:10px">
+                        <p class="media-heading" style="color:white">John Doe</>
+                        <p style="color: #777;">I love this actor</p>
+                        <ul class="list-unstyled list-inline media-detail pull-left">
+                            <li><i class="fa fa-calendar" style="color:#FFD100"></i><span style="  color: #777;"> 27/02/2014</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
         
 
         @endsection

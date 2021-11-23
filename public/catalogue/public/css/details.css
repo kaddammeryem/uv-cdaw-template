@@ -226,13 +226,24 @@ footer h3 {
 .content-item {
     padding:30px 0;
 	background-color:black;
-    margin-bottom:20px
+    margin-bottom:10px;
+    margin-top:10px;
+    display:flex;
+    justify-content: center;
 }
 
 .content-item.grey {
 	background-color:black;
 	padding:50px 0;
 	height:100%;
+}
+.user-avatar img {
+    width: 90px;
+    height: 90px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+    margin-top:13px
 }
 
 .content-item h2 {
