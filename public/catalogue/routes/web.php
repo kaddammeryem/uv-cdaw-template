@@ -19,9 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/auth', function () {
     return view('auth');
 })->name('auth');
-Route::get('javas', function () {
-    return view('javas');
-});
+
 Route::get('/homeco', function () {
     return view('homeco');
 })->name('homeco');
@@ -44,6 +42,15 @@ Route::get('details', function () {
     return view('details');
 })->name('details');
 
+Route::get('ex1', function () {
+    return view('ex1');
+});
+Route::get('ex2', function () {
+    return view('ex2');
+});
+Route::get('ex3', function () {
+    return view('ex3');
+});
 
 
 Route::get('formu', function () {
