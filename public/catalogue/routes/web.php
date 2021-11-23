@@ -52,6 +52,10 @@ Route::get('formuUp/{film}', function (int $id) {
 })->name('formuUp');
 
 
+Route::get('comm', function () {
+    return view('comments');
+});
+
 
 Route::get('info', function () {
     return view('info')->name('info');
