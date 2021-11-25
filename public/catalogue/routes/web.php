@@ -80,3 +80,7 @@ Route::delete('film/{film}', 'App\Http\controllers\listeMediaController@destroy'
 
 
 
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
