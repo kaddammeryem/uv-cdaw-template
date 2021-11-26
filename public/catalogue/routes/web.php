@@ -52,6 +52,11 @@ Route::get('ex3', function () {
     return view('ex3');
 });
 
+Route::get('/playlist', function () {
+    return view('playlist');
+})->name('playlist');
+
+
 
 Route::get('formu', function () {
     return view('formulaire');
@@ -80,3 +85,7 @@ Route::delete('film/{film}', 'App\Http\controllers\listeMediaController@destroy'
 
 
 
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
