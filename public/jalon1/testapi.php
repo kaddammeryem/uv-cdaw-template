@@ -4,14 +4,10 @@
     <?php
 
     class Movie {
-        public $keyapi;
-        public $id;
-        function __construct($key,$id){
-            $this->keyapi=$key;
-            $this->id=$id;
-        }
+
+  
         public function retrieveMovie(){
-            $url = 'https://imdb-api.com/en/API/FullCast/'.$this->keyapi .'/'.$this->id;
+            $url = 'https://imdb-api.com/en/API/Top250TVs/k_3rh7vw00';
             $options = array(
                 'https' => array(
                 'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
@@ -21,12 +17,27 @@
 
             $context  = stream_context_create($options);
             $result = file_get_contents($url);
-            $obj=json_decode($result,true,512,JSON_OBJECT_AS_ARRAY);
-            return $obj;
-        }
+            $obj=json_decode($result,true,512,JSON_OBJECT_AS_ARRAY); 
+            $data=$obj['items'];
+            for($i=0;$i<10;$i=$i+1){
+            $id=$data[$i]['id'];
+            $url2 = 'https://imdb-api.com/en/API/Title/k_3rh7vw00/'.$id;
+            $options2 = array(
+                'https' => array(
+                'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                'method'  => 'GET',
+                )
+            );
+            $context2  = stream_context_create($options2);
+            $result2 = file_get_contents($url2);
+            $obj2=json_decode($result2,true,512,JSON_OBJECT_AS_ARRAY);
+            print_r($obj2);
+            
+        }}
         public function toHtml(){
             $obj=$this->retrieveMovie();
-            echo"
+            print_r($obj);
+            /*"
                 <table style='width:100%' class='data-table'>
                     <tr>
                         <th>title</th>
@@ -43,11 +54,12 @@
                         echo $obj['year'];
                         echo"</td>";
                         echo " </tr>";
-                echo "</table>";
+                echo "</table>";*/
         }
 
     }
-    $movies=new Movie("k_3rh7vw00","tt1375666");
+    //Top250Movies/k_fuxbwlin
+    $movies=new Movie("k_fuxbwlin");
     $movies->toHtml();
     ?>
     </body>

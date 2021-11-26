@@ -18,6 +18,7 @@ class CreatePasswordResetsTable extends Migration
             $table->string('token');
             $table->timestamp('created_at')->nullable();
         });
+        //2019_08_19_000000_create_users_table
     }
 
     /**

@@ -1,1 +1,2 @@
-alert("Number One")
+"use strict"; 
+alert("Number One");

@@ -24,8 +24,6 @@ class listeMediaController extends Controller
        Film::create($data);
        $films = Film::all();
         return redirect()->route('tableau')->with('info','Le film a été bien ajouté');
-        
-
     }
     public function destroy(int $film){
         $asup=Film::where('id',$film)->delete();
@@ -50,5 +48,4 @@ class listeMediaController extends Controller
         $films = Film::all();
         return redirect()->route('tableau')->with('info','Le film a été bien modifié');
     }
-
 }

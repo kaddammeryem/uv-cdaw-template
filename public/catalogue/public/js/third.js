@@ -1,1 +1,2 @@
-alert(maVar1 - maVar2)
+"use strict";
+alert(maVar1 - maVar2);

@@ -17,10 +17,18 @@ class User extends Authenticatable
      *
      * @var string[]
      */
+
+    protected $table='users';
+    protected $connection = 'mysql';
     protected $fillable = [
-        'name',
+        'nom',
+        'prenom',
         'email',
-        'password',
+        'role',
+        'quote',
+        'naissance',
+        'avatar',
+        
     ];
 
     /**
