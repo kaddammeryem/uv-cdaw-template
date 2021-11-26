@@ -85,72 +85,68 @@
     <div class="col-md-auto">   
       <div class="card " style="width: 20rem;">
         <img src="https://i.pinimg.com/originals/f4/de/39/f4de3951ea3727ee48d3cc780cbe3a2b.jpg" class="card-img-top" >
-        <div class="card-body">
+        <div class="card-body" style="display:flex;flex-direction:column;justify-content:center;align-items:center">
             <h5 class="card-title">Comedy</h5>
-        <h6 class="card-subtitle mb-2 text-muted">May 19, 20​​21</h6>
-       <a href="#" class="btn " id="more">More</a>
-  </div>
-  </div>
+            <h6 class="card-subtitle mb-2 text-muted">May 19, 20​​21</h6>
+            <button class="btn btn-outline" id="more">More</button>
+        </div> 
+      </div>
+    </div>
+    <div class="col-md-auto">
+      <div class="card" style="width: 20rem;">
+        <img src="https://ak.picdn.net/shutterstock/videos/22354483/thumb/9.jpg" class="card-img-top" alt="...">
+        <div class="card-body" style="display:flex;flex-direction:column;justify-content:center;align-items:center">
+          <h5 class="card-title">Movie Night</h5>
+          <h6 class="card-subtitle mb-2 text-muted">March 15, 2021</h6>
+          <button class="btn btn-outline" id="more">More</button>
+        </div>
+      </div>
     </div>    
-       <div class="col-md-auto">
-<div class="card" style="width: 20rem;">
-  <img src="https://ak.picdn.net/shutterstock/videos/22354483/thumb/9.jpg" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Movie Night</h5>
-        <h6 class="card-subtitle mb-2 text-muted">March 15, 2021</h6>
-        <a href="#" class="btn" id="more">More</a>
+    <div class="col-md-auto">
+      <div class="card" style="width: 20rem;">
+       <img src="https://cdn.pixabay.com/photo/2017/08/05/13/20/vintage-2583549_960_720.jpg" class="card-img-top" alt="...">
+        <div class="card-body" style="display:flex;flex-direction:column;justify-content:center;align-items:center">
+          <h5 class="card-title">To Watch Later</h5>
+          <h6 class="card-subtitle mb-2 text-muted">February 6, 2021</h6>
+         <button class="btn btn-outline" id="more">More</button>
+        </div>  
+      </div>
+    </div>
   </div>
-  </div>
-    </div>    
-          <div class="col-md-auto">
-<div class="card" style="width: 20rem;">
-  <img src="https://cdn.pixabay.com/photo/2017/08/05/13/20/vintage-2583549_960_720.jpg" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">To Watch Later</h5>
-        <h6 class="card-subtitle mb-2 text-muted">February 6, 2021</h6>
-    <a href="#" class="btn" id="more">More</a>
-  </div>
-  </div>
-  </div>
-    
-   
 </div>
-</div>
-
 <div class="container mx-auto mt-4">
-        <h1 >Suggestions</h1>
-        <div class="row">
+  <h1 >Suggestions</h1>
+  <div class="row">
     <div class="col-md-auto">   
       <div class="card " style="width: 20rem;">
         <img src="https://media.timeout.com/images/100654045/630/472/image.jpg" class="card-img-top" >
-        <div class="card-body">
+        <div class="card-body" style="display:flex;flex-direction:column;justify-content:center;align-items:center">
             <h5 class="card-title">Romance</h5>
-       <a href="#" class="btn " id="more">More</a>
-  </div>
-  </div>
+            <button class="btn btn-outline" id="more">More</button>
+        </div>  
+      </div>
+    </div>   
+    <div class="col-md-auto">
+      <div class="card" style="width: 20rem;">
+        <img src="https://static.fnac-static.com/multimedia/Images/FR/NR/05/de/ce/13557253/1540-1/tsp20210604142716/Fast-And-Furious-9.jpg" class="card-img-top" alt="...">
+        <div class="card-body" style="display:flex;flex-direction:column;justify-content:center;align-items:center">
+          <h5 class="card-title">Action</h5>
+          <button class="btn btn-outline" id="more">More</button>
+        </div>
+      </div>
     </div>    
-       <div class="col-md-auto">
-<div class="card" style="width: 20rem;">
-  <img src="https://static.fnac-static.com/multimedia/Images/FR/NR/05/de/ce/13557253/1540-1/tsp20210604142716/Fast-And-Furious-9.jpg" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Action</h5>
-        <a href="#" class="btn" id="more">More</a>
-  </div>
-  </div>
-    </div>    
-          <div class="col-md-auto">
-<div class="card" style="width: 20rem;">
-  <img src="https://youthincmag.com/wp-content/uploads/2016/03/Gladiator-2000.jpg" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">History</h5>
-    <a href="#" class="btn" id="more">More</a>
-  </div>
-  </div>
-  </div>
-    
-   
+    <div class="col-md-auto">
+      <div class="card" style="width: 20rem;">
+        <img src="https://youthincmag.com/wp-content/uploads/2016/03/Gladiator-2000.jpg" class="card-img-top" alt="...">
+        <div class="card-body" style="display:flex;flex-direction:column;justify-content:center;align-items:center">
+          <h5 class="card-title">History</h5>
+          <button class="btn btn-outline" id="more">More</button>
+        </div>  
+      </div>
+    </div>
+  </div>  
 </div>
-</div>
+
 
 
 

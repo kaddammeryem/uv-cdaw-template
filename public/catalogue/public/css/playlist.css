@@ -11,12 +11,7 @@ body {
   margin-right: 30px;
 }
 
-.btn {
-  border-image-slice: 1;
-  
-  text-decoration: none;
-  transition: all .4s ease;
-}
+
 
 img {
   object-fit: cover;
@@ -30,16 +25,6 @@ h6,h5 {
 
 }
 
-#more {
-  display: inline-block;
-  border: 1px solid #FFC312;
-  color: white;
-  background-color: black;
-  width: auto;
-  height:auto;
-  display: flex;
-  justify-content: center;
-}
 
 h1 {
   font-family:Times New Roman ;

@@ -52,6 +52,11 @@ Route::get('ex3', function () {
     return view('ex3');
 });
 
+Route::get('/playlist', function () {
+    return view('playlist');
+})->name('playlist');
+
+
 
 Route::get('formu', function () {
     return view('formulaire');
