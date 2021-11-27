@@ -15,7 +15,7 @@
        @endsection
        @section('sign')
        <div class='sign'>
-            <button onclick="window.location= '{{ route('auth') }}'" class="btn btn-outline-primary" style="color:white">Signin</button>
+            <button onclick="window.location= '{{ route('login') }}'" class="btn btn-outline-primary" style="color:white">Signin</button>
         </div>
        @endsection
        @section('content')

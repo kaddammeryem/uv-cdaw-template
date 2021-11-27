@@ -32,7 +32,15 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#">Profile</a>
                         <hr>
-                        <a class="dropdown-item" href=<?php print_r($urlHomeDisc)?>>Log out</a>
+                        <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+
+                                <button type="submit" value="Logout" class="dropdown-item"
+                                        >
+                                    {{ __('Log Out') }}
+                                </button>
+                            </form>
+                     
                      </div>
                 </li>
             </ul>

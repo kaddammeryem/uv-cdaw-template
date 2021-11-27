@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Event Propagation</title>
+
+<style>
+#t-daddy { border: 1px solid red }
+#c1 { background-color: pink; }
+</style>
+
+<script>
+function stopEvent(ev) {
+    alert("event propagation halted.");
+    console.log(this.event.tagName)
+    this.event.removeEventListener();
+  
+}
+
+function load() {
+  elem = document.getElementById("c1");
+  elem.addEventListener("click", stopEvent, false);
+}
+</script>
+</head>
+
+<body onload="load();">
+
+<table id="t-daddy">
+  <tr id="tbl1" >
+    <td id="c1" >one</td>
+  </tr>
+  <tr>
+    <td id="c2" ;>two</td>
+  </tr>
+</table>
+
+</body>
+</html>

@@ -14,6 +14,12 @@
 	<!--Custom styles-->
 	<link href="../../public/css/auth.css" rel="stylesheet"></head>
 <body>
+@if (session('status'))
+            <div class="mb-4 font-medium text-sm text-green-600">
+                {{ session('status') }}
+            </div>
+        @endif
+
 <div class="container">
 	<div class="d-flex justify-content-center h-100">
 		<div class="card">
@@ -21,12 +27,13 @@
 				<h3>Sign In</h3>
 			</div>
 			<div class="card-body">
-				<form>
+				<form action="{{ route('login') }}">
+					@csrf
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
 						</div>
-						<input type="text" class="form-control" placeholder="username">						
+						<input type="text" class="form-control" placeholder="email" >						
 					</div>
 					<div class="input-group form-group">
 						<div class="input-group-prepend">

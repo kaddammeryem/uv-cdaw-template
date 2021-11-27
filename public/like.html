@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="./like.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    </head>
+<body>
+<div>
+    <h4>Mon media 1</h4>
+    <div class="like-b">
+        <span class="liked">Liked!</span>
+        <i class="like-b fa fa-heart"></i>
+    </div>
+</div>
+<script>
+    let i=document.querySelector("i");
+    let span=document.querySelector("span");
+    document.querySelector("i").addEventListener('click', function() { 
+        i.classList.toggle("press");
+        span.classList.toggle("press");})
+
+</script>
+</body>
+</html>

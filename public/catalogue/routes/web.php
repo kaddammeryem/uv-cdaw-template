@@ -16,13 +16,11 @@ use Illuminate\Support\Facades\Route;
 /*Route::get('/', function () {
     return view('welcome');
 });*/
-Route::get('/auth', function () {
-    return view('auth');
-})->name('auth');
 
-Route::get('/homeco', function () {
-    return view('homeco');
-})->name('homeco');
+Route::get('comptes', function() {
+    // Réservé aux utilisateurs authentifiés
+})->middleware('auth');
+
 Route::get('/homedisc', function () {
     return view('homedisc');
 })->name('homedisc');
@@ -45,6 +43,9 @@ Route::get('details', function () {
 Route::get('ex1', function () {
     return view('ex1');
 });
+Route::get('ex4', function () {
+    return view('ex4Event');
+});
 Route::get('ex2', function () {
     return view('ex2');
 });
@@ -56,7 +57,12 @@ Route::get('/playlist', function () {
     return view('playlist');
 })->name('playlist');
 
-
+Route::group(['middleware' => ['web']], function () {
+    Route::get('/homeco', function () {
+        return view('homeco');
+    })->name('homeco');
+    
+});
 
 Route::get('formu', function () {
     return view('formulaire');
@@ -77,13 +83,15 @@ Route::get('info', function () {
 });
 
 
-Route::post('film', 'App\Http\controllers\listeMediaController@addFilm');
+//Route::post('film', 'App\Http\controllers\listeMediaController@addFilm');
 Route::get('tableau', 'App\Http\controllers\listeMediaController@getListeMedias')->name('tableau');
 Route::get('film/{film}', 'App\Http\controllers\listeMediaController@getFilmById')->name('film');
 Route::put('formuUp/film/{id}', 'App\Http\controllers\listeMediaController@updateFilm')->name('updatefilm');
-Route::delete('film/{film}', 'App\Http\controllers\listeMediaController@destroy')->name('films.destroy');
+//Route::delete('film/{film}', 'App\Http\controllers\listeMediaController@destroy')->name('films.destroy');
 
-
+Route::get('auth',function(){
+    return view('auth');
+});
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

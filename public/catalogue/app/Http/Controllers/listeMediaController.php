@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class listeMediaController extends Controller
 {
-    public function getListeMedias() {
+  /*  public function getListeMedias() {
         $films = Film::all();
         return view('tableau',['films'=> $films]);
     }
@@ -46,6 +46,6 @@ class listeMediaController extends Controller
             ]
         );
         $films = Film::all();
-        return redirect()->route('tableau')->with('info','Le film a été bien modifié');
-    }
+        return redirect()->route('tableau')->with('info','Le film a été bien modifié');*/
+   // }
 }

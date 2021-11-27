@@ -1,0 +1,42 @@
+<html>
+<body>
+    <div id="preview"></div>
+    
+<input id="upload" type="file" value="Upload your image" style="display:none">
+<div id="dropbox" >
+    drop here
+</div>
+
+<script>
+    let image_drop_area = document.querySelector("#dropbox");
+    let preview = document.querySelector("#preview");
+    image_drop_area.addEventListener('dragover', (event) => {
+        event.stopPropagation();
+        event.preventDefault();
+        event.dataTransfer.dropEffect = 'copy';
+     });
+     image_drop_area.addEventListener('drop', (event) => {
+        event.stopPropagation();
+        event.preventDefault();
+        const fileList = event.dataTransfer.files;
+        console.log(fileList)
+        readImage(fileList[0]);
+     });
+     
+     readImage = (file) => {
+        const reader = new FileReader();
+        reader.addEventListener('load', (event) => {
+        uploaded_image = event.target.result;
+        let img=document.createElement('img');
+        console.log(`${uploaded_image}`);
+        img.src=`${uploaded_image}`;
+        img.style="height: 150px;width: 100px";
+        preview.appendChild(img);
+        //document.querySelector("#dropbox").style.backgroundImage= `url(${uploaded_image})`;
+        });
+        reader.readAsDataURL(file);
+     }
+  
+</script>
+</body>
+</html>

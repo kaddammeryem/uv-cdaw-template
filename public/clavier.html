@@ -1,0 +1,41 @@
+
+<html>
+    <head>
+        <link rel="stylesheet" href="./clavier.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    </head>
+<body>
+<div>
+    <div id="focus">
+    </div>
+    <div id="medias">
+        <div tabindex="-1" id="m1" >
+            <h4 >Hello</h4>
+            <p class="descr">Description description...</p>
+            <img class="img" alt="an-img">
+        </div>
+        <div tabindex="-1" id="m2">
+            <h4 class="title">Title2</h4>
+            <p class="descr">Description description...</p>
+            <img class="img" alt="an-img">
+        </div>
+        <div tabindex="-1" id="m3">
+            <h4 class="title">Title3</h4>
+            <p class="descr">Description description...</p>
+            <img class="img" alt="an-img">
+        </div>
+    </div>
+</div>
+<script>
+    let m1=document.getElementById('medias');
+    document.addEventListener('keydown', (event) => {
+        const nomTouche = event.key;
+         console.log( m1.children[1].onfocus);
+        })
+  
+   
+        
+
+</script>
+</body>
+</html>

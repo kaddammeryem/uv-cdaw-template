@@ -25,3 +25,5 @@ class CommentsSeeder extends Seeder
         }
     }
 }
+
+

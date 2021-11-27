@@ -12,11 +12,11 @@ class CreateFavoritesTable extends Migration
     public function up()
     {
         Schema::create('favorites', function (Blueprint $table) {
-            $table->string('email');
+            $table->unsignedBigInteger('id_user');
             $table->unsignedBigInteger('id_media');
             $table->foreign('id_media')->references('id')->on('medias');
-            $table->foreign('email')->references('email')->on('users');
-            $table->primary(['id_media','email']);
+            $table->foreign('id_user')->references('id')->on('users');
+            $table->primary(['id_media','id_user']);
             $table->timestamps();
         });
 
