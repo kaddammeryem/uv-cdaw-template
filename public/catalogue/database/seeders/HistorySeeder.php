@@ -15,7 +15,7 @@ class HistorySeeder extends Seeder
         for($i=0;$i<10;$i=$i+1){
             $int= rand(1622055681,1623059681);
             $user=$users[$i];
-            for($j=0;$j<rand(1,3);$j=$j+1){
+            for($j=0;$j<3;$j=$j+1){
                 $int= rand(1622055681,1623059681);
                 DB::table('history')->insert([
                 'email'=> $user->email,

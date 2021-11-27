@@ -6,19 +6,17 @@ use Illuminate\Support\Facades\Schema;
 
 
 
-class CreateCommentsTable extends Migration
+class CreateFavoritesTable extends Migration
 {
     
     public function up()
     {
-        Schema::create('comments', function (Blueprint $table) {
+        Schema::create('favorites', function (Blueprint $table) {
             $table->string('email');
-            $table->date('date_comment');
             $table->unsignedBigInteger('id_media');
             $table->foreign('id_media')->references('id')->on('medias');
             $table->foreign('email')->references('email')->on('users');
             $table->primary(['id_media','email']);
-            $table->longText('contenu');
             $table->timestamps();
         });
 
@@ -29,6 +27,6 @@ class CreateCommentsTable extends Migration
   
     public function down()
     {
-        Schema::dropIfExists('comments');
+        Schema::dropIfExists('favorites');
     }
 }

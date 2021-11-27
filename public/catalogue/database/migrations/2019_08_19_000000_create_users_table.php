@@ -22,9 +22,8 @@ class CreateUsersTable extends Migration
             $table->timestamps();
         });
         DB::statement("ALTER TABLE users ADD PRIMARY KEY (email)");
-        DB::statement("ALTER TABLE users DD CONSTRAINT chk_role CHECK (role IN 'administrateur, moderateur,normal')");
+        DB::statement("ALTER TABLE users DD CONSTRAINT chk_role CHECK (role IN 'administrateur', 'moderateur','normal')");
         DB::statement("ALTER TABLE users ADD CONSTRAINT chk_email CHECK (email like '%@%.%' )");
-        DB::statement("ALTER TABLE users ADD CONSTRAINT chk_phone CHECK (phone like '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]')"); 
 
     }
 

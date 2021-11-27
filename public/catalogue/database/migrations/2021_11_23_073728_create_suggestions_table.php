@@ -32,38 +32,33 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersTable extends Migration
+
+
+class CreateCommentsTable extends Migration
 {
-   
+    
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->string('email')->unique();
-            $table->string('nom');
-            $table->string('prenom');
-            $table->longText('avatar');
-            $table->date('naissance');
-            $table->integer('phone');
-            $table->string('quote');
-            $table->string('role')->default('normal');
-            $table->rememberToken();
+        Schema::create('comments', function (Blueprint $table) {
+            $table->string('email');
+            $table->unsignedBigInteger('id_media');
+            $table->foreign('id_media')->references('id')->on('medias');
+            $table->foreign('email')->references('email')->on('users');
+            $table->primary(['id_media','email']);
+            $table->longText('contenu');
             $table->timestamps();
         });
-        DB::statement("ALTER TABLE users ADD PRIMARY KEY (email)");
-        DB::statement("ALTER TABLE users DD CONSTRAINT chk_role CHECK (role IN 'administrateur, moderateur,normal')");
-        DB::statement("ALTER TABLE users ADD CONSTRAINT chk_email CHECK (email like '%@%.%' )");
-        DB::statement("ALTER TABLE users ADD CONSTRAINT chk_phone CHECK (phone like '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]')"); 
 
     }
 
+    
    
+  
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('comments');
     }
 }
-
-
 
 
 */
