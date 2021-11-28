@@ -17,16 +17,21 @@ use Illuminate\Support\Facades\Route;
     return view('welcome');
 });*/
 
-Route::get('comptes', function() {
-    // Réservé aux utilisateurs authentifiés
-})->middleware('auth');
+Route::middleware('auth')->group(function () {
+    Route::get('homeco', 'App\Http\controllers\listeMediaController@getListeMediasCo')->name('homeco');
+    Route::get('details', function () {
+        return view('details');
+    })->name('details');
+    Route::get('/playlist', function () {
+        return view('playlist');
+    })->name('playlist');
+    Route::get('profile', function () {
+        return view('profile');
+    })->name('profile');
+    Route::get('history', 'App\Http\controllers\listeMediaController@getHistory')->name('history');
+});
 
-/*Route::get('/homedisc', function () {
-    return view('homedisc');
-})->name('homedisc');*/
-Route::get('profile', function () {
-    return view('profile');
-})->name('profile');
+
 Route::get('tableau', function () {
     return view('tableau');
 })->name('tableau');
@@ -34,9 +39,7 @@ Route::get('tableau', function () {
 Route::get('admins', function () {
     return view('admins');
 });
-Route::get('details', function () {
-    return view('details');
-})->name('details');
+
 
 Route::get('ex1', function () {
     return view('ex1');
@@ -51,17 +54,12 @@ Route::get('ex3', function () {
     return view('ex3');
 });
 
-Route::get('/playlist', function () {
-    return view('playlist');
-})->name('playlist');
+
 
 Route::group(['middleware' => ['web']], function () {
-    Route::get('/homeco', function () {
-        return view('homeco');
-    })->name('homeco');
+   
     
 });
-
 Route::get('formu', function () {
     return view('formulaire');
 })->name('formu');
@@ -82,10 +80,7 @@ Route::get('info', function () {
 
 
 //Route::post('film', 'App\Http\controllers\listeMediaController@addFilm');
-Route::get('tableau', 'App\Http\controllers\listeMediaController@getHistory')->name('tableau');
-//Route::get('homeco', 'App\Http\controllers\listeMediaController@getListeMediasCo')->name('homeco');
-Route::get('history', 'App\Http\controllers\listeMediaController@getHistory')->name('history');
-
+//Route::get('tableau', 'App\Http\controllers\listeMediaController@getHistory')->name('tableau');
 Route::get('homedisc', 'App\Http\controllers\listeMediaController@getListeMedias')->name('homedisc');
 Route::get('film/{film}', 'App\Http\controllers\listeMediaController@getFilmById')->name('film');
 Route::put('formuUp/film/{id}', 'App\Http\controllers\listeMediaController@updateFilm')->name('updatefilm');
