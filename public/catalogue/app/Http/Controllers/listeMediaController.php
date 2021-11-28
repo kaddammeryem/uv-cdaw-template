@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Media;
 use Illuminate\Http\Request;
+use DB;
 
 class listeMediaController extends Controller
 {
@@ -14,10 +15,26 @@ class listeMediaController extends Controller
         return view('homedisc',['films'=> $films,'series'=>$series]);
     }
     public function getListeMediasCo() {
-        
         $films = Media::where('type',"film")->get();
         $series = Media::where('type',"serie")->get();
         return view('homeco',['films'=> $films,'series'=>$series]);
+    }
+    public function getHistory() {
+        
+        $result = DB::table('history')
+        ->selectRaw('date,title,runtimeStr,year,descr,image')
+        ->join('medias', 'medias.id', '=', 'history.id_media')
+        ->where('id_user', 15)
+        ->orderBy('date')
+        ->get();
+        $result2 = DB::table('history')
+        ->selectRaw('date')
+        ->distinct()
+        ->join('medias', 'medias.id', '=', 'history.id_media')
+        ->where('id_user', 15)
+        ->orderBy('date')
+        ->get();
+        return view('historique',['films'=> $result,'date'=>$result2]);
     }
     /*
     public function addFilm(Request $request){

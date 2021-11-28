@@ -34,14 +34,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($films as $film)
+                        {{$films}}
+                        {@foreach($films as $film)}
                             <tr>
-                                <td>{{ $film->id }}</td>
-                                <td><strong>{{ $film->name }}</strong></td>
-                                <td><a class="button is-primary" href="{{route('film',['film'=>$film->id])}}">Voir</a></td>
-                                <td><a class="button is-warning" href="{{route('formuUp',['film'=>$film->id])}}">Modifier</a></td>
+                                <td>{{ $film->date }}</td>
+                                <td><strong>{{ $film->title }}</strong></td>
+                                <td><a class="button is-primary" >Voir</a></td>
+                                <td><a class="button is-warning" >Modifier</a></td>
                                 <td>
-                                    <form action="film/{{$film->id}}" method="post">
+                                    <form  method="post">
                                         @csrf
                                         @method('DELETE')
                                         <input class="button is-danger" type="submit" value="Supprimer"></input>

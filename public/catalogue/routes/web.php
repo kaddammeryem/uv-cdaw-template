@@ -30,9 +30,7 @@ Route::get('profile', function () {
 Route::get('tableau', function () {
     return view('tableau');
 })->name('tableau');
-Route::get('/history', function () {
-    return view('historique');
-})->name('history');
+
 Route::get('admins', function () {
     return view('admins');
 });
@@ -84,8 +82,9 @@ Route::get('info', function () {
 
 
 //Route::post('film', 'App\Http\controllers\listeMediaController@addFilm');
-//Route::get('tableau', 'App\Http\controllers\listeMediaController@getListeMedias')->name('tableau');
-Route::get('homeco', 'App\Http\controllers\listeMediaController@getListeMediasCo')->name('homeco');
+Route::get('tableau', 'App\Http\controllers\listeMediaController@getHistory')->name('tableau');
+//Route::get('homeco', 'App\Http\controllers\listeMediaController@getListeMediasCo')->name('homeco');
+Route::get('history', 'App\Http\controllers\listeMediaController@getHistory')->name('history');
 
 Route::get('homedisc', 'App\Http\controllers\listeMediaController@getListeMedias')->name('homedisc');
 Route::get('film/{film}', 'App\Http\controllers\listeMediaController@getFilmById')->name('film');

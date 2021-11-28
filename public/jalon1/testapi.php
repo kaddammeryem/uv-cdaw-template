@@ -7,7 +7,7 @@
 
   
         public function retrieveMovie(){
-            $url = 'https://imdb-api.com/en/API/Top250TVs/k_3rh7vw00';
+            $url = 'https://imdb-api.com/en/API/Top250TVs/k_fuxbwlin';
             $options = array(
                 'https' => array(
                 'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
@@ -21,7 +21,7 @@
             $data=$obj['items'];
             for($i=0;$i<10;$i=$i+1){
             $id=$data[$i]['id'];
-            $url2 = 'https://imdb-api.com/en/API/Title/k_3rh7vw00/'.$id;
+            $url2 = 'https://imdb-api.com/en/API/Title/k_fuxbwlin/'.$id;
             $options2 = array(
                 'https' => array(
                 'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
@@ -59,8 +59,8 @@
 
     }
     //Top250Movies/k_fuxbwlin
-    $movies=new Movie("k_fuxbwlin");
-    $movies->toHtml();
+    $movies=new Movie();
+    $movies->retrieveMovie();
     ?>
     </body>
 </html>
