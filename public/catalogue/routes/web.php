@@ -92,6 +92,9 @@ Route::put('formuUp/film/{id}', 'App\Http\controllers\listeMediaController@updat
 Route::get('auth',function(){
     return view('auth');
 });
+Route::get('signup',function(){
+    return view('register');
+});
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

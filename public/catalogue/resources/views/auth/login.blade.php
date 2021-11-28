@@ -55,6 +55,11 @@
                         </button>
                     </div>
                 </form>
+                <div class="card-footer">
+                    <div class="d-flex justify-content-center links" >
+                         Don't have an account ?<a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('register') }}">{{ __('Sign Up') }}</a>
+                    </div>
+                 </div>
             </div>
         </div>
     </div>
