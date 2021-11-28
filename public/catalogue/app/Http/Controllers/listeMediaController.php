@@ -1,15 +1,25 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Film;
+
+use App\Models\Media;
 use Illuminate\Http\Request;
 
 class listeMediaController extends Controller
 {
-  /*  public function getListeMedias() {
-        $films = Film::all();
-        return view('tableau',['films'=> $films]);
+    public function getListeMedias() {
+        
+        $films = Media::where('type',"film")->get();
+        $series = Media::where('type',"serie")->get();
+        return view('homedisc',['films'=> $films,'series'=>$series]);
     }
+    public function getListeMediasCo() {
+        
+        $films = Media::where('type',"film")->get();
+        $series = Media::where('type',"serie")->get();
+        return view('homeco',['films'=> $films,'series'=>$series]);
+    }
+    /*
     public function addFilm(Request $request){
         $name=$request->input('nom');
         $cat1=$request->input('cat1');

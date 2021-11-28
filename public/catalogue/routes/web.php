@@ -21,9 +21,9 @@ Route::get('comptes', function() {
     // Réservé aux utilisateurs authentifiés
 })->middleware('auth');
 
-Route::get('/homedisc', function () {
+/*Route::get('/homedisc', function () {
     return view('homedisc');
-})->name('homedisc');
+})->name('homedisc');*/
 Route::get('profile', function () {
     return view('profile');
 })->name('profile');
@@ -84,7 +84,10 @@ Route::get('info', function () {
 
 
 //Route::post('film', 'App\Http\controllers\listeMediaController@addFilm');
-Route::get('tableau', 'App\Http\controllers\listeMediaController@getListeMedias')->name('tableau');
+//Route::get('tableau', 'App\Http\controllers\listeMediaController@getListeMedias')->name('tableau');
+Route::get('homeco', 'App\Http\controllers\listeMediaController@getListeMediasCo')->name('homeco');
+
+Route::get('homedisc', 'App\Http\controllers\listeMediaController@getListeMedias')->name('homedisc');
 Route::get('film/{film}', 'App\Http\controllers\listeMediaController@getFilmById')->name('film');
 Route::put('formuUp/film/{id}', 'App\Http\controllers\listeMediaController@updateFilm')->name('updatefilm');
 //Route::delete('film/{film}', 'App\Http\controllers\listeMediaController@destroy')->name('films.destroy');

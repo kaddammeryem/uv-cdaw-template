@@ -11,21 +11,31 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    background-color:black;
-    margin-top: 10;
+  
+  
+  
 }
 .container{
-    background-color: black;
+    margin-top:10px;
+}
+.scrolling-wrapper{
+
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+.navbar{
+    background-size: cover;
+    margin:0;
+    background-color:black
 }
 #details{
     background-color: #FFC312;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-.scrolling-wrapper{
-    margin-left:1600px;
-    margin-right:20px;
+    background-color: #FFD700;
+   
 }
 
 
@@ -73,7 +83,7 @@ border-color: black;
 }
 
 html,body{
-    background-color: black;
+    background-color: #080808;
   }
 
 .title {
@@ -106,16 +116,14 @@ img {
 }
 .infos{
     background-color: #FFD700;
-    width:93%
+    width:400px;
 }
 #collapseOne{
     display: flex;
     justify-content: center;
     align-items: center;
 }
-#first{
- margin-left: 30;
-}
+
 .detadd{
     display: flex;
     justify-content: space-around;

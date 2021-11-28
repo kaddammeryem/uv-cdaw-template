@@ -4,6 +4,8 @@
     @section('head')
         @parent
         <link href="../../public/css/homedisc.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
     @endsection
     <body>
         @section('sidebar')
@@ -51,34 +53,35 @@
                 </div>
                 <button class="carousel-control-prev" data-bs-target="#carouselExample" type="button" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</i></span>
+                    <span class="visually-hidden"></i></span>
                 </button>
                 <button class="carousel-control-next" data-bs-target="#carouselExample" type="button" data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
+                    <span class="visually-hidden"></span>
                 </button>
             </div>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+        
         <div style="display: flex;justify-content:center;align-items:center;margin:10">
             <h1 style="color:white">
                 Top Movies
             </h1>
         </div>
         <div class="container-fluid">
-            <div class="scrolling-wrapper row flex-row flex-nowrap justify-content-flex-start">
-                <div id="accordion" class="first">
-                    <div  class="col-4" classe="image"> 
-                                <img id='boutton' data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" src='https://fr.web.img6.acsta.net/pictures/21/08/10/12/20/4633954.jpg'/>
+            <div class="scrolling-wrapper row flex-nowrap" >
+              
+                @foreach($films as $film)
+                <div style="margin:20px" >
+                    <div  classe="image"> 
+                       <img id='boutton'  src='{{$film->image}}'/>
                     </div>
-                    <div id="collapseOne" class="collapse show" aria-labelledby="boutton" data-parent="#accordion">
                         <div class="infos">
                             <div>
                                 <div>
                                     <div>
                                         <div>
                                             <h3  style="margin-left:4">
-                                                 The Girl With All The Gifts
+                                                {{$film->title}} 
                                             </h3>
                                             <div>
                                                  <div>
@@ -88,14 +91,12 @@
                                             <div>
                                                 <span >
                                                     <i class="far fa-clock" style="margin-left:4;font-weight:bold"></i>
-                                                    <span style="margin-left:4">02h30min </span>
+                                                    <span style="margin-left:4">{{$film->runtimeStr}}  </span>
                                                 </span>
                                             </div>
-                                            <div >
-                                                <p style="margin-left:4">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, ...</p>
-                                            </div>
+                                            
                                             <div>
-                                                <label style="margin-left:4 ;font-weight:bold">Genre : <span style="font-weight:400">Comedie, Drama</span></label>   
+                                                <label style="margin-left:4 ;font-weight:bold">Genre : <span style="font-weight:400">{{$film->genres}}</span></label>   
                                             </div>
                                         </div>
                                     </div>
@@ -111,284 +112,8 @@
                                 </button>
                             </div>
                         </div>
-                    </div>
                 </div>  
-                <div id="accordion" class="first">
-                    <div  class="col-4" classe="image"> 
-                                <img id='boutton' data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" src='https://images.lindependant.fr/api/v1/images/view/5e8346543e454612453faab6/full/image.jpg?v=1'/>
-                    </div>
-                    <div id="collapseOne" class="collapse show" aria-labelledby="boutton" data-parent="#accordion">
-                        <div class="infos">
-                            <div>
-                                <div>
-                                    <div>
-                                        <div>
-                                            <h3  style="margin-left:4">
-                                                 The Girl With All The Gifts
-                                            </h3>
-                                            <div>
-                                                 <div>
-                                                    <span  style="width: 88%"></span>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <span >
-                                                    <i class="far fa-clock" style="margin-left:4;font-weight:bold"></i>
-                                                    <span style="margin-left:4">02h30min</span>
-                                                </span>
-                                            </div>
-                                            <div >
-                                                <p style="margin-left:4">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, ...</p>
-                                            </div>
-                                            <div>
-                                                <label style="margin-left:4 ;font-weight:bold">Genre : <span style="font-weight:400">Comedie, Drama</span></label>   
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr style="margin:10">
-                            <div class='detadd'>
-                                <button type="button" id='details' class="btn" >
-                                    <i class="fas fa-info"></i>
-                                </button>
-                                <button type="button" id='details' class="btn" >
-                                    <i class="fas fa-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>  
-                <div id="accordion" class="first">
-                    <div  class="col-4" classe="image"> 
-                                <img id='boutton' data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" src='https://fr.web.img3.acsta.net/r_1280_720/pictures/17/06/26/11/21/572946.jpg'/>
-                    </div>
-                    <div id="collapseOne" class="collapse show" aria-labelledby="boutton" data-parent="#accordion">
-                        <div class="infos">
-                            <div>
-                                <div>
-                                    <div>
-                                        <div>
-                                            <h3  style="margin-left:4">
-                                                 The Girl With All The Gifts
-                                            </h3>
-                                            <div>
-                                                 <div>
-                                                    <span  style="width: 88%"></span>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <span >
-                                                    <i class="far fa-clock" style="margin-left:4;font-weight:bold"></i>
-                                                    <span style="margin-left:4">02h30min</span>
-                                                </span>
-                                            </div>
-                                            <div >
-                                                <p style="margin-left:4">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, ...</p>
-                                            </div>
-                                            <div>
-                                                <label style="margin-left:4 ;font-weight:bold">Genre : <span style="font-weight:400">Comedie, Drama</span></label>   
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr style="margin:10">
-                            <div class='detadd'>
-                                <button type="button" id='details' class="btn" >
-                                    <i class="fas fa-info"></i>
-                                </button>
-                                <button type="button" id='details' class="btn" >
-                                    <i class="fas fa-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>  
-                <div id="accordion" class="first">
-                    <div  class="col-4" classe="image"> 
-                                <img id='boutton' data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" src='https://blogscdn.thehut.net/wp-content/uploads/sites/499/2018/04/30173853/Avengers-Infinity-War-poster-1_1200x672_acf_cropped.jpg'/>
-                    </div>
-                    <div id="collapseOne" class="collapse show" aria-labelledby="boutton" data-parent="#accordion">
-                        <div class="infos">
-                            <div>
-                                <div>
-                                    <div>
-                                        <div>
-                                            <h3  style="margin-left:4">
-                                                 The Girl With All The Gifts
-                                            </h3>
-                                            <div>
-                                                 <div>
-                                                    <span  style="width: 88%"></span>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <span >
-                                                    <i class="far fa-clock" style="margin-left:4;font-weight:bold"></i>
-                                                    <span style="margin-left:4">02h30min</span>
-                                                </span>
-                                            </div>
-                                            <div >
-                                                <p style="margin-left:4">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, ...</p>
-                                            </div>
-                                            <div>
-                                                <label style="margin-left:4 ;font-weight:bold">Genre : <span style="font-weight:400">Comedie, Drama</span></label>   
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr style="margin:10">
-                            <div class='detadd'>
-                                <button type="button" id='details' class="btn" >
-                                    <i class="fas fa-info"></i>
-                                </button>
-                                <button type="button" id='details' class="btn" >
-                                    <i class="fas fa-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>  
-                <div id="accordion" class="first">
-                    <div  class="col-4" classe="image"> 
-                                <img id='boutton' data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" src='https://www.condor-films.fr/wp-content/uploads/2019/01/coeurs-ennemis_120x160_web_hd-360x480.jpg'/>
-                    </div>
-                    <div id="collapseOne" class="collapse show" aria-labelledby="boutton" data-parent="#accordion">
-                        <div class="infos">
-                            <div>
-                                <div>
-                                    <div>
-                                        <div>
-                                            <h3  style="margin-left:4">
-                                                 The Girl With All The Gifts
-                                            </h3>
-                                            <div>
-                                                 <div>
-                                                    <span  style="width: 88%"></span>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <span >
-                                                    <i class="far fa-clock" style="margin-left:4;font-weight:bold"></i>
-                                                    <span style="margin-left:4">02h30min</span>
-                                                </span>
-                                            </div>
-                                            <div >
-                                                <p style="margin-left:4">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, ...</p>
-                                            </div>
-                                            <div>
-                                                <label style="margin-left:4 ;font-weight:bold">Genre : <span style="font-weight:400">Comedie, Drama</span></label>   
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr style="margin:10">
-                            <div class='detadd'>
-                                <button type="button" id='details' class="btn" >
-                                    <i class="fas fa-info"></i>
-                                </button>
-                                <button type="button" id='details' class="btn" >
-                                    <i class="fas fa-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>               
-                <div id="accordion" class="first">
-                    <div  class="col-4" classe="image"> 
-                                <img id='boutton' data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" src='https://blogscdn.thehut.net/wp-content/uploads/sites/499/2018/04/30173853/Avengers-Infinity-War-poster-1_1200x672_acf_cropped.jpg'/>
-                    </div>
-                    <div id="collapseOne" class="collapse show" aria-labelledby="boutton" data-parent="#accordion">
-                        <div class="infos">
-                            <div>
-                                <div>
-                                    <div>
-                                        <div>
-                                            <h3  style="margin-left:4">
-                                                 The Girl With All The Gifts
-                                            </h3>
-                                            <div>
-                                                 <div>
-                                                    <span  style="width: 88%"></span>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <span >
-                                                    <i class="far fa-clock" style="margin-left:4;font-weight:bold"></i>
-                                                    <span style="margin-left:4">02h30min</span>
-                                                </span>
-                                            </div>
-                                            <div >
-                                                <p style="margin-left:4">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, ...</p>
-                                            </div>
-                                            <div>
-                                                <label style="margin-left:4 ;font-weight:bold">Genre : <span style="font-weight:400">Comedie, Drama</span></label>   
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr style="margin:10">
-                            <div class='detadd'>
-                                <button type="button" id='details' class="btn" >
-                                    <i class="fas fa-info"></i>
-                                </button>
-                                <button type="button" id='details' class="btn" >
-                                    <i class="fas fa-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>  
-                <div id="accordion" class="first">
-                    <div  class="col-4" classe="image"> 
-                                <img id='boutton' data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" src='https://blogscdn.thehut.net/wp-content/uploads/sites/499/2018/04/30173853/Avengers-Infinity-War-poster-1_1200x672_acf_cropped.jpg'/>
-                    </div>
-                    <div id="collapseOne" class="collapse show" aria-labelledby="boutton" data-parent="#accordion">
-                        <div class="infos">
-                            <div>
-                                <div>
-                                    <div>
-                                        <div>
-                                            <h3  style="margin-left:4">
-                                                 The Girl With All The Gifts
-                                            </h3>
-                                            <div>
-                                                 <div>
-                                                    <span  style="width: 88%"></span>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <span >
-                                                    <i class="far fa-clock" style="margin-left:4;font-weight:bold"></i>
-                                                    <span style="margin-left:4">02h30min</span>
-                                                </span>
-                                            </div>
-                                            <div >
-                                                <p style="margin-left:4">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, ...</p>
-                                            </div>
-                                            <div>
-                                                <label style="margin-left:4 ;font-weight:bold">Genre : <span style="font-weight:400">Comedie, Drama</span></label>   
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr style="margin:10">
-                            <div class='detadd'>
-                                <button type="button" id='details' class="btn" >
-                                    <i class="fas fa-info"></i>
-                                </button>
-                                <button type="button" id='details' class="btn" >
-                                    <i class="fas fa-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>              
+                @endforeach       
              </div>
         </div>
         <div style="display: flex;justify-content:center;align-items:center;margin:10">
@@ -397,19 +122,20 @@
             </h1>
         </div>
         <div class="container-fluid">
-            <div class="scrolling-wrapper row flex-row flex-nowrap justify-content-flex-start">
-                <div id="accordion" class="first">
-                    <div  class="col-4" classe="image"> 
-                                <img id='boutton' data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" src='https://fr.web.img6.acsta.net/pictures/21/08/10/12/20/4633954.jpg'/>
+            <div class="scrolling-wrapper row flex-nowrap" >
+              
+                @foreach($series as $film)
+                <div style="margin:20px" >
+                    <div  classe="image"> 
+                       <img id='boutton'  src='{{$film->image}}'/>
                     </div>
-                    <div id="collapseOne" class="collapse show" aria-labelledby="boutton" data-parent="#accordion">
                         <div class="infos">
                             <div>
                                 <div>
                                     <div>
                                         <div>
                                             <h3  style="margin-left:4">
-                                                 The Girl With All The Gifts
+                                                {{$film->title}} 
                                             </h3>
                                             <div>
                                                  <div>
@@ -419,14 +145,12 @@
                                             <div>
                                                 <span >
                                                     <i class="far fa-clock" style="margin-left:4;font-weight:bold"></i>
-                                                    <span style="margin-left:4">02h30min </span>
+                                                    <span style="margin-left:4">{{$film->runtimeStr}}  </span>
                                                 </span>
                                             </div>
-                                            <div >
-                                                <p style="margin-left:4">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, ...</p>
-                                            </div>
+                                            
                                             <div>
-                                                <label style="margin-left:4 ;font-weight:bold">Genre : <span style="font-weight:400">Comedie, Drama</span></label>   
+                                                <label style="margin-left:4 ;font-weight:bold">Genre : <span style="font-weight:400">{{$film->genres}}</span></label>   
                                             </div>
                                         </div>
                                     </div>
@@ -442,286 +166,12 @@
                                 </button>
                             </div>
                         </div>
-                    </div>
                 </div>  
-                <div id="accordion" class="first">
-                    <div  class="col-4" classe="image"> 
-                                <img id='boutton' data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" src='https://images.lindependant.fr/api/v1/images/view/5e8346543e454612453faab6/full/image.jpg?v=1'/>
-                    </div>
-                    <div id="collapseOne" class="collapse show" aria-labelledby="boutton" data-parent="#accordion">
-                        <div class="infos">
-                            <div>
-                                <div>
-                                    <div>
-                                        <div>
-                                            <h3  style="margin-left:4">
-                                                 The Girl With All The Gifts
-                                            </h3>
-                                            <div>
-                                                 <div>
-                                                    <span  style="width: 88%"></span>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <span >
-                                                    <i class="far fa-clock" style="margin-left:4;font-weight:bold"></i>
-                                                    <span style="margin-left:4">02h30min</span>
-                                                </span>
-                                            </div>
-                                            <div >
-                                                <p style="margin-left:4">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, ...</p>
-                                            </div>
-                                            <div>
-                                                <label style="margin-left:4 ;font-weight:bold">Genre : <span style="font-weight:400">Comedie, Drama</span></label>   
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr style="margin:10">
-                            <div class='detadd'>
-                                <button type="button" id='details' class="btn" >
-                                    <i class="fas fa-info"></i>
-                                </button>
-                                <button type="button" id='details' class="btn" >
-                                    <i class="fas fa-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>  
-                <div id="accordion" class="first">
-                    <div  class="col-4" classe="image"> 
-                                <img id='boutton' data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" src='https://fr.web.img3.acsta.net/r_1280_720/pictures/17/06/26/11/21/572946.jpg'/>
-                    </div>
-                    <div id="collapseOne" class="collapse show" aria-labelledby="boutton" data-parent="#accordion">
-                        <div class="infos">
-                            <div>
-                                <div>
-                                    <div>
-                                        <div>
-                                            <h3  style="margin-left:4">
-                                                 The Girl With All The Gifts
-                                            </h3>
-                                            <div>
-                                                 <div>
-                                                    <span  style="width: 88%"></span>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <span >
-                                                    <i class="far fa-clock" style="margin-left:4;font-weight:bold"></i>
-                                                    <span style="margin-left:4">02h30min</span>
-                                                </span>
-                                            </div>
-                                            <div >
-                                                <p style="margin-left:4">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, ...</p>
-                                            </div>
-                                            <div>
-                                                <label style="margin-left:4 ;font-weight:bold">Genre : <span style="font-weight:400">Comedie, Drama</span></label>   
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr style="margin:10">
-                            <div class='detadd'>
-                                <button type="button" id='details' class="btn" >
-                                    <i class="fas fa-info"></i>
-                                </button>
-                                <button type="button" id='details' class="btn" >
-                                    <i class="fas fa-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>  
-                <div id="accordion" class="first">
-                    <div  class="col-4" classe="image"> 
-                                <img id='boutton' data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" src='https://blogscdn.thehut.net/wp-content/uploads/sites/499/2018/04/30173853/Avengers-Infinity-War-poster-1_1200x672_acf_cropped.jpg'/>
-                    </div>
-                    <div id="collapseOne" class="collapse show" aria-labelledby="boutton" data-parent="#accordion">
-                        <div class="infos">
-                            <div>
-                                <div>
-                                    <div>
-                                        <div>
-                                            <h3  style="margin-left:4">
-                                                 The Girl With All The Gifts
-                                            </h3>
-                                            <div>
-                                                 <div>
-                                                    <span  style="width: 88%"></span>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <span >
-                                                    <i class="far fa-clock" style="margin-left:4;font-weight:bold"></i>
-                                                    <span style="margin-left:4">02h30min</span>
-                                                </span>
-                                            </div>
-                                            <div >
-                                                <p style="margin-left:4">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, ...</p>
-                                            </div>
-                                            <div>
-                                                <label style="margin-left:4 ;font-weight:bold">Genre : <span style="font-weight:400">Comedie, Drama</span></label>   
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr style="margin:10">
-                            <div class='detadd'>
-                                <button type="button" id='details' class="btn" >
-                                    <i class="fas fa-info"></i>
-                                </button>
-                                <button type="button" id='details' class="btn" >
-                                    <i class="fas fa-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>  
-                <div id="accordion" class="first">
-                    <div  class="col-4" classe="image"> 
-                                <img id='boutton' data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" src='https://www.condor-films.fr/wp-content/uploads/2019/01/coeurs-ennemis_120x160_web_hd-360x480.jpg'/>
-                    </div>
-                    <div id="collapseOne" class="collapse show" aria-labelledby="boutton" data-parent="#accordion">
-                        <div class="infos">
-                            <div>
-                                <div>
-                                    <div>
-                                        <div>
-                                            <h3  style="margin-left:4">
-                                                 The Girl With All The Gifts
-                                            </h3>
-                                            <div>
-                                                 <div>
-                                                    <span  style="width: 88%"></span>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <span >
-                                                    <i class="far fa-clock" style="margin-left:4;font-weight:bold"></i>
-                                                    <span style="margin-left:4">02h30min</span>
-                                                </span>
-                                            </div>
-                                            <div >
-                                                <p style="margin-left:4">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, ...</p>
-                                            </div>
-                                            <div>
-                                                <label style="margin-left:4 ;font-weight:bold">Genre : <span style="font-weight:400">Comedie, Drama</span></label>   
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr style="margin:10">
-                            <div class='detadd'>
-                                <button type="button" id='details' class="btn" >
-                                    <i class="fas fa-info"></i>
-                                </button>
-                                <button type="button" id='details' class="btn" >
-                                    <i class="fas fa-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>               
-                <div id="accordion" class="first">
-                    <div  class="col-4" classe="image"> 
-                                <img id='boutton' data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" src='https://blogscdn.thehut.net/wp-content/uploads/sites/499/2018/04/30173853/Avengers-Infinity-War-poster-1_1200x672_acf_cropped.jpg'/>
-                    </div>
-                    <div id="collapseOne" class="collapse show" aria-labelledby="boutton" data-parent="#accordion">
-                        <div class="infos">
-                            <div>
-                                <div>
-                                    <div>
-                                        <div>
-                                            <h3  style="margin-left:4">
-                                                 The Girl With All The Gifts
-                                            </h3>
-                                            <div>
-                                                 <div>
-                                                    <span  style="width: 88%"></span>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <span >
-                                                    <i class="far fa-clock" style="margin-left:4;font-weight:bold"></i>
-                                                    <span style="margin-left:4">02h30min</span>
-                                                </span>
-                                            </div>
-                                            <div >
-                                                <p style="margin-left:4">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, ...</p>
-                                            </div>
-                                            <div>
-                                                <label style="margin-left:4 ;font-weight:bold">Genre : <span style="font-weight:400">Comedie, Drama</span></label>   
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr style="margin:10">
-                            <div class='detadd'>
-                                <button type="button" id='details' class="btn" >
-                                    <i class="fas fa-info"></i>
-                                </button>
-                                <button type="button" id='details' class="btn" >
-                                    <i class="fas fa-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>  
-                <div id="accordion" class="first">
-                    <div  class="col-4" classe="image"> 
-                                <img id='boutton' data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" src='https://blogscdn.thehut.net/wp-content/uploads/sites/499/2018/04/30173853/Avengers-Infinity-War-poster-1_1200x672_acf_cropped.jpg'/>
-                    </div>
-                    <div id="collapseOne" class="collapse show" aria-labelledby="boutton" data-parent="#accordion">
-                        <div class="infos">
-                            <div>
-                                <div>
-                                    <div>
-                                        <div>
-                                            <h3  style="margin-left:4">
-                                                 The Girl With All The Gifts
-                                            </h3>
-                                            <div>
-                                                 <div>
-                                                    <span  style="width: 88%"></span>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <span >
-                                                    <i class="far fa-clock" style="margin-left:4;font-weight:bold"></i>
-                                                    <span style="margin-left:4">02h30min</span>
-                                                </span>
-                                            </div>
-                                            <div >
-                                                <p style="margin-left:4">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, ...</p>
-                                            </div>
-                                            <div>
-                                                <label style="margin-left:4 ;font-weight:bold">Genre : <span style="font-weight:400">Comedie, Drama</span></label>   
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr style="margin:10">
-                            <div class='detadd'>
-                                <button type="button" id='details' class="btn" >
-                                    <i class="fas fa-info"></i>
-                                </button>
-                                <button type="button" id='details' class="btn" >
-                                    <i class="fas fa-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>              
+                @endforeach       
              </div>
         </div>
+        
+     
         @endsection
         @section('footer')
         @parent
