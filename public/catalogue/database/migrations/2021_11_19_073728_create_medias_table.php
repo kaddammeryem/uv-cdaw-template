@@ -18,7 +18,7 @@ class CreateMediasTable extends Migration
             $table->string('type');
             $table->string('genres');
             $table->integer('year');
-            $table->dateTime('runtimeStr');
+            $table->string('runtimeStr');
             $table->timestamps();
         });
     }

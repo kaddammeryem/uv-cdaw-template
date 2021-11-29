@@ -13,8 +13,8 @@ class ParticipationSeeder extends Seeder
         for($i=0;$i<10;$i=$i+1){
             for($j=0;$j<rand(1,3);$j=$j+1){
                 DB::table('participation')->insert([
-                'id_participant'=> rand(1,30),
-                'id_media'=>rand(11,30),
+                'id_participant'=> rand(1,10),
+                'id_media'=>rand(1,20),
             ]);}
         }
     }

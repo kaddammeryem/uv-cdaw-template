@@ -9,7 +9,7 @@ class MediaSeeder extends Seeder
 {
     public function run()
     {
-        $url = 'https://imdb-api.com/en/API/Top250TVs/k_3rh7vw00';
+        $url = 'https://imdb-api.com/en/API/Top250Movies/k_3rh7vw00';
             $options = array(
                 'https' => array(
                 'header'  => "Content-type: application/x-www-form-urlencoded\r\n",

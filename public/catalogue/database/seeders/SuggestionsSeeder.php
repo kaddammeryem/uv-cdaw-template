@@ -13,8 +13,8 @@ class SuggestionsSeeder extends Seeder
         for($i=0;$i<10;$i=$i+1){
             for($j=0;$j<rand(1,3);$j=$j+1){
                 DB::table('suggestions')->insert([
-                'id_media'=> rand(11,30),
-                'id_similaire'=>rand(11,30),
+                'id_media'=> rand(1,20),
+                'id_similaire'=>rand(1,20),
             ]);}
         }
     }

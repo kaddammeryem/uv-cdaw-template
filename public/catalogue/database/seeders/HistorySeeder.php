@@ -10,12 +10,12 @@ class HistorySeeder extends Seeder
 {
     public function run()
     {
-        for($i=13;$i<23;$i=$i+1){
+        for($i=1;$i<11;$i=$i+1){
             $int= rand(1622055681,1623059681);
             for($j=0;$j<3;$j=$j+1){
                 $int= rand(1622055681,1623059681);
                 DB::table('history')->insert([
-                    'id_media'=>rand(11,30),
+                    'id_media'=>rand(1,20),
                     'id_user'=>$i,
                 'date'=>date("Y-m-d",$int),
             ]);}
