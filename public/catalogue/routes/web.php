@@ -31,6 +31,9 @@ Route::middleware('auth')->group(function () {
     Route::get('history', 'App\Http\controllers\listeMediaController@getHistory')->name('history');
 });
 
+Route::get('favorite', function () {
+    return view('favorite');
+})->name('favorite');
 
 Route::get('tableau', function () {
     return view('tableau');
