@@ -36,7 +36,7 @@ class MediaSeeder extends Seeder
             DB::table('medias')->insert([
             'title' => $obj2['title'],
             'image' => $obj2['image'],
-            'type' => 'serie',
+            'type' => 'film',
             'genres' => $obj2['genres'],
             'year' => $obj2['year'],
             'runtimeStr' => $obj2['runtimeStr'],
