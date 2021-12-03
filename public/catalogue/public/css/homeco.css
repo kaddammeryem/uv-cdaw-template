@@ -1,13 +1,3 @@
-.content{
-    display:flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    background-color: black;
-   
-    
-
-}
 
 #conteneur{
     display: flex;
@@ -15,25 +5,45 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    background-color: black;
 }
 .container-fluid{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    background-color: black;
+  
+  
+  
 }
+#infoBtn:hover{
 
+    background-color: #DAA520;
+}
+#addBtn:hover{
+
+    background-color: #DAA520;
+}
+.container{
+    margin-top:10px;
+}
+.scrolling-wrapper{
+
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+.navbar{
+    background-size: cover;
+    margin:0;
+    background-color:black
+}
 #details{
     background-color: #FFC312;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-.scrolling-wrapper{
-    margin-left:1600px;
-    margin-right:20px;
+    background-color: #FFD700;
+   
 }
 
 
@@ -80,7 +90,9 @@ border-color: black;
  border-color: white;
 }
 
-
+html,body{
+    background-color: #080808;
+  }
 
 .title {
     font: bold italic large serif;
@@ -112,16 +124,14 @@ img {
 }
 .infos{
     background-color: #FFD700;
-    width:93%
+    width:400px;
 }
 #collapseOne{
     display: flex;
     justify-content: center;
     align-items: center;
 }
-#first{
- margin-left: 30;
-}
+
 .detadd{
     display: flex;
     justify-content: space-around;
@@ -186,177 +196,6 @@ footer h3 {
    background-color:#333333
 }
 
-.card-body{
-    background-color:#FFD100 ;
+              
+
   
-}
-#card-body2{
-    background-color:#FFD100 ;
-}
-.episode{
-    height:inherit
-   
-}
-.imageEpisode{
-    height: 180px;
-}
-
-.overflow-auto{
-    height:730px;
-    margin-right: 10px;
-    
-}
-.card-img-top
-{
-    object-fit: fill;
-  
-}
-.item1Cont{
-    background-color: green;
-    height:720px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: black;
-    margin-right: 8px;
-}
-
-
-/*comments*/
-
-.content-item {
-    padding:30px 0;
-	background-color:black;
-    margin-bottom:10px;
-    margin-top:10px;
-    display:flex;
-    justify-content: center;
-}
-
-.content-item.grey {
-	background-color:black;
-	padding:50px 0;
-	height:100%;
-}
-.user-avatar img {
-    width: 90px;
-    height: 90px;
-    -webkit-border-radius: 100px;
-    -moz-border-radius: 100px;
-    border-radius: 100px;
-    margin-top:13px
-}
-
-.content-item h2 {
-	font-weight:700;
-	font-size:35px;
-	line-height:45px;
-	text-transform:uppercase;
-	margin:20px 0;
-}
-
-.content-item h3 {
-	font-weight:400;
-	font-size:20px;
-	color:white;
-	margin:10px 0 15px;
-	padding:0;
-}
-
-.content-headline {
-	height:1px;
-	text-align:center;
-	margin:20px 0 70px;
-}
-
-.content-headline h2 {
-	background-color:white;
-	display:inline-block;
-	margin:-20px auto 0;
-	padding:0 20px;
-}
-
-.grey .content-headline h2 {
-	background-color:white;
-}
-
-.content-headline h3 {
-	font-size:14px;
-	color:white;
-	display:block;
-}
-
-
-#comments {
-    box-shadow: 0 -1px 6px 1px rgba(0,0,0,0.1);
-	background-color:black;
-}
-
-
-
-#comments .btn {
-	margin-top:7px;
-}
-
-#comments form fieldset {
-	clear:both;
-}
-
-#comments form textarea {
-	height:80px;
-    margin-top:20px
-}
-
-#comments .media {
-	
-	padding:10px 0;
-	margin:0;
-}
-
-#comments .media > .pull-left {
-    margin-right:20px;
-}
-
-#comments .media img {
-	max-width:100px;
-}
-
-#comments .media h4 {
-	margin:0 0 10px;
-}
-
-#comments .media h4 span {
-	font-size:14px;
-	float:right;
-	color:white;
-}
-
-#comments .media p {
-	margin-bottom:15px;
-	text-align:justify;
-}
-
-#comments .media-detail {
-	margin:0;
-}
-
-#comments .media-detail li {
-	color:black;
-	font-size:12px;
-	padding-right: 10px;
-	font-weight:600;
-}
-
-#comments .media-detail a:hover {
-	text-decoration:underline;
-}
-
-#comments .media-detail li:last-child {
-	padding-right:0;
-}
-
-#comments .media-detail li i {
-	color:white;
-	font-size:15px;
-	margin-right:10px;
-}

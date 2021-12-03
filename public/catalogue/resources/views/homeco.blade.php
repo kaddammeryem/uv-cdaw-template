@@ -3,7 +3,7 @@
 <html>
     @section('head')
         @parent
-        <link href="../../public/css/homedisc.css" rel="stylesheet">
+        <link href="../../public/css/homeco.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 
     @endsection
@@ -133,10 +133,13 @@
                             </div>
                             <hr style="margin:10">
                             <div class='detadd'>
-                                <button type="button" id='details' class="btn" >
+                                <button type="button" id='infoBtn' class="btn" >
                                     <i class="fas fa-info"></i>
                                 </button>
-                                <button type="button" id='details' class="btn" >
+                                <button type="button" id='infoBtn' class="btn" >
+                                    <i class="far fa-heart"></i>
+                                </button>
+                                <button type="button" id='addBtn' class="btn" >
                                     <i class="fas fa-plus"></i>
                                 </button>
                             </div>
@@ -189,6 +192,9 @@
                             <div class='detadd'>
                                 <button type="button" id='details' class="btn" >
                                     <i class="fas fa-info"></i>
+                                </button>
+                                <button type="button" id='details' class="btn" >
+                                    <i class="fas fa-heart"></i>
                                 </button>
                                 <button type="button" id='details' class="btn" >
                                     <i class="fas fa-plus"></i>

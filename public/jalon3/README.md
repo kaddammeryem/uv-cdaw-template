@@ -12,7 +12,7 @@ On ce qui concerne les fonctionnalités attendus de ce Jalon :
 
 On a réussi à :
           - Créer un compte .
-          - Se connecter via  un login et un mot de passe .
+          - Se connecter via  un login et un mot de passe . 
           - Mettre à jour l'avatar.
           - Se déconnecter .
           - Faire les routes :

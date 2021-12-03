@@ -59,7 +59,7 @@
                             
                             </div>  
                             <p><i class="fas fa-clock"></i><span style="margin-left:5">{{$film->runtimeStr}}</span></p>
-                            <p class="card-text">{{$film->descr}}</p>
+                            <p class="card-text">{{$film->description}}</p>
                             <p style="font-weight:bold">Release year: </p>
                             <p style="margin-left:20px"> {{$film->year}} </p>
                             <hr>

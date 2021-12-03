@@ -2,14 +2,6 @@
 @section('title', 'Details')
 <html>
         <link href="../../public/css/details.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
     <body>
         @section('sidebar')
@@ -49,22 +41,34 @@
         <div class="content">
             <div class="item1Cont">
             <div class="item1" >
-                    <div class="card" style="width: 40rem;height:720px">
-                        <img class="card-img-top" src="https://fr.web.img6.acsta.net/pictures/21/08/10/12/20/4633954.jpg" alt="Card image cap">
-                        <div class="card-body" id="card-body2">
-                            <h5 class="card-title"> Corona</h5>
-                            <p class="card-text"><span style="font-weight:bold">Directors :</span> Jean-Philippe</p>
-                            <p class="card-text"><span style="font-weight:bold">Actors:</span> Jean-Dolmert</p>
-                            <p class="card-text"><span style="font-weight:bold">Release date :</span> Jean-Dolmert</p>
-                            <p class="card-text"><span style="font-weight:bold">Category :</span>  Drama,Action</p>
-                            <p class="card-text"><span style="font-weight:bold">Description :</span>  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, ...</p>
-
-                        </div>
+                <div class="card" style="width: 40rem;height:720px">
+                    <img class="card-img-top"  src='{{$film[0]->image}}' alt="Card image cap">
+                    <div class="card-body" id="card-body2">
+                        <h5 class="card-title">{{$film[0]->title}}</h5>
+                        <p class="card-text">
+                            <span style="font-weight:bold">Directors :</span> 
+                            @foreach($film as $fil)
+                                @if($fil->fonction=='directeur') 
+                                    {{$fil->nom}} {{$fil->prenom}},
+                                @endif
+                            @endforeach
+                        </p>
+                        <p class="card-text">
+                            <span style="font-weight:bold">Actors:</span> 
+                            @foreach($film as $fil)
+                                @if($fil->fonction=='acteur') {{$fil->nom}}, 
+                                    {{$fil->prenom}}
+                                @endif
+                            @endforeach
+                        </p>
+                        <p class="card-text"><span style="font-weight:bold">Release date :</span>{{$film[0]->year}}</p>
+                        <p class="card-text"><span style="font-weight:bold">Category :</span>{{$film[0]->genres}}</p>
+                        <p class="card-text"><span style="font-weight:bold">Description :</span>  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, ...</p>
                     </div>
-
+                </div>
             </div>
-            </div>
-            <div class="overflow-auto">   
+        </div>
+        <div class="overflow-auto">   
             <div class="item2">
                     <table class="table is-hoverable">
                         <thead>
@@ -222,41 +226,21 @@
                     </div>
                     <button type="submit" class="btn btn-outline pull-right" style="background-color:#FFD100" >Submit</button>
                 </form>               
-                <h3 style="color:white">1 Comments</h3>
+                <h3 style="color:white">{{count($comments)}} Comments</h3>
+                @foreach($comments as $comment)
                 <div class="media">
                         <div class="user-avatar">
-                            <img src="https://i.pinimg.com/736x/8b/41/8d/8b418d2b374298028c4a312ade587afc.jpg">
-                        </div>                     <div class="media-body" style="margin-left:10px">
-                        <p class="media-heading" style="color:white">Pierre Donald</p>
-                        <p style="  color: #777;">Exciting film like it.</p>
-                        <ul class="list-unstyled list-inline media-detail pull-left">
-                            <li><i class="fa fa-calendar" style="color:#FFD100"></i><span style="  color: #777;"> 27/02/2014</span></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="media">
-                        <div class="user-avatar">
-                            <img src="https://i.pinimg.com/736x/8b/41/8d/8b418d2b374298028c4a312ade587afc.jpg">
-                        </div>                     <div class="media-body" style="margin-left:10px">
-                        <p class="media-heading" style="color:white">Jean Camille</p>
-                        <p style="  color: #777;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-                        <ul class="list-unstyled list-inline media-detail pull-left">
-                            <li><i class="fa fa-calendar" style="color:#FFD100"></i><span  style="color: #777;"> 27/02/2014</span></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="media">
-                        <div class="user-avatar">
-                            <img src="https://i.pinimg.com/736x/8b/41/8d/8b418d2b374298028c4a312ade587afc.jpg">
-                        </div>                       
+                            <img src="{{$comment->profile_photo_path}}">
+                        </div>                     
                         <div class="media-body" style="margin-left:10px">
-                        <p class="media-heading" style="color:white">John Doe</>
-                        <p style="color: #777;">I love this actor</p>
+                        <p class="media-heading" style="color:white">{{$comment->nom}} {{$comment->prenom}}</p>
+                        <p style="  color: #777;">{{$comment->contenu}}</p>
                         <ul class="list-unstyled list-inline media-detail pull-left">
-                            <li><i class="fa fa-calendar" style="color:#FFD100"></i><span style="  color: #777;"> 27/02/2014</span></li>
+                            <li><i class="fa fa-calendar" style="color:#FFD100"></i><span style="  color: #777;"> {{$comment->date_comment}}</span></li>
                         </ul>
                     </div>
                 </div>
+                @endforeach
             </div>
         </div>
         
