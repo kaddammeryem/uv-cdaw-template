@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
             'categorie_id' => rand(2,10),
             'image' => Str::random(10)
            ]);*/
-        \App\Models\User::factory(10)->create();
+        \App\Models\User::factory(1)->create();
 
         //
     }

@@ -19,11 +19,17 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function () {
     Route::get('homeco', 'App\Http\controllers\listeMediaController@getListeMediasCo')->name('homeco');
-    Route::get('details', 'App\Http\controllers\listeMediaController@getDetails')->name('details');
+    Route::get('details/{id}', 'App\Http\controllers\listeMediaController@getDetails')->name('details');
+
+    Route::get('details', function () {
+        return view('details');
+    })->name('detail');
     Route::get('playlistdetails', 'App\Http\controllers\listeMediaController@getPlaylistDetails')->name('playlistdetails');
 
     Route::get('favorites','App\Http\controllers\listeMediaController@getListeFavorites')->name('favorites');
     Route::get('playlist','App\Http\controllers\listeMediaController@getListePLaylist')->name('playlist');
+
+  
 
     Route::get('profile', function () {
         return view('profile');

@@ -1,8 +1,12 @@
 @extends('layouts.header')
 @section('title', 'Details')
 <html>
-        <link href="../../public/css/details.css" rel="stylesheet">
-</head>
+    @section('head')
+        @parent
+        <link href="{{asset('css/details.css')}}" rel="stylesheet" type='text/css'>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
+    @endsection
     <body>
         @section('sidebar')
         @parent
@@ -44,7 +48,7 @@
                 <div class="card" style="width: 40rem;height:720px">
                     <img class="card-img-top"  src='{{$film[0]->image}}' alt="Card image cap">
                     <div class="card-body" id="card-body2">
-                        <h5 class="card-title">{{$film[0]->title}}</h5>
+                        <h3 class="card-title" >{{$film[0]->title}}</h3>
                         <p class="card-text">
                             <span style="font-weight:bold">Directors :</span> 
                             @foreach($film as $fil)
@@ -63,7 +67,7 @@
                         </p>
                         <p class="card-text"><span style="font-weight:bold">Release date :</span>{{$film[0]->year}}</p>
                         <p class="card-text"><span style="font-weight:bold">Category :</span>{{$film[0]->genres}}</p>
-                        <p class="card-text"><span style="font-weight:bold">Description :</span>  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, ...</p>
+                        <p class="card-text"><span style="font-weight:bold">Description :</span>  {{$film[0]->description}}</p>
                     </div>
                 </div>
             </div>

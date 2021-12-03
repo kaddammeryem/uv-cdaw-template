@@ -15,6 +15,11 @@
   
   
 }
+
+.likeBtn > i.press {
+    animation: size .4s;
+    color:#e23b3b;
+  }
 #infoBtn:hover{
 
     background-color: #DAA520;

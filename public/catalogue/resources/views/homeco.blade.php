@@ -5,9 +5,7 @@
         @parent
         <link href="../../public/css/homeco.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-
     @endsection
-    <body>
     @section('sidebar')
         @parent
         <?php $urlProfile = route('profile');?>
@@ -133,11 +131,11 @@
                             </div>
                             <hr style="margin:10">
                             <div class='detadd'>
-                                <button type="button" id='infoBtn' class="btn" >
+                                <a class="btn" id="infoBtn" href="{{route('details',['id'=>$film->id])}}">
                                     <i class="fas fa-info"></i>
-                                </button>
-                                <button type="button" id='infoBtn' class="btn" >
-                                    <i class="far fa-heart"></i>
+                                </a>
+                                <button class="likeBtn btn"  onclick="yes({{$film->id}})">
+                                    <i  id="{{$film->id}}" class="far fa-heart"></i>
                                 </button>
                                 <button type="button" id='addBtn' class="btn" >
                                     <i class="fas fa-plus"></i>
@@ -190,11 +188,11 @@
                             </div>
                             <hr style="margin:10">
                             <div class='detadd'>
-                                <button type="button" id='details' class="btn" >
+                                <a class="button" href="{{route('details',[$film->id])}}">
                                     <i class="fas fa-info"></i>
-                                </button>
-                                <button type="button" id='details' class="btn" >
-                                    <i class="fas fa-heart"></i>
+                                </a>
+                                <button class="likeBtn btn"  onclick="yes({{$film->id}})">
+                                    <i  id="{{$film->id}}" class="far fa-heart"></i>
                                 </button>
                                 <button type="button" id='details' class="btn" >
                                     <i class="fas fa-plus"></i>
@@ -204,33 +202,22 @@
                 </div>  
                 @endforeach       
              </div>
-        </div>
-        
-     
+        </div> 
         @endsection
         @section('footer')
         @parent
         @section('home')
         <li><a href=<?php print_r($urlHomeDisc)?>>Home</a></li>
         @endsection
-        @endsection
         <script>
-            var b = document.getElementById("boutton");
-            var c = document.getElementById("collapseOne");
-            b.addEventListener("click", function( event ) {
-                // on met l'accent sur la cible de mouseover
-                console.log(b);
-                console.log(c);
-               var d= c.getAttribute('class');
-                if(d=='collapse'){
-                    c.setAttribute("class","collapse show");
+            function yes(id){
+                let i=document.getElementById(id);    
+                if(i.className === 'far fa-heart'){
+                    i.className = 'fas fa-heart';
+                } else {
+                    i.className = 'far fa-heart';
                 }
-                else{
-                    c.setAttribute("class","collapse");
-                }
-              
-                console.log(c);
-            c.getAttribute('class')})
+            }
         </script>
-    </body>
+        @endsection
 </html>

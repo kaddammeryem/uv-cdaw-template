@@ -53,19 +53,19 @@ class listeMediaController extends Controller
         ->get();
         return view('playlist',['films'=> $films]);
     }
-    public function getDetails() {
+    public function getDetails(Media $id) {
         $film = DB::table('medias')
         ->selectRaw('title,genres,year,nom,prenom,fonction,image,description')
         ->join('participation', 'participation.id_media', '=', 'medias.id')
         ->join('participants', 'participants.id', '=', 'participation.id_participant')
-        ->where('id_media', 11)
+        ->where('id_media', $id->id)
         ->get();
 
         $comments= DB::table('comments')
-        ->where('id_media', 11)
+        ->where('id_media', $id->id)
         ->join('users', 'users.id', '=', 'comments.id_user')
         ->get();
-        return view('details',['film'=> $film,'comments'=>$comments]);
+        return view('details',['film'=>$film,'comments'=>$comments]);
     }
     public function getPlaylistDetails() {
         $films = DB::table('playlist')
