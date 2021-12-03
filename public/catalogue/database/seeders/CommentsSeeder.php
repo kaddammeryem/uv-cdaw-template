@@ -16,7 +16,7 @@ class CommentsSeeder extends Seeder
                 DB::table('comments')->insert([
                 'id_media'=>rand(1,20),
                 'id_user'=>$i,
-                'contenu'=>Str::random(10,20),
+                'contenu'=>Str::random(20,40),
                 'date_comment'=>date("Y-m-d",$int),
             ]);}
         }

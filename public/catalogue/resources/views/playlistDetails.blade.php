@@ -62,7 +62,7 @@
 							<div class="card-body">
 								<h5 class="card-title" style="color:white">{{$film->title}}</h5>
 								<p class="card-text">
-									{{$film->image}
+									{{$film->description}}
 								</p>
 							</div>
 							<div class='detadd'>

@@ -9,7 +9,7 @@ class MediaSeeder extends Seeder
 {
     public function run()
     {
-        $url = 'https://imdb-api.com/en/API/Top250Movies/k_3rh7vw00';
+        $url = 'https://imdb-api.com/en/API/Top250TVs/k_3rh7vw00';
             $options = array(
                 'https' => array(
                 'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
@@ -36,10 +36,11 @@ class MediaSeeder extends Seeder
             DB::table('medias')->insert([
             'title' => $obj2['title'],
             'image' => $obj2['image'],
-            'type' => 'film',
+            'type' => 'serie',
             'genres' => $obj2['genres'],
             'year' => $obj2['year'],
             'runtimeStr' => $obj2['runtimeStr'],
+            'description' => $obj2['plot'],
            ]);}
     }
 }

@@ -18,7 +18,7 @@ class ParticipantsFactory extends Factory
         return [
             'nom' => $this->faker->unique()->lastName(), // A single unique word
             'prenom' => $this->faker->unique()->firstName(),
-            'fonction' => 'directeur',
+            'fonction' => 'acteur',
         ];
     }
 }
