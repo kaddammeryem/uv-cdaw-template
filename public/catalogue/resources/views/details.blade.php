@@ -219,8 +219,7 @@
         <div class="content-item" id="comments"> 
             <div class="col-sm-8">   
                 <h3  >New Comment</h3>
-                <form>
-                    <div class="media">
+                    <div >
                         <div class="user-avatar">
                             <img src="https://i.pinimg.com/736x/8b/41/8d/8b418d2b374298028c4a312ade587afc.jpg">
                         </div>                        
@@ -228,23 +227,33 @@
                             <textarea class="form-control" placeholder="Your comment here"></textarea>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-outline pull-right" style="background-color:#FFD100" >Submit</button>
-                </form>               
-                <h3 style="color:white">{{count($comments)}} Comments</h3>
-                @foreach($comments as $comment)
-                <div class="media">
+                    <button type="submit" class="btn btn-outline pull-right" style="background-color:#FFD100" onclick="yes()">Submit</button>          
+                    <h3 style="color:white">{{count($comments)}} Comments</h3>
+                    @foreach($comments as $comment)
+                    <div class="media">
                         <div class="user-avatar">
-                            <img src="{{$comment->profile_photo_path}}">
-                        </div>                     
+                             <img src="{{$comment->profile_photo_path}}">
+                        </div>   
+                                      
                         <div class="media-body" style="margin-left:10px">
-                        <p class="media-heading" style="color:white">{{$comment->nom}} {{$comment->prenom}}</p>
-                        <p style="  color: #777;">{{$comment->contenu}}</p>
-                        <ul class="list-unstyled list-inline media-detail pull-left">
-                            <li><i class="fa fa-calendar" style="color:#FFD100"></i><span style="  color: #777;"> {{$comment->date_comment}}</span></li>
-                        </ul>
+                            <p class="media-heading" style="color:white">{{$comment->nom}} {{$comment->prenom}}</p>
+                            <p style="  color: #777;">{{$comment->contenu}}</p>
+                            <ul class="list-unstyled list-inline media-detail pull-left">
+                                <li><i class="fa fa-calendar" style="color:#FFD100"></i><span style="  color: #777;"> {{$comment->date_comment}}</span></li>
+                            </ul>
+                        </div>
+                        @if($comment->id_user==$user[0]->id)
+                        <div class="dropdown" id="mycomment">
+                            <button class="btn" style="background-color:#FFD100" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-ellipsis-h"></i>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <button class="dropdown-item" onclick="deleteComment()">Delete</button>
+                            </div>
+                            </div>
+                        @endif   
                     </div>
-                </div>
-                @endforeach
+                    @endforeach
             </div>
         </div>
         
@@ -256,6 +265,46 @@
         <li><a href=<?php print_r($urlHomeCo)?>>Home</a></li>
         @endsection
         @endsection
+        <script>
+            function deleteComment(){
+                let dropdown=document.getElementById('mycomment');
+                console.log(dropdown.parentElement.remove());
+                let route="{{route('delcomment',['film'=>$film[0]->id_media])}}";
+                 const response=fetch(route);
+            }
+             function yes(){
+                var today = new Date();
+                var dd = today.getDate();
+                var mm = today.getMonth()+1; 
+                var yyyy = today.getFullYear();
+                if(dd<10){
+                    dd='0'+dd;
+                }
+                if(mm<10){
+                    mm='0'+mm;
+                }
+                 let textarea=document.querySelector('textarea').value;
+                 let comments=document.getElementsByClassName('media');
+                 let strHtml=` 
+                 <div class="media">
+                        <div class="user-avatar">
+                             <img src="{{$user[0]->profile_photo_path}}">
+                        </div>                     
+                        <div class="media-body" style="margin-left:10px">
+                            <p class="media-heading" style="color:white">{{$user[0]->nom}} {{$user[0]->prenom}}</p>
+                            <p style="  color: #777;">`+textarea+`</p>
+                            <ul class="list-unstyled list-inline media-detail pull-left">
+                                <li><i class="fa fa-calendar" style="color:#FFD100"></i><span style="  color: #777;"> `+yyyy+'-'+mm+'-'+dd+`</span></li>
+                            </ul>
+                            </div>
+                        </div>` 
+                 comments[comments.length-1].insertAdjacentHTML('afterend',strHtml);
+                 console.log(comments);
+                 let route="{{route('addcomment',['contenu'=>'val','film'=>$film[0]->id_media])}}".replace('val',textarea);
+                 const response=fetch(route);
+            }
 
+
+        </script>
     </body>
 </html>

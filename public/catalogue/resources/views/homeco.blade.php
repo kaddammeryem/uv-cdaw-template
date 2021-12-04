@@ -34,13 +34,11 @@
                         <hr>
                         <form method="POST" action="{{ route('logout') }}">
                                 @csrf
-
                                 <button type="submit" value="Logout" class="dropdown-item"
                                         >
                                     {{ __('Log Out') }}
                                 </button>
                             </form>
-                     
                      </div>
                 </li>
             </ul>
@@ -96,9 +94,14 @@
         </div>
         <div class="container-fluid">
             <div class="scrolling-wrapper row flex-nowrap" >
-              
+            @php
+                     $i = 0;
+                     @endphp
+                     @php
+                     $j = 0;
+                     @endphp
                 @foreach($films as $film)
-                <div style="margin:20px" >
+                <div style="margin:20px" onclick="window.location='{{route('details',[$film->id])}}'">
                     <div  classe="image"> 
                        <img id='boutton'  src='{{$film->image}}'/>
                     </div>
@@ -131,12 +134,53 @@
                             </div>
                             <hr style="margin:10">
                             <div class='detadd'>
-                                <a class="btn" id="infoBtn" href="{{route('details',['id'=>$film->id])}}">
-                                    <i class="fas fa-info"></i>
-                                </a>
-                                <button class="likeBtn btn"  onclick="yes({{$film->id}})">
-                                    <i  id="{{$film->id}}" class="far fa-heart"></i>
-                                </button>
+                                @if($history->count()==0)
+                                    <button class="btn" onclick="seen({{$film->id}})">
+                                        <i  id="{{$film->id}}" class="fas fa-eye-slash"></i>
+                                    </button>
+                                @elseif($j<$history->count())
+                                    @if($history[$j]->id_media==$film->id)
+                                        <button class="btn" onclick="seen({{$film->id}})">
+                                            <i  id="{{$film->id}}" class="fas fa-eye"></i>
+                                        </button>
+                                        @php
+                                            $j=$j+1;
+                                        @endphp
+                                    @else
+                                        <button class="btn" onclick="seen({{$film->id}})">
+                                            <i  id="{{$film->id}}" class="fas fa-eye-slash"></i>
+                                        </button>
+                                    @endif
+                                @else
+                                <button class="btn" onclick="seen({{$film->id}})">
+                                        <i  id="{{$film->id}}" class="fas fa-eye-slash"></i>
+                                    </button>
+                                @endif
+                               
+                                @if($favorites->count()==0)
+                                    <button class="likeBtn btn" onclick="yes({{$film->id}})">
+                                        <i   class="far fa-heart"></i>
+                                    </button>
+
+                                
+                                @elseif($i<$favorites->count())
+                                    @if($favorites[$i]->id_media==$film->id)
+                                        <button class="likeBtn btn" onclick="yes({{$film->id}})">
+                                            <i  data-id="{{$film->id}}" class="fas fa-heart"></i>
+                                        </button>
+                                        @php
+                                            $i=$i+1;
+                                        @endphp
+                                    @else
+                                        <button class="likeBtn btn" onclick="yes({{$film->id}})">
+                                            <i  data-id="{{$film->id}}"  class="far fa-heart"></i>
+                                        </button>
+                                    @endif
+                                @else
+                                <button class="likeBtn btn" onclick="yes({{$film->id}})">
+                                        <i  data-id="{{$film->id}}"  class="far fa-heart"></i>
+                                    </button>
+                                @endif
                                 <button type="button" id='addBtn' class="btn" >
                                     <i class="fas fa-plus"></i>
                                 </button>
@@ -153,9 +197,9 @@
         </div>
         <div class="container-fluid">
             <div class="scrolling-wrapper row flex-nowrap" >
-              
+                   
                 @foreach($series as $film)
-                <div style="margin:20px" >
+                <div style="margin:20px"  onclick="window.location='{{route('details',[$film->id])}}'">
                     <div  classe="image"> 
                        <img id='boutton'  src='{{$film->image}}'/>
                     </div>
@@ -188,12 +232,52 @@
                             </div>
                             <hr style="margin:10">
                             <div class='detadd'>
-                                <a class="button" href="{{route('details',[$film->id])}}">
-                                    <i class="fas fa-info"></i>
-                                </a>
-                                <button class="likeBtn btn"  onclick="yes({{$film->id}})">
-                                    <i  id="{{$film->id}}" class="far fa-heart"></i>
-                                </button>
+                                @if($history->count()==0)
+                                    <button class="btn" onclick="seen({{$film->id}})" >
+                                        <i  id="{{$film->id}}"  class="fas fa-eye-slash"></i>
+                                    </button>
+                                @elseif($j<$history->count())
+                                    @if($history[$j]->id_media==$film->id)
+                                        <button class="btn" onclick="seen({{$film->id}})">
+                                            <i  id="{{$film->id}}"  class="fas fa-eye"></i>
+                                        </button>
+                                        @php
+                                            $j=$j+1;
+                                        @endphp
+                                    @else
+                                        <button class="btn" onclick="seen({{$film->id}})">
+                                            <i  id="{{$film->id}}"  class="fas fa-eye-slash"></i>
+                                        </button>
+                                    @endif
+                                @else
+                                <button class="btn" onclick="seen({{$film->id}})">
+                                        <i  id="{{$film->id}}"  class="fas fa-eye-slash"></i>
+                                    </button>
+                                @endif
+
+
+                                @if($favorites->count()==0)
+                                    <button class="likeBtn btn" onclick="yes({{$film->id}})">
+                                        <i  data-id= "{{$film->id}}" class="far fa-heart"></i>
+                                    </button>
+                                @elseif($i<$favorites->count())
+                                    @if($favorites[$i]->id_media==$film->id)
+                                        <button class="likeBtn btn" onclick="yes({{$film->id}})">
+                                            <i  data-id= "{{$film->id}}" class="fas fa-heart"></i>
+                                        </button>
+                                        @php
+                                            $i=$i+1;
+                                        @endphp
+                                    @else
+                                        <button class="likeBtn btn" onclick="yes({{$film->id}})">
+                                            <i  data-id= "{{$film->id}}" class="far fa-heart"></i>
+                                        </button>
+                                    @endif
+                                @else
+                                <button class="likeBtn btn" onclick="yes({{$film->id}})">
+                                        <i  data-id= "{{$film->id}}" class="far fa-heart"></i>
+                                    </button>
+                                @endif
                                 <button type="button" id='details' class="btn" >
                                     <i class="fas fa-plus"></i>
                                 </button>
@@ -210,12 +294,35 @@
         <li><a href=<?php print_r($urlHomeDisc)?>>Home</a></li>
         @endsection
         <script>
+            
             function yes(id){
-                let i=document.getElementById(id);    
-                if(i.className === 'far fa-heart'){
-                    i.className = 'fas fa-heart';
-                } else {
-                    i.className = 'far fa-heart';
+                event.stopPropagation(); 
+                let i=document.getElementsByClassName('likeBtn')[id-1].children;
+                if(i[0].className == 'far fa-heart'){
+                    i[0].className = 'fas fa-heart';
+                    let route="{{route('addfav',['film'=>'id'])}}".replace('id',id);
+                    const response=fetch(route);
+                } 
+                else {
+                    i[0].className = 'far fa-heart';
+                    let route="{{route('delfav',['film'=>'id'])}}".replace('id',id);
+                    const response=fetch(route);
+                }
+            }
+            function seen(id){
+                event.stopPropagation();  
+                let e=event.target
+                i=document.getElementById(id); 
+     
+                if(i.className == 'fas fa-eye-slash'){
+                    i.className = 'fas fa-eye';
+                    let route="{{route('addhistory',['film'=>'id'])}}".replace('id',id);
+                    const response=fetch(route);
+                } 
+                else {
+                    i.className = 'fas fa-eye-slash';
+                    let route="{{route('delhistory',['film'=>'id'])}}".replace('id',id);
+                    const response=fetch(route);
                 }
             }
         </script>
