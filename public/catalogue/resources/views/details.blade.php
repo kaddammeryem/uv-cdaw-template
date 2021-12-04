@@ -250,7 +250,7 @@
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 <button class="dropdown-item" onclick="deleteComment()">Delete</button>
                             </div>
-                            </div>
+                        </div>
                         @endif   
                     </div>
                     @endforeach

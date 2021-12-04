@@ -93,8 +93,9 @@
             </h1>
         </div>
         <div class="container-fluid">
+       
             <div class="scrolling-wrapper row flex-nowrap" >
-            @php
+                @php
                      $i = 0;
                      @endphp
                      @php
@@ -134,6 +135,9 @@
                             </div>
                             <hr style="margin:10">
                             <div class='detadd'>
+                                <button type="button" id='test' class="btn" >
+                                        <i class="fas fa-plus"></i>
+                                </button>
                                 @if($history->count()==0)
                                     <button class="btn" onclick="seen({{$film->id}})">
                                         <i  id="{{$film->id}}" class="fas fa-eye-slash"></i>
@@ -177,16 +181,22 @@
                                         </button>
                                     @endif
                                 @else
-                                <button class="likeBtn btn" onclick="yes({{$film->id}})">
-                                        <i  data-id="{{$film->id}}"  class="far fa-heart"></i>
+                                    <button class="likeBtn btn" onclick="yes({{$film->id}})">
+                                            <i  data-id="{{$film->id}}"  class="far fa-heart"></i>
                                     </button>
                                 @endif
-                                <button type="button" id='addBtn' class="btn" >
-                                    <i class="fas fa-plus"></i>
-                                </button>
+                                   
+
+                                
                             </div>
-                        </div>
-                </div>  
+                    </div>
+                    <div id="showArea" style="visibility:hidden;background-color:gray;width:100;visibility:none;display:flex;align-items:flex-end;flex-direction:column;margin-left:20">
+                        <button class="btn pull-right" style="color:white">Playlist 1</button>
+                         <button class="btn pull-right" style="color:white">Playlist 2</button>
+                         <button class="btn pull-right" style="color:white">Playlist 3</button>
+                     </div>
+                </div>
+                
                 @endforeach       
              </div>
         </div>
@@ -325,6 +335,16 @@
                     const response=fetch(route);
                 }
             }
+               
+                
+                let mybtn = document.getElementById("test");
+                console.log(mybtn);
+                let modal=document.getElementById("showArea");
+                mybtn.addEventListener('click',function(){
+                    event.stopPropagation();
+                    modal.style="visibility:visible;background-color:gray;width:100;visibility:none;display:flex;align-items:flex-end;flex-direction:column;margin-left:20"
+
+                })
         </script>
         @endsection
 </html>

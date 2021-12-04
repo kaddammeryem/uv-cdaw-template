@@ -13,10 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
-
 Route::middleware('auth')->group(function () {
     Route::get('homeco', 'App\Http\controllers\listeMediaController@getListeMediasCo')->name('homeco');
     Route::get('details/{id}', 'App\Http\controllers\listeMediaController@getDetails')->name('details');
@@ -34,9 +30,6 @@ Route::middleware('auth')->group(function () {
 
     Route::get('favorites','App\Http\controllers\listeMediaController@getListeFavorites')->name('favorites');
     Route::get('playlist','App\Http\controllers\listeMediaController@getListePLaylist')->name('playlist');
-
-  
-
     Route::get('profile', function () {
         return view('profile');
     })->name('profile');
