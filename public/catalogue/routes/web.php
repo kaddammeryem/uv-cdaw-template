@@ -22,6 +22,9 @@ Route::middleware('auth')->group(function () {
     Route::get('delcomment/{film}', 'App\Http\controllers\listeMediaController@delComment')->name('delcomment');
     Route::get('addhistory/{film}', 'App\Http\controllers\listeMediaController@addHistory')->name('addhistory');
     Route::get('delhistory/{film}', 'App\Http\controllers\listeMediaController@delHistory')->name('delhistory');
+    Route::get('addtoplaylist/{playlist}/{film}', 'App\Http\controllers\listeMediaController@addToPlaylist')->name('addtoplaylist');
+    Route::get('addplaylist/{name}/{film}', 'App\Http\controllers\listeMediaController@addPlaylist')->name('addplaylist');
+
 
     Route::get('details', function () {
         return view('details');

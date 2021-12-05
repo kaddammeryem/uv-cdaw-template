@@ -50,22 +50,20 @@
     @endsection
     @section('content')
       <div class="container mx-auto mt-auto">
-              <h1 style="color:white">Your Playlists</h1>
-              <a href="#" class="btn" id="add"><i class="fas fa-plus"></i> Ajouter</a>
-        <div class="row">
+        <h1 style="color:white">Your Playlists</h1>
+      <div class="row" id="oldP">
         @foreach($films as $film)
-          <div class="col-md-auto">   
-            <div class="card " style="width: 20rem;">
+          <div class="col-md-auto" >   
+            <div class="card" style="width: 20rem;">
               <img src='{{$film->image}}' class="card-img-top" >
-              <div class="card-body" style="display:flex;flex-direction:column;justify-content:center;align-items:center">
-                  <h5 class="card-title">{{$film->namePlaylist}}</h5>
-                  <button class="btn btn-outline" id="more">More</button>
-              </div> 
-            </div>
+            <div class="card-body" style="display:flex;flex-direction:column;justify-content:center;align-items:center">
+              <h5 class="card-title">{{$film->namePlaylist}}</h5>
+              <button class="btn btn-outline" id="more">More</button>
+            </div> 
           </div>
+      </div>
         @endforeach   
-
-        </div>  
+          
       </div>
     @endsection
     @section('footer')
@@ -74,5 +72,9 @@
           <li><a href=<?php print_r($urlHomeDisc)?>>Home</a></li>
         @endsection
     @endsection
+    <script>
+       
+
+    </script>
   </body>
 </html>

@@ -93,9 +93,6 @@
                                         <i  id= "{{$film->id}}" class="far fa-heart"></i>
                                     </button>
                                 @endif
-                                <button type="button" id='details' class="btn" >
-                                    <i class="fas fa-plus"></i>
-                                </button>
                             </div>
                         </div>
                     </div>

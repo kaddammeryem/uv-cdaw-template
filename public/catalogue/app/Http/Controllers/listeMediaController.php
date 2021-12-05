@@ -6,6 +6,7 @@ use App\Models\Media;
 use App\Models\Comments;
 use App\Models\Favorites;
 use App\Models\History;
+use App\Models\Playlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use DB;
@@ -24,7 +25,8 @@ class listeMediaController extends Controller
         $series = Media::where('type',"serie")->get();
         $favorites = Favorites::where('id_user',$id)->get('id_media');
         $history =History::where('id_user',$id)->get('id_media');
-        return view('homeco',['films'=> $films,'series'=>$series,'favorites'=>$favorites,'history'=>$history]);
+        $playlists =Playlist::where('id_user',$id)->get();
+        return view('homeco',['films'=> $films,'series'=>$series,'favorites'=>$favorites,'history'=>$history,'playlists'=>$playlists]);
     }
     public function addFav(Media $film) {
         $id=Auth::id();
@@ -69,6 +71,26 @@ class listeMediaController extends Controller
         ->where('id_media',$film->id)
         ->delete();
     }
+    public function addToPlaylist(int $playlist,int $film) {
+        $id=Auth::id();
+        $namePlaylist = PLaylist::where('id_playlist',$playlist)
+        ->get();
+        DB::table('playlist')->insert([
+            'id_media'=>$film,
+            'id_user'=>$id,
+            'id_playlist'=>$playlist,
+            'namePLaylist'=>$namePlaylist[0]->namePlaylist
+    ]);}
+    public function addPlaylist(string $name,int $film) {
+        $id=Auth::id();
+        $id_playlist = PLaylist::all();
+        print_r($id_playlist);
+        DB::table('playlist')->insert([
+            'id_playlist'=>$id_playlist->count()+1,
+            'id_media'=>$film,
+            'id_user'=>$id,
+            'namePlaylist'=>$name,
+    ]);}
     public function getHistory() {
         $id=Auth::id();
          // join between history and favs to return only fav in history
@@ -105,10 +127,11 @@ class listeMediaController extends Controller
         return view('favorite',['films'=> $films]);
     }
     public function getListePlaylist() {
+        $id=Auth::id();
         $films = DB::table('playlist')
-        ->selectRaw('namePlaylist,image')
+        ->selectRaw('namePlaylist,image,id')
         ->join('medias', 'medias.id', '=', 'playlist.id_media')
-        ->where('id_user', 8)
+        ->where('id_user', $id)
         ->get();
         return view('playlist',['films'=> $films]);
     }

@@ -67,14 +67,11 @@
 								</p>
 							</div>
 							<div class='detadd'>
-								<button type="button" id='details' class="btn" >
+								<button type="button" onclick="window.location='{{route('details',[$film->id_media])}}'"id='details' class="btn" >
                                     <i class="fas fa-info"></i>
                                 </button>
                                 <button class="btn" type="button" id="details" onclick="yes({{$film->id_media}})">
                                         <i   class="fas fa-heart"></i>
-                                </button>
-                                <button type="button" id='details' class="btn" >
-                                    <i class="fas fa-plus"></i>
                                 </button>
                             </div>
 						</div>
