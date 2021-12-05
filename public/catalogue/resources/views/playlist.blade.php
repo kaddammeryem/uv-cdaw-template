@@ -53,12 +53,20 @@
         <h1 style="color:white">Your Playlists</h1>
       <div class="row" id="oldP">
         @foreach($films as $film)
-          <div class="col-md-auto" >   
+          <div class="col-md-auto" data-id="{{$film->id_playlist}}" >   
             <div class="card" style="width: 20rem;">
               <img src='{{$film->image}}' class="card-img-top" >
             <div class="card-body" style="display:flex;flex-direction:column;justify-content:center;align-items:center">
               <h5 class="card-title">{{$film->namePlaylist}}</h5>
-              <button class="btn btn-outline" id="more">More</button>
+              <div style="display:flex;flex-direction:row;justify-content:space-around;width:100%">
+                <button class="btn " onclick="window.location='{{route('mediaplaylist',['playlist'=>$film->id_playlist])}}'" id="more">
+                  <i class="fas fa-info"></i>
+                </button>
+                <button class="btn " onclick="deletePlay({{$film->id_playlist}})" id="more">
+                  <i class="fas fa-trash"></i>
+                </button>
+            </div>
+
             </div> 
           </div>
       </div>
@@ -73,6 +81,19 @@
         @endsection
     @endsection
     <script>
+       function deletePlay(id){
+            let card=document.getElementsByClassName('col-md-auto');
+            console.log(card);
+            for(let i=0;i<card.length;i++){
+                if(card[i].dataset.id==id){
+                  console.log(card[i].dataset.id);
+                    card[i].remove();
+                    let route="{{route('delplaylist',['playlist'=>'val'])}}".replace('val',id);
+                    const response=fetch(route);
+
+                }
+            }}
+           
        
 
     </script>

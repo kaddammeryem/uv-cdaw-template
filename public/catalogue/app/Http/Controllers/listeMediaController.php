@@ -19,6 +19,23 @@ class listeMediaController extends Controller
         $series = Media::where('type',"serie")->get();
         return view('homedisc',['films'=> $films,'series'=>$series]);
     }
+    public function getPlaylistMedia(int $playlist) {
+        $id=Auth::id();
+        $films = DB::table('playlist')
+        ->selectRaw('namePlaylist,image,id,title,year,description,runtimeStr,id_playlist')
+        ->join('medias', 'medias.id', '=', 'playlist.id_media')
+        ->where('id_user', $id)
+        ->where('id_playlist', $playlist)
+        ->get();
+        $result2 = DB::table('playlist')
+        ->selectRaw('namePLaylist')
+        ->distinct()
+        ->join('medias', 'medias.id', '=', 'playlist.id_media')
+        ->where('id_user', $id)
+        ->where('id_playlist', $playlist)
+        ->get();
+        return view('mediaplaylist',['films'=> $films,'name'=>$result2]);
+    }
     public function getListeMediasCo() {
         $id=Auth::id();
         $films = Media::where('type',"film")->get();
@@ -41,6 +58,7 @@ class listeMediaController extends Controller
         ->delete();
         print_r($favorites);
     }
+
     public function addHistory(Media $film) {
         $id=Auth::id();
 
@@ -55,6 +73,19 @@ class listeMediaController extends Controller
         ->where('id_media',$film->id)
         ->delete();
         print_r($favorites);
+    }
+    public function delPlaylist(int $playlist) {
+        $id=Auth::id();
+        $playlist = Playlist::where('id_user',$id)
+        ->where('id_playlist',$playlist)
+        ->delete();
+    }
+    public function delFromPlaylist(int $playlist,int $film) {
+        $id=Auth::id();
+        $play= Playlist::where('id_user',$id)
+        ->where('id_playlist',$playlist)
+        ->where('id_media',$film)
+        ->delete();
     }
     public function addComment(string $contenu,int $film) {
         $id=Auth::id();
@@ -129,7 +160,7 @@ class listeMediaController extends Controller
     public function getListePlaylist() {
         $id=Auth::id();
         $films = DB::table('playlist')
-        ->selectRaw('namePlaylist,image,id')
+        ->selectRaw('namePlaylist,image,id,id_playlist')
         ->join('medias', 'medias.id', '=', 'playlist.id_media')
         ->where('id_user', $id)
         ->get();

@@ -24,11 +24,14 @@ Route::middleware('auth')->group(function () {
     Route::get('delhistory/{film}', 'App\Http\controllers\listeMediaController@delHistory')->name('delhistory');
     Route::get('addtoplaylist/{playlist}/{film}', 'App\Http\controllers\listeMediaController@addToPlaylist')->name('addtoplaylist');
     Route::get('addplaylist/{name}/{film}', 'App\Http\controllers\listeMediaController@addPlaylist')->name('addplaylist');
-
+    Route::get('mediaplaylist/{playlist}', 'App\Http\controllers\listeMediaController@getPlaylistMedia')->name('mediaplaylist');
+    Route::get('delplaylist/{playlist}', 'App\Http\controllers\listeMediaController@delPlaylist')->name('delplaylist');
+    Route::get('delfromplaylist/{playlist}/{film}', 'App\Http\controllers\listeMediaController@delFromPlaylist')->name('delfromplaylist');
 
     Route::get('details', function () {
         return view('details');
     })->name('detail');
+   
     Route::get('playlistdetails', 'App\Http\controllers\listeMediaController@getPlaylistDetails')->name('playlistdetails');
 
     Route::get('favorites','App\Http\controllers\listeMediaController@getListeFavorites')->name('favorites');
@@ -38,7 +41,6 @@ Route::middleware('auth')->group(function () {
     })->name('profile');
     Route::get('history', 'App\Http\controllers\listeMediaController@getHistory')->name('history');
 
-    Route::get('mediaplaylist',function(){return view('mediaplaylist'); });
 });
 
 Route::get('favorite', function () {
