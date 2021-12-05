@@ -5,6 +5,7 @@
         <?php $urlHomeDisc = route('homedisc');?> 
         <?php $urlHistory = route('history');?>
         <?php $urlHomeCo = route('homeco');?>
+        <?php $medias = route('medias');?>
         <title>M&S - @yield('title')</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
@@ -22,26 +23,29 @@
                 <a class="navbar-brand" href="#" id='brand'>Logo</a>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">   
                     <div class='formu'>    
-                        <form class='formulaire'>
-                            <input class="form-control me-2"  type="search" placeholder="Search" aria-label="Search">
+                        <form class='formulaire' action="medias">
+                            <input class="form-control me-2" name="search" id="search"type="search" placeholder="Search by title" aria-label="Search">
+                            <input type="search" style="visibility:hidden;width:0" class="btn" name="critere" id="critere" value="title">
+
+                            <input type="submit" class="btn" style="color:white" id="submit" value="search">
                             <ul class="navbar-nav mr-auto">
                             <li class="nav-item dropdown" style=" list-style-type: none">
                                 <a class="btn btn-outline dropdown-toggle" style="color:white"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Title</a>
-                                <hr>
-                                <a class="dropdown-item" href="#">Actor</a>
-                                <hr>
-                                <a class="dropdown-item" href="#">Genre</a>
+                                  <button class="btn dropdown-item" onclick="filterSearch('title')" >title</button>
+                                  <hr>
+                                  <button class="btn dropdown-item" onclick="filterSearch('actor')">Actor</button>
+                                  <hr>
+                                  <button class="btn dropdown-item" onclick="filterSearch('genre')">Genre</button>
                                 </div>
                             </li>
                             </ul>
                             <ul class="navbar-nav mr-auto">
                                 <li class="nav-item dropdown" style=" list-style-type: none">
-                                    <button class="btn btn-outline dropdown-toggle"  style="color:white"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <a class="btn btn-outline dropdown-toggle"  style="color:white" role="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         All
-                                    </button>
+                                    </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown" >
                                     <a class="dropdown-item"  href="#">Movies</a>
                                     <hr>
@@ -105,5 +109,19 @@
             </div>  
         </footer>
         @show
+        <script>
+
+
+        function filterSearch(critere){
+          event.preventDefault();
+          let search=document.getElementById('search');
+          let crit=document.getElementById('critere');
+            crit.value=critere;
+            search.placeholder="Search by "+critere;
+            console.log(crit.value);
+        }
+      
+          </script>
+        
     </body>
 </html>

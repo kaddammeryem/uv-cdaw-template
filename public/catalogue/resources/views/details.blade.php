@@ -1,270 +1,170 @@
-@extends('layouts.header')
-@section('title', 'Details')
-<html>
-    @section('head')
-        @parent
-        <link href="{{asset('css/details.css')}}" rel="stylesheet" type='text/css'>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 
-    @endsection
-    <body>
-        @section('sidebar')
-        @parent
+<html>
+<head>
         <?php $urlProfile = route('profile');?>
         <?php $urlHomeDisc = route('homedisc');?> 
         <?php $urlHistory = route('history');?>
         <?php $urlHomeCo = route('homeco');?>
-        @section('history')
-        <div class="history">
-            <button class="btn btn-link" id='in' type="submit" onclick="window.location= '{{ route('history') }}'">
-                <span style="color:white">History</span>
-            </button>
-            <button class="btn btn-link" id='in' type="submit">
-                <span style="color:white">Playlist</span>
-            </button>
-        </div> 
-        @endsection
-        @section('sign')
-        <div class='sign'>
-             <ul class="navbar-nav mr-auto">
-                <li class="nav-item dropdown" style=" list-style-type: none">
-                    <button class="btn btn-outline " style="color:white" id='in'   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-user" style="color: white;"></i>
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Profile</a>
-                        <hr>
-                        <a class="dropdown-item" href=<?php print_r($urlHomeDisc)?>>Log out</a>
-                     </div>
-                </li>
-            </ul>
-        </div>      
-        @endsection
-       @endsection
-       @section('content')
-        <div class="content">
-            <div class="item1Cont">
-            <div class="item1" >
-                <div class="card" style="width: 40rem;height:720px">
-                    <img class="card-img-top"  src='{{$film[0]->image}}' alt="Card image cap">
-                    <div class="card-body" id="card-body2">
-                        <h3 class="card-title" >{{$film[0]->title}}</h3>
-                        <p class="card-text">
-                            <span style="font-weight:bold">Directors :</span> 
-                            @foreach($film as $fil)
-                                @if($fil->fonction=='directeur') 
-                                    {{$fil->nom}} {{$fil->prenom}},
-                                @endif
-                            @endforeach
-                        </p>
-                        <p class="card-text">
-                            <span style="font-weight:bold">Actors:</span> 
-                            @foreach($film as $fil)
-                                @if($fil->fonction=='acteur') {{$fil->nom}}, 
-                                    {{$fil->prenom}}
-                                @endif
-                            @endforeach
-                        </p>
-                        <p class="card-text"><span style="font-weight:bold">Release date :</span>{{$film[0]->year}}</p>
-                        <p class="card-text"><span style="font-weight:bold">Category :</span>{{$film[0]->genres}}</p>
-                        <p class="card-text"><span style="font-weight:bold">Description :</span>  {{$film[0]->description}}</p>
-                    </div>
+        <?php $medias = route('medias');?>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="../../css/details.css">
+    </head>
+    <body>
+        <div style="background-color:black;margin-bottom:10px">
+        <nav class="navbar navbar-expand-lg" id="navigation">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#" id='brand'>Logo</a>
+                <div class='sign'>
+                    <div class="history">
+                        <button class="btn btn-link" id='in' type="submit" onclick="window.location= '{{ route('history') }}'">
+                            <span style="color:white">History</span>
+                        </button>
+                        <button class="btn btn-link" id='in' type="submit">
+                            <span style="color:white">Playlist</span>
+                        </button>
+                    </div> 
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item dropdown" style=" list-style-type: none">
+                            <button class="btn btn-outline " style="color:white" id='in'   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-user" style="color: white;"></i>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">Profile</a>
+                                <hr>
+                                <a class="dropdown-item" href=<?php print_r($urlHomeDisc)?>>Log out</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div> 
+            </div>
+        </nav>
+        </div>
+        <div style="display:flex;justify-content:center;align-items:center;background-color: #080808;">
+        <div class="historique">
+            <div class="card" style="width: 50rem;display:flex;flex-direction:row;margin:10px">
+                <img style="width:40%;height:inherit" src='{{$film[0]->image}}' alt="Card image cap">
+                <div class="card-body"  >
+                    <div style="display:flex;flex-direction:row;justify-content:space-between">
+                        <h2 class="card-title">{{$film[0]->title}}</h2>
+                    </div> 
+                    <p><i class="fas fa-clock"></i><span style="margin-left:5">{{$film[0]->runtimeStr}}</span></p>
+                    <p class="card-text">
+                        <span style="font-weight:bold">Directors :</span> 
+                        @foreach($film as $fil)
+                            @if($fil->fonction=='directeur') 
+                                {{$fil->nom}} {{$fil->prenom}},
+                            @endif
+                        @endforeach
+                     </p>
+                     <p class="card-text">
+                        <span style="font-weight:bold">Actors:</span> 
+                        @foreach($film as $fil)
+                            @if($fil->fonction=='acteur') {{$fil->nom}}, 
+                                {{$fil->prenom}}
+                            @endif
+                        @endforeach
+                    </p>
+                    <p style="font-weight:bold">Release year: </p>
+                    <p style="margin-left:20px"> {{$film[0]->year}} </p>
+                    <p class="card-text"><span style="font-weight:bold">Category :</span>{{$film[0]->genres}}</p>
+                    <p class="card-text">{{$film[0]->description}}</p>
                 </div>
             </div>
         </div>
-        <div class="overflow-auto">   
-            <div class="item2">
-                    <table class="table is-hoverable">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th style="color:white">Episodes</th>
-                            </tr>
-                        </thead> 
-                        <tbody> 
-                            <div class="col-sm-4">
-                                    <tr>
-                                        <td>
-                                            <div class="imageEpisode">
-                                                <img src="https://fr.web.img6.acsta.net/pictures/21/08/10/12/20/4633954.jpg" alt="Card image cap" class="episode">
-                                            <div>
-                                        </td>
-                                        <td>
-                                            <div class="card-body">
-                                                <h5 class="card-title"> Episode 1</h5>
-                                                <p class="card-text"><span style="font-weight:bold">Duration :</span> 1h45</p>
-                                                <p class="card-text"><span style="font-weight:bold">Description :</span>  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, ...</p>
-                                            </div>
-                                        </td>   
-                                    </tr>
-                            </div>
-                            <div class="col-sm-4">
-                                    <tr>
-                                        <td>
-                                            <div class="imageEpisode">
-                                                <img src="https://fr.web.img6.acsta.net/pictures/21/08/10/12/20/4633954.jpg" alt="Card image cap" class="episode">
-                                            <div>
-                                        </td>
-                                        <td>
-                                            <div class="card-body">
-                                                <h5 class="card-title"> Episode 1</h5>
-                                                <p class="card-text"><span style="font-weight:bold">Duration :</span> 1h45</p>
-                                                <p class="card-text"><span style="font-weight:bold">Description :</span>  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, ...</p>
-                                            </div>
-                                        </td>   
-                                    </tr>
-                            </div>
-                            <div class="col-sm-4">
-                                    <tr>
-                                        <td>
-                                            <div class="imageEpisode">
-                                                <img src="https://fr.web.img6.acsta.net/pictures/21/08/10/12/20/4633954.jpg" alt="Card image cap" class="episode">
-                                            <div>
-                                        </td>
-                                        <td>
-                                            <div class="card-body">
-                                                <h5 class="card-title"> Episode 1</h5>
-                                                <p class="card-text"><span style="font-weight:bold">Duration :</span> 1h45</p>
-                                                <p class="card-text"><span style="font-weight:bold">Description :</span>  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, ...</p>
-                                            </div>
-                                        </td>   
-                                    </tr>
-                            </div>
-                            <div class="col-sm-4">
-                                    <tr>
-                                        <td>
-                                            <div class="imageEpisode">
-                                                <img src="https://fr.web.img6.acsta.net/pictures/21/08/10/12/20/4633954.jpg" alt="Card image cap" class="episode">
-                                            <div>
-                                        </td>
-                                        <td>
-                                            <div class="card-body">
-                                                <h5 class="card-title"> Episode 1</h5>
-                                                <p class="card-text"><span style="font-weight:bold">Duration :</span> 1h45</p>
-                                                <p class="card-text"><span style="font-weight:bold">Description :</span>  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, ...</p>
-                                            </div>
-                                        </td>   
-                                    </tr>
-                            </div>                  
-                            <div class="col-sm-4">
-                                    <tr>
-                                        <td>
-                                            <div class="imageEpisode">
-                                                <img src="https://fr.web.img6.acsta.net/pictures/21/08/10/12/20/4633954.jpg" alt="Card image cap" class="episode">
-                                            <div>
-                                        </td>
-                                        <td>
-                                            <div class="card-body">
-                                                <h5 class="card-title"> Episode 1</h5>
-                                                <p class="card-text"><span style="font-weight:bold">Duration :</span> 1h45</p>
-                                                <p class="card-text"><span style="font-weight:bold">Description :</span>  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, ...</p>
-                                            </div>
-                                        </td>   
-                                    </tr>
-                            </div>
-                            <div class="col-sm-4">
-                                    <tr>
-                                        <td>
-                                            <div class="imageEpisode">
-                                                <img src="https://fr.web.img6.acsta.net/pictures/21/08/10/12/20/4633954.jpg" alt="Card image cap" class="episode">
-                                            <div>
-                                        </td>
-                                        <td>
-                                            <div class="card-body">
-                                                <h5 class="card-title"> Episode 1</h5>
-                                                <p class="card-text"><span style="font-weight:bold">Duration :</span> 1h45</p>
-                                                <p class="card-text"><span style="font-weight:bold">Description :</span>  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, ...</p>
-                                            </div>
-                                        </td>   
-                                    </tr>
-                            </div>
-                            <div class="col-sm-4">
-                                    <tr>
-                                        <td>
-                                            <div class="imageEpisode">
-                                                <img src="https://fr.web.img6.acsta.net/pictures/21/08/10/12/20/4633954.jpg" alt="Card image cap" class="episode">
-                                            <div>
-                                        </td>
-                                        <td>
-                                            <div class="card-body">
-                                                <h5 class="card-title"> Episode 1</h5>
-                                                <p class="card-text"><span style="font-weight:bold">Duration :</span> 1h45</p>
-                                                <p class="card-text"><span style="font-weight:bold">Description :</span>  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, ...</p>
-                                            </div>
-                                        </td>   
-                                    </tr>
-                            </div>
-                            <div class="col-sm-4">
-                                    <tr>
-                                        <td>
-                                            <div class="imageEpisode">
-                                                <img src="https://fr.web.img6.acsta.net/pictures/21/08/10/12/20/4633954.jpg" alt="Card image cap" class="episode">
-                                            <div>
-                                        </td>
-                                        <td>
-                                            <div class="card-body">
-                                                <h5 class="card-title"> Episode 1</h5>
-                                                <p class="card-text"><span style="font-weight:bold">Duration :</span> 1h45</p>
-                                                <p class="card-text"><span style="font-weight:bold">Description :</span>  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, ...</p>
-                                            </div>
-                                        </td>   
-                                    </tr>
-                            </div>
-                        </tbody>
-                    </table>
-                    </div>
-            </div>
-            </div>
         </div>
-        <div class="content-item" id="comments"> 
-            <div class="col-sm-8">   
-                <h3  >New Comment</h3>
-                    <div >
-                        <div class="user-avatar">
-                            <img src="https://i.pinimg.com/736x/8b/41/8d/8b418d2b374298028c4a312ade587afc.jpg">
-                        </div>                        
-                        <div class="media-body" style="margin-left:10px">
-                            <textarea class="form-control" placeholder="Your comment here"></textarea>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-outline pull-right" style="background-color:#FFD100" onclick="yes()">Submit</button>          
-                    <h3 style="color:white">{{count($comments)}} Comments</h3>
-                    @foreach($comments as $comment)
-                    <div class="media">
-                        <div class="user-avatar">
-                             <img src="{{$comment->profile_photo_path}}">
-                        </div>   
-                                      
-                        <div class="media-body" style="margin-left:10px">
-                            <p class="media-heading" style="color:white">{{$comment->nom}} {{$comment->prenom}}</p>
-                            <p style="  color: #777;">{{$comment->contenu}}</p>
-                            <ul class="list-unstyled list-inline media-detail pull-left">
-                                <li><i class="fa fa-calendar" style="color:#FFD100"></i><span style="  color: #777;"> {{$comment->date_comment}}</span></li>
-                            </ul>
-                        </div>
-                        @if($comment->id_user==$user[0]->id)
-                        <div class="dropdown" id="mycomment">
-                            <button class="btn" style="background-color:#FFD100" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-ellipsis-h"></i>
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <button class="dropdown-item" onclick="deleteComment()">Delete</button>
-                            </div>
-                            </div>
-                        @endif   
-                    </div>
-                    @endforeach
-            </div>
-        </div>
-        
+            <div class="content-item" id="comments"> 
+                <div class="col-sm-8" >   
+                    <h3  >New Comment</h3>
+                        <div style="display:flex;flex-direction:row;justify-content:space-between">
+                            <div class="user-avatar">
+                                <img src="{{$user[0]->profile_photo_path}}">
+                            </div>                        
+                            <div class="media-body" style="margin-left:10px;margin-top:30px">
+                                <textarea class="form-control" placeholder="Your comment here"></textarea>
+                                <button type="submit" class="btn pull-right"  style="background-color:#FFD100" onclick="yes()">Submit</button>          
 
-        @endsection
-        @section('footer')
-        @parent
-        @section('home')
-        <li><a href=<?php print_r($urlHomeCo)?>>Home</a></li>
-        @endsection
-        @endsection
+                            </div>
+                        </div>
+
+                        <h3 style="color:white">{{count($comments)}} Comments</h3>
+                        @foreach($comments as $comment)
+                        <div class="media">
+                            <div class="user-avatar">
+                                <img src="{{$comment->profile_photo_path}}">
+                            </div>   
+                                        
+                            <div class="media-body" style="margin-left:10px">
+                                <p class="media-heading" style="color:white">{{$comment->nom}} {{$comment->prenom}}</p>
+                                <p style="  color: #777;">{{$comment->contenu}}</p>
+                                <ul class="list-unstyled list-inline media-detail pull-left">
+                                    <li><i class="fa fa-calendar" style="color:#FFD100"></i><span style="  color: #777;"> {{$comment->date_comment}}</span></li>
+                                </ul>
+                            </div>
+                            @if($comment->id_user==$user[0]->id)
+                            <div class="dropdown" id="mycomment">
+                                <button class="btn" style="background-color:#FFD100" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-ellipsis-h"></i>
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <button class="dropdown-item" onclick="deleteComment()">Delete</button>
+                                </div>
+                                </div>
+                            @endif   
+                        </div>
+                        @endforeach
+                </div>
+            </div>
+        <footer style="background-color:black">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-6 pr-md-5">
+                  <p class="footer-site-logo d-block mb-4" id="aboutus">About us</p>
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi quasi perferendis ratione perspiciatis accusantium.</p>
+                  <h4 style="color:white">Contact</h4>
+                  <p>  <i class="fas fa-envelope" style="color: #FFD100;"></i> <a href="#" style="color: #999999; ">meryem.kaddam@etu.imt-nord-europe.fr </a></p>
+                  <p>  <i class="fas fa-envelope" style="color: #FFD100;"></i> <a href="#" style="color: #999999; ">safae.el.hajji@etu.imt-nord-europe.fr </a></p>
+                </div>
+                <div class="col-md">
+                  <h3>Discover</h3>
+                  <ul class="list-unstyled" id="discover">
+                    <li><a href="#">Playlist</a></li>
+                    <li><a href=<?php print_r($urlHistory)?>>History</a></li>
+                    <li><a href=<?php print_r($urlProfile)?>>Profile</a></li>
+                  </ul>
+                </div>
+                <div class="col-md">
+                  <h3>Follow Us</h3>
+                  <ul class="social list-unstyled">
+                    <li>
+                        <button  class=" btn btn-outline-primary" style="background-color: #FFD100; margin:2">
+                            <i style="color: black" class="fab fa-facebook"></i>
+                        </button>
+                    </li>
+                    <li>
+                        <button  class=" btn btn-outline-primary" style="background-color: #FFD100; margin:2">
+                            <i style="color: black" class="fab fa-github"></i>
+                        </button>
+                    </li>
+                  </ul>
+                </div>
+              </div> 
+              <div class="row">
+                <div class="col-12 text-center">
+                  <div class="copyright mt-5 pt-5">
+                    <p><small>&copy; 2020&mdash;2021 All Rights Reserved.</small></p>
+                  </div>
+                </div>
+              </div> 
+            </div>  
+        </footer>
+
+       
         <script>
             function deleteComment(){
                 let dropdown=document.getElementById('mycomment');

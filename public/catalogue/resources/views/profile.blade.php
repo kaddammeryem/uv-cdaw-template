@@ -4,8 +4,8 @@
     @section('head')
         @parent
         <link href="../../public/css/profile.css" rel="stylesheet">
+        
     @endsection
-    <body>
         @section('sidebar')
         @parent
         <?php $urlProfile = route('profile');?>
@@ -40,7 +40,6 @@
         @endsection
        @endsection
        @section('content')
-    <body>
         <div class="container">
         <form action="updateuser" submit="updatePassword" method="post">
                     @csrf
@@ -52,7 +51,8 @@
                             <div class="account-settings">
                                 <div class="user-profile">
                                     <div class="user-avatar">
-                                        <img src="https://i.pinimg.com/736x/8b/41/8d/8b418d2b374298028c4a312ade587afc.jpg">
+                                        <input type='image' id="ig" style="height:100px;border-radius:100%" src="{{$user[0]->profile_photo_path}}">
+                                        <input id="imgupload" type="file" style="display:none" onchange="handleFiles(this.files)" >
                                     </div>
                                     <h5 class="user-name">{{$user[0]->name}}</h5>
                                     <h6 id="emailInfo" class="user-email">{{$user[0]->email}}</h6>
@@ -133,7 +133,7 @@
                                             <p class="mb-2">Password requirements</p>
                                             <p class="small text-muted mb-2">To create a new password, you have to meet all of the following requirements:</p>
                                             <ul class="small text-muted pl-4 mb-0">
-                                                <li>Minimum 8 character</li>
+                                                <li>Minimum 8 characters</li>
                                             </ul>
                                         </div>
                                     </div>
@@ -161,12 +161,39 @@
         @section('home')
         <li><a href=<?php print_r($urlHomeCo)?>>Home</a></li>
         @endsection
-        @endsection
         <script>
-            
+            document.querySelector("input[type='image']").addEventListener('click',(event)=>{
+            event.preventDefault();
 
-          
 
+            document.querySelector("input[type='file']").click();
+           })
+           let ik=document.getElementById('ig');
+            function handleFiles(files) {
+                for (let i = 0; i < files.length; i++) {
+                    const file = files[i];
+                    let ig=document.getElementById('ig');
+                    ig.src=file.name;
+                    
+                    //A COMPLETER ICI
+                    const reader = new FileReader();
+                    reader.onload = (function(aImg) 
+                    {
+                         return function(e) {
+                             aImg.src = e.target.result; };
+                             })
+                    (ig);
+
+                    reader.readAsDataURL(file);
+                    let route="{{route('updateimage',['imageurl'=>'val'])}}".replace('val',file.name);
+                    const response=fetch(route);
+                  }
+                
+                 
+                }
+               
         </script>
-    </body>
+        @endsection
+        
+
 </html>

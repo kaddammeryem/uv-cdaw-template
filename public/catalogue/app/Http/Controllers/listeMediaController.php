@@ -23,12 +23,61 @@ class listeMediaController extends Controller
         return view('homedisc',['films'=> $films,'series'=>$series]);
     }
 
+
+
+    public function Search(Request $request) {
+        $id=Auth::id();
+        $favorites = Favorites::where('id_user',$id)->get('id_media');
+        $history =History::where('id_user',$id)->get('id_media');
+        $playlists =Playlist::where('id_user',$id)->get();
+        if($request->input('search')==null){
+            $films = Media::all();
+
+            return view('medias',['films'=> $films,'favorites'=>$favorites,'history'=>$history,'playlists'=>$playlists]);
+          
+        }
+        else{
+            if($request->input('critere')=="actor"){
+                $films = DB::table('participation')
+                ->selectRaw('id_media,id_participant,nom,title,runtimeStr,image,genres')
+                ->join('participants', 'participants.id', '=', 'participation.id_participant')
+                ->join('medias', 'medias.id', '=', 'participation.id_media')
+                ->where('nom', $request->input('search'))
+                ->get();
+                return view('medias',['films'=> $films,'favorites'=>$favorites,'history'=>$history,'playlists'=>$playlists]);
+
+            }
+            if($request->input('critere')=="title"){
+                $films = Media::where('title',$request->input('search'))->get();
+                return view('medias',['films'=> $films,'favorites'=>$favorites,'history'=>$history,'playlists'=>$playlists]);
+
+            }
+            if($request->input('critere')=="genre"){
+                $films = Media::where('genres',$request->input('search'))->get();
+                return view('medias',['films'=> $films,'favorites'=>$favorites,'history'=>$history,'playlists'=>$playlists]);
+            }
+        }
+       
+      
+    }
+
     public function getUserInfos() {
         $id=Auth::id();
         $user=User::where('id',$id)->get();
         
       
         return view('profile',['user'=>$user]);
+        
+    }
+    public function updateImage(string $imageurl) {
+        $id=Auth::id();
+        $user=User::where('id',$id)->get();
+        $url="http://localhost:8080/catalogue/public/image/".$imageurl;
+        DB::update('update users set profile_photo_path=? where id=?',
+        [$url,$id]);
+        
+      
+        
         
     }
     public function updateUser(Request $request) {
@@ -205,7 +254,7 @@ class listeMediaController extends Controller
     }
     public function getDetails(Media $id) {
         $film = DB::table('medias')
-        ->selectRaw('id_media,title,genres,year,nom,prenom,fonction,image,description')
+        ->selectRaw('id_media,title,genres,year,nom,prenom,fonction,image,description,runtimeStr')
         ->join('participation', 'participation.id_media', '=', 'medias.id')
         ->join('participants', 'participants.id', '=', 'participation.id_participant')
         ->where('id_media', $id->id)

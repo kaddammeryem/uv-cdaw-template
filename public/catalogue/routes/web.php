@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth')->group(function () {
     Route::get('homeco', 'App\Http\controllers\listeMediaController@getListeMediasCo')->name('homeco');
     Route::get('profile', 'App\Http\controllers\listeMediaController@getUserInfos')->name('profile');
+    Route::get('medias', 'App\Http\controllers\listeMediaController@Search')->name('medias');
 
     Route::get('details/{id}', 'App\Http\controllers\listeMediaController@getDetails')->name('details');
     Route::get('addfav/{film}', 'App\Http\controllers\listeMediaController@addFav')->name('addfav');
@@ -30,10 +31,10 @@ Route::middleware('auth')->group(function () {
     Route::get('delplaylist/{playlist}', 'App\Http\controllers\listeMediaController@delPlaylist')->name('delplaylist');
     Route::get('delfromplaylist/{playlist}/{film}', 'App\Http\controllers\listeMediaController@delFromPlaylist')->name('delfromplaylist');
     Route::post('updateuser', 'App\Http\controllers\listeMediaController@updateUser')->name('updateuser');
+    Route::get('updateimage/{imageurl}', 'App\Http\controllers\listeMediaController@updateImage')->name('updateimage');
 
-    Route::get('details', function () {
-        return view('details');
-    })->name('detail');
+   
+   
    
     Route::get('playlistdetails', 'App\Http\controllers\listeMediaController@getPlaylistDetails')->name('playlistdetails');
 
@@ -44,9 +45,7 @@ Route::middleware('auth')->group(function () {
 
 });
 
-Route::get('favorite', function () {
-    return view('favorite');
-})->name('favorite');
+
 
 Route::get('tableau', function () {
     return view('tableau');
