@@ -71,128 +71,14 @@
 								</div>
 							</li>
 							</ul>
-						
-						
-					</div>
 				</div>
 			</div>
 		</nav>
-		
 			<div class="container">
 				<div class="text-center">
 				<h1 style = "margin-bottom: 15px;">Your Favorite Medias</h1>
 				</div>
 				<div class="container">
-<<<<<<< HEAD
-				<div class="card-columns">
-					<div class="card">
-					
-					<img class="card-img-top" src="https://fr.web.img4.acsta.net/pictures/15/11/10/13/35/055302.jpg" alt="Card image cap">
-					<div class="card-body">
-						<h5 class="card-title">Lorem ipsum dolor sit amet.</h5>
-						<p class="card-text">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusantium ad alias, aliquid amet aspernatur atque culpa cum debitis dicta doloremque, dolorum ea eos et excepturi explicabo facilis harum illo impedit incidunt laborum laudantium...
-						</p>
-					</div>
-					
-					</div>
-					<div class="card">
-					
-					<img class="card-img-top" src="https://media.melty.fr/article-4675061-ajust_768/media.jpg" alt="Card image cap">
-					<div class="card-body">
-						<h5 class="card-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, doloremque!</h5>
-						<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio iusto maxime nemo omnis praesentium similique.</p>
-					</div>
-					
-					</div>
-					<div class="card">
-					<img class="card-img-top" src="https://fr.web.img5.acsta.net/pictures/15/11/12/15/58/285451.jpg" alt="Card image cap">
-					<div class="card-body">
-						<h5 class="card-title">Lorem ipsum dolor sit amet, consectetur.</h5>
-						<p class="card-text">Amet commodi deleniti enim laboriosam odio placeat praesentium quis ratione rerum suscipit.</p>
-					</div>
-					
-					</div>
-					<div class="card">
-					
-					<img class="card-img-top" src="https://pictures.betaseries.com/fonds/poster/b163ea3471c13ed5c5bbb7aa2e8ad0bd.jpg" alt="Card image cap">
-					<div class="card-body">
-						<h5 class="card-title">Lorem ipsum dolor sit amet, consectetur.</h5>
-						<p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-					</div>
-					
-					</div>
-					<div class="card">
-					
-					<img class="card-img-top" src="https://pictures.betaseries.com/films/affiches/fr/375.jpg" alt="Card image cap">
-					<div class="card-body">
-						<h5 class="card-title">Lorem ipsum dolor sit amet.</h5>
-						<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At, consequatur culpa cumque deserunt dignissimos error explicabo fugiat harum ipsam magni minus mollitia nemo perferendis qui repellendus rerum saepe vel voluptate voluptatem voluptatum!
-						Aperiam, labore, molestiae!..</p>
-					</div>
-					
-					</div>
-					<div class="card">
-					
-					<img class="card-img-top" src="https://m.media-amazon.com/images/I/713KEd-8jyL._AC_SL1500_.jpg" alt="Card image cap">
-					<div class="card-body">
-						<h5 class="card-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h5>
-						<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque commodi debitis eaque explicabo fuga maiores necessitatibus, neque omnis optio vel!</p>
-					</div>
-					
-					</div>
-				</div>
-				</div>
-			</div>
-		
-
-
-
-		<footer style="background-color:black">
-			<div class="container">
-			<div class="row">
-				<div class="col-md-6 pr-md-5">
-				<p class="footer-site-logo d-block mb-4" id="aboutus">About us</p>
-				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi quasi perferendis ratione perspiciatis accusantium.</p>
-				<h4 style="color:white">Contact</h4>
-				<p>  <i class="fas fa-envelope" style="color: #FFD100;"></i> <a href="#" style="color: #999999; ">meryem.kaddam@etu.imt-nord-europe.fr </a></p>
-				<p>  <i class="fas fa-envelope" style="color: #FFD100;"></i> <a href="#" style="color: #999999; ">safae.el.hajji@etu.imt-nord-europe.fr </a></p>
-				</div>
-				<div class="col-md">
-				<h3>Discover</h3>
-				<ul class="list-unstyled" id="discover">
-					<li><a href="homedisc.html">Home</a></li>
-					<li><a href="#">Playlist</a></li>
-					<li><a href="#">History</a></li>
-					<li><a href="auth.html">Profile</a></li>
-				</ul>
-				</div>
-				<div class="col-md">
-				<h3>Follow Us</h3>
-				<ul class="social list-unstyled">
-					<li>
-						<button  class=" btn btn-outline-primary" style="background-color: #FFD100; margin:2">
-							<i style="color: black" class="fab fa-facebook"></i>
-						</button>
-					</li>
-					<li>
-						<button  class=" btn btn-outline-primary" style="background-color: #FFD100; margin:2">
-							<i style="color: black" class="fab fa-github"></i>
-						</button>
-					</li>
-				</ul>
-				</div>
-			</div> 
-			<div class="row">
-				<div class="col-12 text-center">
-				<div class="copyright mt-5 pt-5">
-					<p><small>&copy; 2020&mdash;2021 All Rights Reserved.</small></p>
-				</div>
-				</div>
-			</div> 
-			</div>  
-		</footer>
-=======
 					<div class="card-columns">
 						@foreach($films as $film)
 						<div class="card" data-id="{{$film->id_media}}">
@@ -256,6 +142,5 @@
 
         </script>
 	@endsection
->>>>>>> 4306ce85e1c33034376283399bfcf89b50fe955e
 	</body>
 	</html>

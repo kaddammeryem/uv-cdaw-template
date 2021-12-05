@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function () {
     Route::get('homeco', 'App\Http\controllers\listeMediaController@getListeMediasCo')->name('homeco');
+    Route::get('profile', 'App\Http\controllers\listeMediaController@getUserInfos')->name('profile');
+
     Route::get('details/{id}', 'App\Http\controllers\listeMediaController@getDetails')->name('details');
     Route::get('addfav/{film}', 'App\Http\controllers\listeMediaController@addFav')->name('addfav');
     Route::get('delfav/{film}', 'App\Http\controllers\listeMediaController@delFav')->name('delfav');
@@ -27,6 +29,7 @@ Route::middleware('auth')->group(function () {
     Route::get('mediaplaylist/{playlist}', 'App\Http\controllers\listeMediaController@getPlaylistMedia')->name('mediaplaylist');
     Route::get('delplaylist/{playlist}', 'App\Http\controllers\listeMediaController@delPlaylist')->name('delplaylist');
     Route::get('delfromplaylist/{playlist}/{film}', 'App\Http\controllers\listeMediaController@delFromPlaylist')->name('delfromplaylist');
+    Route::post('updateuser', 'App\Http\controllers\listeMediaController@updateUser')->name('updateuser');
 
     Route::get('details', function () {
         return view('details');
@@ -36,9 +39,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('favorites','App\Http\controllers\listeMediaController@getListeFavorites')->name('favorites');
     Route::get('playlist','App\Http\controllers\listeMediaController@getListePLaylist')->name('playlist');
-    Route::get('profile', function () {
-        return view('profile');
-    })->name('profile');
+   
     Route::get('history', 'App\Http\controllers\listeMediaController@getHistory')->name('history');
 
 });

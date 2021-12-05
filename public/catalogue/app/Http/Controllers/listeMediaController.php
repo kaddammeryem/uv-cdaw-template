@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Media;
+use App\Models\User;
 use App\Models\Comments;
 use App\Models\Favorites;
 use App\Models\History;
 use App\Models\Playlist;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use DB;
 
@@ -19,6 +22,40 @@ class listeMediaController extends Controller
         $series = Media::where('type',"serie")->get();
         return view('homedisc',['films'=> $films,'series'=>$series]);
     }
+
+    public function getUserInfos() {
+        $id=Auth::id();
+        $user=User::where('id',$id)->get();
+        
+      
+        return view('profile',['user'=>$user]);
+        
+    }
+    public function updateUser(Request $request) {
+        $id=Auth::id();
+        $user=User::where('id',$id)->get();
+        if($request->password==''){
+            DB::update('update users set nom=?,prenom=?,email=?,phone=?,naissance=?,quote=? where id=?',
+            [$request->lastname,$request->firstname,$request->email,$request->phone,$request->birthday,$request->quote,$id]);
+        }
+        else{
+            $validator=Validator::make($request->all(),
+            [
+                'password'=>'min:8',
+                'password_confirmation'=>'same:password|required_with:password',
+            ]
+            );
+            if($validator->fails()){
+                return back()->withErrors($validator);
+            }
+        $password=Hash::make($request->password);
+        DB::update('update users set nom=?,prenom=?,email=?,phone=?,naissance=?,quote=?,password=? where id=?',
+        [$request->lastname,$request->firstname,$request->email,$request->phone,$request->birthday,$request->quote,$password,$id]);}
+
+        return redirect()->route('profile',['user'=>$user]);
+       
+    }
+
     public function getPlaylistMedia(int $playlist) {
         $id=Auth::id();
         $films = DB::table('playlist')
