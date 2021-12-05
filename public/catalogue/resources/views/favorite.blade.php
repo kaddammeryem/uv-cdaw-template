@@ -83,6 +83,7 @@
 				<h1 style = "margin-bottom: 15px;">Your Favorite Medias</h1>
 				</div>
 				<div class="container">
+<<<<<<< HEAD
 				<div class="card-columns">
 					<div class="card">
 					
@@ -191,5 +192,73 @@
 			</div> 
 			</div>  
 		</footer>
+=======
+					<div class="card-columns">
+						@foreach($films as $film)
+						<div class="card" data-id="{{$film->id_media}}">
+							<img class="card-img-top" src='{{$film->image}}' alt="Card image cap">
+							<div class="card-body"  >
+								<h5 class="card-title">{{$film->title}}</h5>
+								<p class="card-text">
+									{{$film->description}}
+								</p>
+							</div>
+							<div class='detadd'>
+								<button type="button" id='details' class="btn" >
+                                    <i class="fas fa-info"></i>
+                                </button>
+                                <button class="btn" type="button" id="details" onclick="yes({{$film->id_media}})">
+                                        <i   class="fas fa-heart"></i>
+                                </button>
+                                <button type="button" id='details' class="btn" >
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+						</div>
+						@endforeach
+				</div>
+			</div>
+		@endsection
+		@section('footer')
+			@parent
+		@section('home')
+			<li><a href=<?php print_r($urlHomeDisc)?>>Home</a></li>
+		@endsection
+        <script>
+            function yes(id){
+                let i=document.getElementsByClassName('card');   
+                for(let j=0;j<2;j++){
+                    if(i[j].dataset.id==id){
+                        i[j].remove();
+                        let route="{{route('delfav',['film'=>'id'])}}".replace('id',id);
+                        const response=fetch(route);
+                        break;
+                    }
+                
+                }
+                
+                /*if(i.className === 'far fa-heart'){
+                    i.className = 'fas fa-heart';
+                    let route="{{route('addfav',['film'=>'id'])}}".replace('id',id);
+                    const response=fetch(route);
+                } else {
+
+                    i.className = 'far fa-heart';
+                    let route="{{route('delfav',['film'=>'id'])}}".replace('id',id);
+                    const response=fetch(route);
+                }*/
+               
+              
+         
+            }
+           
+          
+           
+            //stop form from submitting
+    
+
+        </script>
+	@endsection
+>>>>>>> 4306ce85e1c33034376283399bfcf89b50fe955e
 	</body>
 	</html>

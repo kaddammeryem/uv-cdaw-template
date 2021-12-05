@@ -41,34 +41,60 @@
         @endsection
        @endsection
        @section('content')
+
         <div class="historique">
+            
             @foreach($date as $d)
+            
                 <div style="width:50rem">
                     <div style="margin:10px;display:flex;align-self:flex-start">
                         <h4 style="color:white"> {{$d->date}}</h4>
                     </div>
                 </div>
+                @php
+                $i=0;
+            @endphp
                 @foreach($films as $film)
                     @if($d->date==$film->date)
-                    
-                    <div class="card shadow-lg  bg-white rounded" style="width: 50rem;display:flex;flex-direction:row;margin:10px">
+                    <div class="card shadow-lg bg-white rounded" data-id='{{$film->id}}'  onclick="window.location='{{route('details',[$film->id])}}'" style="width: 50rem;display:flex;flex-direction:row;margin:10px">
                         <img class="card-img-top" src="{{$film->image}}" alt="Card image cap">
                         <div class="card-body">
                             <div style="display:flex;flex-direction:row;justify-content:space-between">
                                 <h2 class="card-title">{{$film->title}}</h2>
-                            
                             </div>  
                             <p><i class="fas fa-clock"></i><span style="margin-left:5">{{$film->runtimeStr}}</span></p>
                             <p class="card-text">{{$film->description}}</p>
                             <p style="font-weight:bold">Release year: </p>
                             <p style="margin-left:20px"> {{$film->year}} </p>
                             <hr>
-                            <div style="display: flex;flex-direction:row;justify-content:space-evenly">
-                                <button  class="btn btn-outline-primary">
-                                    <i class="fas fa-info" style="color:black"></i>
-                                </button>
-                                <button  class="btn btn-outline-primary">
-                                    <i class="fas fa-plus" style="color:black"></i>
+                            <div class='detadd'>
+                                        <button class="btn" onclick="deleteMedia({{$film->id}})">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                @if($favorites->count()==0)
+                                    <button class="likeBtn btn" onclick="yes({{$film->id}})">
+                                        <i id= "{{$film->id}}" class="far fa-heart"></i>
+                                    </button>
+                                @elseif($i<$favorites->count())
+                                    @if($favorites[$i]->id==$film->id)
+                                        <button class="likeBtn btn" onclick="yes({{$film->id}})">
+                                            <i  id= "{{$film->id}}" class="fas fa-heart"></i>
+                                        </button>
+                                        @php
+                                            $i=$i+1;
+                                        @endphp
+                                    @else
+                                        <button class="likeBtn btn" onclick="yes({{$film->id}})">
+                                            <i  id= "{{$film->id}}" class="far fa-heart"></i>
+                                        </button>
+                                    @endif
+                                @else
+                                <button class="likeBtn btn" onclick="yes({{$film->id}})">
+                                        <i  id= "{{$film->id}}" class="far fa-heart"></i>
+                                    </button>
+                                @endif
+                                <button type="button" id='details' class="btn" >
+                                    <i class="fas fa-plus"></i>
                                 </button>
                             </div>
                         </div>
@@ -85,22 +111,33 @@
         @endsection
         @endsection
         <script>
-            var b = document.getElementById("boutton");
-            var c = document.getElementById("collapseOne");
-            b.addEventListener("click", function( event ) {
-                // on met l'accent sur la cible de mouseover
-                console.log(b);
-                console.log(c);
-               var d= c.getAttribute('class');
-                if(d=='collapse'){
-                    c.setAttribute("class","collapse show");
+           function yes(id){
+                event.stopPropagation(); 
+                let i=document.getElementById(id);
+                if(i.className == 'far fa-heart'){
+                    i.className = 'fas fa-heart';
+                    let route="{{route('addfav',['film'=>'id'])}}".replace('id',id);
+                    const response=fetch(route);
+                } 
+                else {
+                    i.className = 'far fa-heart';
+                    let route="{{route('delfav',['film'=>'id'])}}".replace('id',id);
+                    const response=fetch(route);
                 }
-                else{
-                    c.setAttribute("class","collapse");
-                }
-              
-                console.log(c);
-            c.getAttribute('class')})
+            }
+            function deleteMedia(id){
+                event.stopPropagation(); 
+                let i=document.getElementsByClassName('card');   
+                for(let j=0;j<2;j++){
+                    if(i[j].dataset.id==id){
+                        i[j].remove();
+                        let route="{{route('delhistory',['film'=>'id'])}}".replace('id',id);
+                         const response=fetch(route);
+                        break;
+                    }
+                
+                }}
+                
         </script>
     </body>
 </html>

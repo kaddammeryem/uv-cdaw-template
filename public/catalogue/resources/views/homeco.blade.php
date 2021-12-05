@@ -5,9 +5,7 @@
         @parent
         <link href="../../public/css/homeco.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-
     @endsection
-    <body>
     @section('sidebar')
         @parent
         <?php $urlProfile = route('profile');?>
@@ -36,13 +34,11 @@
                         <hr>
                         <form method="POST" action="{{ route('logout') }}">
                                 @csrf
-
                                 <button type="submit" value="Logout" class="dropdown-item"
                                         >
                                     {{ __('Log Out') }}
                                 </button>
                             </form>
-                     
                      </div>
                 </li>
             </ul>
@@ -97,10 +93,16 @@
             </h1>
         </div>
         <div class="container-fluid">
+       
             <div class="scrolling-wrapper row flex-nowrap" >
-              
+                @php
+                     $i = 0;
+                     @endphp
+                     @php
+                     $j = 0;
+                     @endphp
                 @foreach($films as $film)
-                <div style="margin:20px" >
+                <div style="margin:20px" onclick="window.location='{{route('details',[$film->id])}}'">
                     <div  classe="image"> 
                        <img id='boutton'  src='{{$film->image}}'/>
                     </div>
@@ -133,18 +135,68 @@
                             </div>
                             <hr style="margin:10">
                             <div class='detadd'>
-                                <button type="button" id='infoBtn' class="btn" >
-                                    <i class="fas fa-info"></i>
+                                <button type="button" id='test' class="btn" >
+                                        <i class="fas fa-plus"></i>
                                 </button>
-                                <button type="button" id='infoBtn' class="btn" >
-                                    <i class="far fa-heart"></i>
-                                </button>
-                                <button type="button" id='addBtn' class="btn" >
-                                    <i class="fas fa-plus"></i>
-                                </button>
+                                @if($history->count()==0)
+                                    <button class="btn" onclick="seen({{$film->id}})">
+                                        <i  id="{{$film->id}}" class="fas fa-eye-slash"></i>
+                                    </button>
+                                @elseif($j<$history->count())
+                                    @if($history[$j]->id_media==$film->id)
+                                        <button class="btn" onclick="seen({{$film->id}})">
+                                            <i  id="{{$film->id}}" class="fas fa-eye"></i>
+                                        </button>
+                                        @php
+                                            $j=$j+1;
+                                        @endphp
+                                    @else
+                                        <button class="btn" onclick="seen({{$film->id}})">
+                                            <i  id="{{$film->id}}" class="fas fa-eye-slash"></i>
+                                        </button>
+                                    @endif
+                                @else
+                                <button class="btn" onclick="seen({{$film->id}})">
+                                        <i  id="{{$film->id}}" class="fas fa-eye-slash"></i>
+                                    </button>
+                                @endif
+                               
+                                @if($favorites->count()==0)
+                                    <button class="likeBtn btn" onclick="yes({{$film->id}})">
+                                        <i   class="far fa-heart"></i>
+                                    </button>
+
+                                
+                                @elseif($i<$favorites->count())
+                                    @if($favorites[$i]->id_media==$film->id)
+                                        <button class="likeBtn btn" onclick="yes({{$film->id}})">
+                                            <i  data-id="{{$film->id}}" class="fas fa-heart"></i>
+                                        </button>
+                                        @php
+                                            $i=$i+1;
+                                        @endphp
+                                    @else
+                                        <button class="likeBtn btn" onclick="yes({{$film->id}})">
+                                            <i  data-id="{{$film->id}}"  class="far fa-heart"></i>
+                                        </button>
+                                    @endif
+                                @else
+                                    <button class="likeBtn btn" onclick="yes({{$film->id}})">
+                                            <i  data-id="{{$film->id}}"  class="far fa-heart"></i>
+                                    </button>
+                                @endif
+                                   
+
+                                
                             </div>
-                        </div>
-                </div>  
+                    </div>
+                    <div id="showArea" style="visibility:hidden;background-color:gray;width:100;visibility:none;display:flex;align-items:flex-end;flex-direction:column;margin-left:20">
+                        <button class="btn pull-right" style="color:white">Playlist 1</button>
+                         <button class="btn pull-right" style="color:white">Playlist 2</button>
+                         <button class="btn pull-right" style="color:white">Playlist 3</button>
+                     </div>
+                </div>
+                
                 @endforeach       
              </div>
         </div>
@@ -155,9 +207,9 @@
         </div>
         <div class="container-fluid">
             <div class="scrolling-wrapper row flex-nowrap" >
-              
+                   
                 @foreach($series as $film)
-                <div style="margin:20px" >
+                <div style="margin:20px"  onclick="window.location='{{route('details',[$film->id])}}'">
                     <div  classe="image"> 
                        <img id='boutton'  src='{{$film->image}}'/>
                     </div>
@@ -190,12 +242,52 @@
                             </div>
                             <hr style="margin:10">
                             <div class='detadd'>
-                                <button type="button" id='details' class="btn" >
-                                    <i class="fas fa-info"></i>
-                                </button>
-                                <button type="button" id='details' class="btn" >
-                                    <i class="fas fa-heart"></i>
-                                </button>
+                                @if($history->count()==0)
+                                    <button class="btn" onclick="seen({{$film->id}})" >
+                                        <i  id="{{$film->id}}"  class="fas fa-eye-slash"></i>
+                                    </button>
+                                @elseif($j<$history->count())
+                                    @if($history[$j]->id_media==$film->id)
+                                        <button class="btn" onclick="seen({{$film->id}})">
+                                            <i  id="{{$film->id}}"  class="fas fa-eye"></i>
+                                        </button>
+                                        @php
+                                            $j=$j+1;
+                                        @endphp
+                                    @else
+                                        <button class="btn" onclick="seen({{$film->id}})">
+                                            <i  id="{{$film->id}}"  class="fas fa-eye-slash"></i>
+                                        </button>
+                                    @endif
+                                @else
+                                <button class="btn" onclick="seen({{$film->id}})">
+                                        <i  id="{{$film->id}}"  class="fas fa-eye-slash"></i>
+                                    </button>
+                                @endif
+
+
+                                @if($favorites->count()==0)
+                                    <button class="likeBtn btn" onclick="yes({{$film->id}})">
+                                        <i  data-id= "{{$film->id}}" class="far fa-heart"></i>
+                                    </button>
+                                @elseif($i<$favorites->count())
+                                    @if($favorites[$i]->id_media==$film->id)
+                                        <button class="likeBtn btn" onclick="yes({{$film->id}})">
+                                            <i  data-id= "{{$film->id}}" class="fas fa-heart"></i>
+                                        </button>
+                                        @php
+                                            $i=$i+1;
+                                        @endphp
+                                    @else
+                                        <button class="likeBtn btn" onclick="yes({{$film->id}})">
+                                            <i  data-id= "{{$film->id}}" class="far fa-heart"></i>
+                                        </button>
+                                    @endif
+                                @else
+                                <button class="likeBtn btn" onclick="yes({{$film->id}})">
+                                        <i  data-id= "{{$film->id}}" class="far fa-heart"></i>
+                                    </button>
+                                @endif
                                 <button type="button" id='details' class="btn" >
                                     <i class="fas fa-plus"></i>
                                 </button>
@@ -204,33 +296,55 @@
                 </div>  
                 @endforeach       
              </div>
-        </div>
-        
-     
+        </div> 
         @endsection
         @section('footer')
         @parent
         @section('home')
         <li><a href=<?php print_r($urlHomeDisc)?>>Home</a></li>
         @endsection
-        @endsection
         <script>
-            var b = document.getElementById("boutton");
-            var c = document.getElementById("collapseOne");
-            b.addEventListener("click", function( event ) {
-                // on met l'accent sur la cible de mouseover
-                console.log(b);
-                console.log(c);
-               var d= c.getAttribute('class');
-                if(d=='collapse'){
-                    c.setAttribute("class","collapse show");
+            
+            function yes(id){
+                event.stopPropagation(); 
+                let i=document.getElementsByClassName('likeBtn')[id-1].children;
+                if(i[0].className == 'far fa-heart'){
+                    i[0].className = 'fas fa-heart';
+                    let route="{{route('addfav',['film'=>'id'])}}".replace('id',id);
+                    const response=fetch(route);
+                } 
+                else {
+                    i[0].className = 'far fa-heart';
+                    let route="{{route('delfav',['film'=>'id'])}}".replace('id',id);
+                    const response=fetch(route);
                 }
-                else{
-                    c.setAttribute("class","collapse");
+            }
+            function seen(id){
+                event.stopPropagation();  
+                let e=event.target
+                i=document.getElementById(id); 
+     
+                if(i.className == 'fas fa-eye-slash'){
+                    i.className = 'fas fa-eye';
+                    let route="{{route('addhistory',['film'=>'id'])}}".replace('id',id);
+                    const response=fetch(route);
+                } 
+                else {
+                    i.className = 'fas fa-eye-slash';
+                    let route="{{route('delhistory',['film'=>'id'])}}".replace('id',id);
+                    const response=fetch(route);
                 }
-              
-                console.log(c);
-            c.getAttribute('class')})
+            }
+               
+                
+                let mybtn = document.getElementById("test");
+                console.log(mybtn);
+                let modal=document.getElementById("showArea");
+                mybtn.addEventListener('click',function(){
+                    event.stopPropagation();
+                    modal.style="visibility:visible;background-color:gray;width:100;visibility:none;display:flex;align-items:flex-end;flex-direction:column;margin-left:20"
+
+                })
         </script>
-    </body>
+        @endsection
 </html>

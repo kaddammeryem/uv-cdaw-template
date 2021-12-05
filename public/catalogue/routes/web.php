@@ -13,18 +13,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
-
 Route::middleware('auth')->group(function () {
     Route::get('homeco', 'App\Http\controllers\listeMediaController@getListeMediasCo')->name('homeco');
-    Route::get('details', 'App\Http\controllers\listeMediaController@getDetails')->name('details');
+    Route::get('details/{id}', 'App\Http\controllers\listeMediaController@getDetails')->name('details');
+    Route::get('addfav/{film}', 'App\Http\controllers\listeMediaController@addFav')->name('addfav');
+    Route::get('delfav/{film}', 'App\Http\controllers\listeMediaController@delFav')->name('delfav');
+    Route::get('addcomment/{contenu}/{film}', 'App\Http\controllers\listeMediaController@addComment')->name('addcomment');
+    Route::get('delcomment/{film}', 'App\Http\controllers\listeMediaController@delComment')->name('delcomment');
+    Route::get('addhistory/{film}', 'App\Http\controllers\listeMediaController@addHistory')->name('addhistory');
+    Route::get('delhistory/{film}', 'App\Http\controllers\listeMediaController@delHistory')->name('delhistory');
+
+    Route::get('details', function () {
+        return view('details');
+    })->name('detail');
     Route::get('playlistdetails', 'App\Http\controllers\listeMediaController@getPlaylistDetails')->name('playlistdetails');
 
     Route::get('favorites','App\Http\controllers\listeMediaController@getListeFavorites')->name('favorites');
     Route::get('playlist','App\Http\controllers\listeMediaController@getListePLaylist')->name('playlist');
-
     Route::get('profile', function () {
         return view('profile');
     })->name('profile');

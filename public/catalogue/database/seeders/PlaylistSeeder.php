@@ -11,11 +11,14 @@ class PlaylistSeeder extends Seeder
     public function run()
     {
         for($i=1;$i<11;$i=$i+1){
-            $name=Str::random(6);
+            $name=['playlist1','playlist2','playlist3','playlist4'];
+            $id_playlist=rand(1,20);
+            $id_name=rand(0,3);//2
             for($j=0;$j<3;$j=$j+1){
                 DB::table('playlist')->insert([
-                'nameplaylist'=> $name,
+                'nameplaylist'=> $name[$id_name],
                 'id_media'=>rand(1,20),
+                'id_playlist'=>$id_playlist,
                 'id_user'=>$i,
             ]);}
         }
