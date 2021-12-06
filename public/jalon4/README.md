@@ -1,13 +1,14 @@
 Auteurs
 =======
 
--   <KADDAM Meryem>
--   <EL HAJJI Safae>
+FOUNDERS : 
+-   KADDAM Meryem
+-   EL HAJJI Safae
 
 Jalon 4
 =======
 
-<description> 
+description 
 
 Notre projet est intitulé "M & S", acronyme de "Movie & Serie" et qui coïncide avec les initiales de nos prénoms "Meryem & Safae".
 
