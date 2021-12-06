@@ -18,7 +18,7 @@
               <a class="navbar-brand" href="{{route('homeco')}}" id='brand'>Logo</a>
               <div class="collapse navbar-collapse" id="navbarSupportedContent">   
                 <div class='formu'>    
-                  <form class='formulaire' action="medias">
+                  <form class='formulaire' class="myform" action="medias">
                     <input class="form-control me-2" name="search" id="search"type="search" placeholder="Search by title" aria-label="Search">
                     <input type="search" style="visibility:hidden;width:0" class="btn" name="critere" id="critere" value="title">
                     <input type="submit" class="btn" style="color:white" id="submit" value="search">
@@ -27,24 +27,24 @@
                         <a class="btn btn-outline dropdown-toggle" style="color:white"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                          <button class="btn dropdown-item" onclick="filterSearch('title')" >title</button>
+                          <button class="btn dropdown-item" onclick="filterSearch('title')" >Title</button>
                           <hr>
                           <button class="btn dropdown-item" onclick="filterSearch('actor')">Actor</button>
                           <hr>
                           <button class="btn dropdown-item" onclick="filterSearch('genre')">Genre</button>
+                          <hr>
+                          <button class="btn dropdown-item"  onclick="filterSearchMedias('movies')">Movies</button>
+                          <hr>
+                          <button class="btn dropdown-item"  onclick="filterSearchMedias('series')">Series</button>
                         </div>
                       </li>
                     </ul>
                     <ul class="navbar-nav mr-auto">
                       <li class="nav-item dropdown" style=" list-style-type: none">
-                        <a class="btn btn-outline dropdown-toggle"  style="color:white" role="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="btn btn-outline"  style="color:white" role="button"  href="{{route('medias')}}">
                           All
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown" >
-                          <a class="dropdown-item"  href="#">Movies</a>
-                          <hr>
-                          <a class="dropdown-item"  href="#">Series</a>
-                        </div>
+                        
                       </li>
                     </ul>
                     </form>
@@ -55,6 +55,7 @@
                       <button class="btn btn-link" id='in' type="submit">
                         <span style="color:white" onclick="window.location= '{{ route('playlist') }}'">Playlist</span>
                       </button>
+                     
                     </div>   
                   </div>   
                   <div class='sign'>
@@ -65,6 +66,8 @@
                         </button>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                           <a class="dropdown-item" href="{{ route('profile') }}">Profile</a>
+                          <hr>
+                          <a class="dropdown-item" href="{{ route('favorites') }}">My Favorites</a>
                           <hr>
                           <form method="POST" action="{{ route('logout') }}">
                             @csrf
@@ -139,6 +142,12 @@
                 search.placeholder="Search by "+critere;
                 console.log(crit.value);
             }
+            function filterSearchMedias(critere)
+            {
+              let crit=document.getElementById('critere');
+                crit.value=critere;
+            }
+           
           </script>
       </body>
     </html>

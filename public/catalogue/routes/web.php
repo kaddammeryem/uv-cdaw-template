@@ -14,103 +14,61 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth')->group(function () {
-    Route::get('homeco', 'App\Http\controllers\listeMediaController@getListeMediasCo')->name('homeco');
-    Route::get('profile', 'App\Http\controllers\listeMediaController@getUserInfos')->name('profile');
-    Route::get('medias', 'App\Http\controllers\listeMediaController@Search')->name('medias');
 
-    Route::get('details/{id}', 'App\Http\controllers\listeMediaController@getDetails')->name('details');
+                 // -------------- Favorites -------------------
+    Route::get('favorites','App\Http\controllers\listeMediaController@getListeFavorites')->name('favorites');
     Route::get('addfav/{film}', 'App\Http\controllers\listeMediaController@addFav')->name('addfav');
     Route::get('delfav/{film}', 'App\Http\controllers\listeMediaController@delFav')->name('delfav');
+
+                // -------------- Comments -------------------
     Route::get('addcomment/{contenu}/{film}', 'App\Http\controllers\listeMediaController@addComment')->name('addcomment');
     Route::get('delcomment/{film}', 'App\Http\controllers\listeMediaController@delComment')->name('delcomment');
+
+                // -------------- History -------------------
     Route::get('addhistory/{film}', 'App\Http\controllers\listeMediaController@addHistory')->name('addhistory');
     Route::get('delhistory/{film}', 'App\Http\controllers\listeMediaController@delHistory')->name('delhistory');
+    Route::get('history', 'App\Http\controllers\listeMediaController@getHistory')->name('history');
+
+                // -------------- Playlist -------------------
+    Route::get('playlist','App\Http\controllers\listeMediaController@getListePLaylist')->name('playlist');
     Route::get('addtoplaylist/{playlist}/{film}', 'App\Http\controllers\listeMediaController@addToPlaylist')->name('addtoplaylist');
     Route::get('addplaylist/{name}/{film}', 'App\Http\controllers\listeMediaController@addPlaylist')->name('addplaylist');
     Route::get('mediaplaylist/{playlist}', 'App\Http\controllers\listeMediaController@getPlaylistMedia')->name('mediaplaylist');
     Route::get('delplaylist/{playlist}', 'App\Http\controllers\listeMediaController@delPlaylist')->name('delplaylist');
     Route::get('delfromplaylist/{playlist}/{film}', 'App\Http\controllers\listeMediaController@delFromPlaylist')->name('delfromplaylist');
+    Route::get('playlistdetails', 'App\Http\controllers\listeMediaController@getPlaylistDetails')->name('playlistdetails');
+
+                // -------------- User -------------------
     Route::post('updateuser', 'App\Http\controllers\listeMediaController@updateUser')->name('updateuser');
     Route::get('updateimage/{imageurl}', 'App\Http\controllers\listeMediaController@updateImage')->name('updateimage');
 
-   
-   
-    Route::get('playlistdetails', 'App\Http\controllers\listeMediaController@getPlaylistDetails')->name('playlistdetails');
+                // -------------- Connected Home -------------------
+    Route::get('homeco', 'App\Http\controllers\listeMediaController@getListeMediasCo')->name('homeco');
 
-    Route::get('favorites','App\Http\controllers\listeMediaController@getListeFavorites')->name('favorites');
-    Route::get('playlist','App\Http\controllers\listeMediaController@getListePLaylist')->name('playlist');
-   
-    Route::get('history', 'App\Http\controllers\listeMediaController@getHistory')->name('history');
+                // -------------- Details media -------------------
+    Route::get('details/{id}', 'App\Http\controllers\listeMediaController@getDetails')->name('details');
+
+                // -------------- Profile page -------------------
+    Route::get('profile', 'App\Http\controllers\listeMediaController@getUserInfos')->name('profile');
+
+                // -------------- Filter Medias -------------------
+    Route::get('medias', 'App\Http\controllers\listeMediaController@Search')->name('medias');
 
 });
 
-Route::get('homedeco', function () {
-    return view('homedeco');
-})->name('homedeco');
+//----------------------- Home page disconnected ----------------
+    Route::get('homedeco', function () {
+        return view('homedeco');
+    })->name('homedeco');
 
+// ---------------- Sign Up page ------------------------------------
+    Route::get('signup',function(){
+        return view('register');
+    });
 
-Route::get('tableau', function () {
-    return view('tableau');
-})->name('tableau');
-
-Route::get('admins', function () {
-    return view('admins');
-});
-
-
-Route::get('ex1', function () {
-    return view('ex1');
-});
-Route::get('ex4', function () {
-    return view('ex4Event');
-});
-Route::get('ex2', function () {
-    return view('ex2');
-});
-Route::get('ex3', function () {
-    return view('ex3');
-});
-
-
-
-Route::group(['middleware' => ['web']], function () {
-   
-    
-});
-Route::get('formu', function () {
-    return view('formulaire');
-})->name('formu');
-
-Route::get('formuUp/{film}', function (int $id) {
-    return view('formulaireUpdate',['id'=>$id]);
-})->name('formuUp');
-
-
-Route::get('comm', function () {
-    return view('comments');
-});
-
-
-Route::get('info', function () {
-    return view('info')->name('info');
-});
-
-
-//Route::post('film', 'App\Http\controllers\listeMediaController@addFilm');
-//Route::get('tableau', 'App\Http\controllers\listeMediaController@getHistory')->name('tableau');
-Route::get('homedisc', 'App\Http\controllers\listeMediaController@getListeMedias')->name('homedisc');
-Route::get('film/{film}', 'App\Http\controllers\listeMediaController@getFilmById')->name('film');
-Route::put('formuUp/film/{id}', 'App\Http\controllers\listeMediaController@updateFilm')->name('updatefilm');
-//Route::delete('film/{film}', 'App\Http\controllers\listeMediaController@destroy')->name('films.destroy');
-
-Route::get('auth',function(){
-    return view('auth');
-});
-Route::get('signup',function(){
-    return view('register');
-});
-
-
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+//  -------------------- Laravel -----------------
+    Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+    Route::group(['middleware' => ['web']], function () {
+    });

@@ -11,13 +11,11 @@
     @endsection
     @section('content')
         <div class="historique">
-            @foreach($name as $n)
                 <div style="width:50rem">
                     <div style="margin:10px;display:flex;align-self:flex-start">
-                        <h4 style="color:white"> {{$n->namePLaylist}}</h4>
+                        <h4 style="color:white"> {{$films[0]->namePlaylist}}</h4>
                     </div>
                      @foreach($films as $film)
-                        @if($n->namePLaylist==$film->namePlaylist)
                             <div class="card shadow-lg bg-white rounded" data-id="{{$film->id_media}}" style="width: 50rem;display:flex;flex-direction:row;margin:10px">
                                 <img class="card-img-top" src="{{$film->image}}" alt="Card image cap">
                                 <div class="card-body">
@@ -39,11 +37,9 @@
                                     </div>
                                 </div>
                             </div>
-                        @endif
-                    @endforeach
+                      @endforeach
                 </div> 
-            @endforeach
-        </div>
+             </div>
         @endsection
         @section('footer')
         @parent
