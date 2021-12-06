@@ -8,43 +8,6 @@
     @endsection
     @section('sidebar')
         @parent
-        <?php $urlProfile = route('profile');?>
-        <?php $urlHomeDisc = route('homedisc');?> 
-        <?php $urlHistory = route('history');?>
-        <?php $urlHomeCo = route('homeco');?>
-        @section('history')
-        <div class="history">
-            <button class="btn btn-link" id='in' type="submit" onclick="window.location= '{{ route('history') }}'">
-                <span style="color:white">History</span>
-            </button>
-            <button class="btn btn-link" id='in' type="submit">
-                <span style="color:white">Playlist</span>
-            </button>
-        </div> 
-        @endsection
-        @section('sign')
-        <div class='sign'>
-             <ul class="navbar-nav mr-auto">
-                <li class="nav-item dropdown" style=" list-style-type: none">
-                    <button class="btn btn-outline-primary " style="color:white" id='in'   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-user" style="color: white;"></i>
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Profile</a>
-                        <hr>
-                        <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-                                <button type="submit" value="Logout" class="dropdown-item"
-                                        >
-                                    {{ __('Log Out') }}
-                                </button>
-                            </form>
-                     </div>
-                </li>
-            </ul>
-        </div>      
-        @endsection
-        
        @endsection
        @section('content')
        <div id="oldP">
@@ -103,7 +66,7 @@
                      $j = 0;
                      @endphp
                 @foreach($films as $film)
-                <div style="margin:20px" >
+                <div class="medias" style="margin:20px" >
                     <div  classe="image" onclick="window.location='{{route('details',[$film->id])}}'"> 
                        <img id='boutton'  src='{{$film->image}}'/>
                     </div>
@@ -163,26 +126,26 @@
                                 @endif
                                
                                 @if($favorites->count()==0)
-                                    <button class="likeBtn btn" onclick="yes({{$film->id}})">
+                                    <button class="likeBtn btn" onclick="like({{$film->id}})">
                                         <i   class="far fa-heart"></i>
                                     </button>
 
                                 
                                 @elseif($i<$favorites->count())
                                     @if($favorites[$i]->id_media==$film->id)
-                                        <button class="likeBtn btn" onclick="yes({{$film->id}})">
+                                        <button class="likeBtn btn" onclick="like({{$film->id}})">
                                             <i  data-id="{{$film->id}}" class="fas fa-heart"></i>
                                         </button>
                                         @php
                                             $i=$i+1;
                                         @endphp
                                     @else
-                                        <button class="likeBtn btn" onclick="yes({{$film->id}})">
+                                        <button class="likeBtn btn" onclick="like({{$film->id}})">
                                             <i  data-id="{{$film->id}}"  class="far fa-heart"></i>
                                         </button>
                                     @endif
                                 @else
-                                    <button class="likeBtn btn" onclick="yes({{$film->id}})">
+                                    <button class="likeBtn btn" onclick="like({{$film->id}})">
                                             <i  data-id="{{$film->id}}"  class="far fa-heart"></i>
                                     </button>
                             @endif     
@@ -221,11 +184,8 @@
                         </div>
                       <!--playlists here -->
                  </div>
-
-                
                 @endforeach       
              </div>
-             
         </div>
         <div style="display: flex;justify-content:center;align-items:center;margin:10">
             <h1 style="color:white">
@@ -234,9 +194,8 @@
         </div>
         <div class="container-fluid">
             <div class="scrolling-wrapper row flex-nowrap" >
-                   
                 @foreach($series as $film)
-                <div style="margin:20px" onclick="window.location='{{route('details',[$film->id])}}'" >
+                <div class="medias" style="margin:20px" onclick="window.location='{{route('details',[$film->id])}}'" >
                     <div  classe="image"> 
                        <img id='boutton'  src='{{$film->image}}'/>
                     </div>
@@ -294,27 +253,25 @@
                                         <i  id="{{$film->id}}"  class="fas fa-eye-slash"></i>
                                     </button>
                                 @endif
-
-
                                 @if($favorites->count()==0)
-                                    <button class="likeBtn btn" onclick="yes({{$film->id}})">
+                                    <button class="likeBtn btn" onclick="like({{$film->id}})">
                                         <i  data-id= "{{$film->id}}" class="far fa-heart"></i>
                                     </button>
                                 @elseif($i<$favorites->count())
                                     @if($favorites[$i]->id_media==$film->id)
-                                        <button class="likeBtn btn" onclick="yes({{$film->id}})">
+                                        <button class="likeBtn btn" onclick="like({{$film->id}})">
                                             <i  data-id= "{{$film->id}}" class="fas fa-heart"></i>
                                         </button>
                                         @php
                                             $i=$i+1;
                                         @endphp
                                     @else
-                                        <button class="likeBtn btn" onclick="yes({{$film->id}})">
+                                        <button class="likeBtn btn" onclick="like({{$film->id}})">
                                             <i  data-id= "{{$film->id}}" class="far fa-heart"></i>
                                         </button>
                                     @endif
                                 @else
-                                <button class="likeBtn btn" onclick="yes({{$film->id}})">
+                                <button class="likeBtn btn" onclick="like({{$film->id}})">
                                         <i  data-id= "{{$film->id}}" class="far fa-heart"></i>
                                     </button>
                                 @endif
@@ -334,96 +291,125 @@
         @endsection
         @section('footer')
         @parent
-        @section('home')
-        <li><a href=<?php print_r($urlHomeDisc)?>>Home</a></li>
-        @endsection
         <script>
-            
-            function yes(id){
-                event.stopPropagation(); 
-                let modal=document.getElementsByClassName('showArea');
-                let i=document.getElementsByClassName('likeBtn')[id-1].children;
-                if(i[0].className == 'far fa-heart'){
-                    i[0].className = 'fas fa-heart';
-                    let route="{{route('addfav',['film'=>'id'])}}".replace('id',id);
-                    const response=fetch(route);
-                } 
-                else {
-                    i[0].className = 'far fa-heart';
-                    let route="{{route('delfav',['film'=>'id'])}}".replace('id',id);
-                    const response=fetch(route);
-                }
-                for(let i=0;i<20;i++){
-                        modal[i].style="visibility:hidden";
-                }
-            }
+                "use strict";
 
-            function seen(id){
-                let modal=document.getElementsByClassName('showArea');
-                event.stopPropagation();  
-                let e=event.target
-                i=document.getElementById(id); 
-     
-                if(i.className == 'fas fa-eye-slash'){
-                    i.className = 'fas fa-eye';
-                    let route="{{route('addhistory',['film'=>'id'])}}".replace('id',id);
-                    const response=fetch(route);
-                } 
-                else {
-                    i.className = 'fas fa-eye-slash';
-                    let route="{{route('delhistory',['film'=>'id'])}}".replace('id',id);
-                    const response=fetch(route);
-                }
-                for(let i=0;i<20;i++){
+                // This variable gives us an idea of how much medias we have, we use it to hide all the playlist dropdown menus;
+                let cards=document.getElementsByClassName('medias');
+                console.log(cards.length);
+
+                //-------------- Events Handler of seen film ---------------
+                function like(id){
+                    event.stopPropagation(); 
+                    let modal=document.getElementsByClassName('showArea');
+                    // We have movies with incremented id, so the order of the area contained in a film is equal to its id-1
+                    let i=document.getElementsByClassName('likeBtn')[id-1].children;
+                    // So we take the element clicked and we change its classname
+                    if(i[0].className == 'far fa-heart'){
+                        // If not clicked, we add the film to the table favorites (we pass it to the controller)
+                        i[0].className = 'fas fa-heart';
+                        let route="{{route('addfav',['film'=>'id'])}}".replace('id',id);
+                        const response=fetch(route);
+                    } 
+                    else {
+                        // If already clicked, we delete the film from the table favorites (we pass it to the controller)
+                        i[0].className = 'far fa-heart';
+                        let route="{{route('delfav',['film'=>'id'])}}".replace('id',id);
+                        const response=fetch(route);
+                    }
+                    for(let i=0;i<cards.length;i++){
                         modal[i].style="visibility:hidden";
+                    }
                 }
-            }
-               
-                
-                
-               
+
+                //-------------- Events Handler of seen film ---------------
+                function seen(id){
+                    let modal=document.getElementsByClassName('showArea');
+                    event.stopPropagation();  
+                    // We have id of icons contained in a film's card = equal to the id of film;
+                    // So we take the element clicked and we change its classname
+                    i=document.getElementById(id); 
+                    // If not clicked, we add the film to the table history (we pass it to the controller)
+                    if(i.className == 'fas fa-eye-slash'){
+                        i.className = 'fas fa-eye';
+                        let route="{{route('addhistory',['film'=>'id'])}}".replace('id',id);
+                        const response=fetch(route);
+                    } 
+                     // If clicked, we delete the film from the table history (we pass it to the controller)
+                    else {
+                        i.className = 'fas fa-eye-slash';
+                        let route="{{route('delhistory',['film'=>'id'])}}".replace('id',id);
+                        const response=fetch(route);
+                    }
+                    // We hide all the area show as we clicked out
+                    for(let i=0;i<cards.length;i++){
+                        modal[i].style="visibility:hidden";
+                    }
+                }
+
+                //-------------- Event Handler of click on Plus ---------------
                 function plusFunction(id){
+                    // We have an event on the card containing the button add, so we stop the propagation of the event 
                     event.stopPropagation();
                     let modal=document.getElementsByClassName('showArea');
-                    for(let i=0;i<20;i++){
-                      if(modal[i].dataset.id==id){
-                        if(modal[i].dataset.etat=="hidden"){
-                            modal[i].style="visibility:visible;display:flex;flex-direction:column;background-color:gray;max-height:90px;overflow:scroll;margin-left:20;width:100px";
-                            modal[i].setAttribute('data-etat',"visible")
+                    for(let i=0;i<cards.length;i++){
+                        // We have movies with incremented id, so the order of the area contained in a film is equal to its id
+                        if(modal[i].dataset.id==id){
+                            // Then we verify if it is opened or not, and we change its state
+                            if(modal[i].dataset.etat=="hidden"){
+                                modal[i].style="visibility:visible;display:flex;flex-direction:column;background-color:gray;max-height:90px;overflow:scroll;margin-left:20;width:100px";
+                                modal[i].setAttribute('data-etat',"visible");
+                            }
+                            else{
+                                modal[i].style="visibility:hidden";
+                                modal[i].setAttribute('data-etat',"hidden");
+                            }
                         }
                         else{
                             modal[i].style="visibility:hidden";
-                            modal[i].setAttribute('data-etat',"hidden")
-                        }
-                    }}
-                }
-                function addtoplaylist(id,id_film){
-                    event.stopPropagation();
-                    let modal=document.getElementsByClassName('showArea');
-                    let route="{{route('addtoplaylist',['playlist'=>'id','film'=>'id_film'])}}".replace('id',id);
-                    route=route.replace('id_film',id_film);
-                    console.log(route);
-                    const response=fetch(route);
-                    for(let i=0;i<20;i++){
-                        modal[i].style="visibility:hidden";
-                }
-
-                }
-
-                let modal=document.getElementsByClassName('showArea');
-                let oldP=document.getElementById('oldP')
-                    oldP.onclick=function(event){
-                        for(let i=0;i<20;i++){
-                        modal[i].style="visibility:hidden";
+                            modal[i].setAttribute('data-etat',"hidden");
                         }
                     }
-                function addplaylist(id){
+                }
+
+                //-------------- Add to existing playlist ---------------
+                function addtoplaylist(id,id_film)
+                {
+                    // We have an event on the card containing the button add, so we stop the propagation of the event 
+                    event.stopPropagation();
+                    let modal=document.getElementsByClassName('showArea');
+                    // We take the playlist id from the foreach loop
+                     /* We send it to the controller to add the film with id 'id_film' 
+                     to the playlist identified by 'playlist_id'*/
+                    let route="{{route('addtoplaylist',['playlist'=>'id','film'=>'id_film'])}}".replace('id',id);
+                    route=route.replace('id_film',id_film);
+                    const response=fetch(route);
+                    // The we hide all the plus areas
+                    for(let i=0;i<cards.length;i++){
+                        modal[i].style="visibility:hidden";
+                    }
+                }
+
+                //------------- This event handler of the area of playlists ---------
+                // Wherever we click on the oldest div, we hide the area
+                let modal=document.getElementsByClassName('showArea');
+                let oldP=document.getElementById('oldP');
+                oldP.onclick=function(event){
+                    for(let i=0;i<cards.length;i++){
+                    modal[i].style="visibility:hidden";
+                    }
+                }
+
+                //---------------- Add a film to a new playlist --------------
+                function addplaylist(id)
+                {   // We take the playlist name
                     let input=document.getElementById('recipient-name').value;
+                    // We send it to the controller to create a new playlist named 'input' containing the film with the id 'id'
+                    // We use the replace because we cannot read the id parameter inside the route
                     let route="{{route('addplaylist',['name'=>'input','film'=>'id'])}}".replace('id',id);
                     route=route.replace('input',input);
-                    console.log(route);
                     const response=fetch(route);
-                    console.log(response);
+                    // Then we reload the page because we need to get the new id of the playlist
                     window.location="{{route('homeco')}}";
                     
                 }

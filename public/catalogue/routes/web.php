@@ -35,7 +35,6 @@ Route::middleware('auth')->group(function () {
 
    
    
-   
     Route::get('playlistdetails', 'App\Http\controllers\listeMediaController@getPlaylistDetails')->name('playlistdetails');
 
     Route::get('favorites','App\Http\controllers\listeMediaController@getListeFavorites')->name('favorites');
@@ -45,6 +44,9 @@ Route::middleware('auth')->group(function () {
 
 });
 
+Route::get('homedeco', function () {
+    return view('homedeco');
+})->name('homedeco');
 
 
 Route::get('tableau', function () {

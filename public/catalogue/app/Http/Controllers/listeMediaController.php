@@ -108,17 +108,18 @@ class listeMediaController extends Controller
     public function getPlaylistMedia(int $playlist) {
         $id=Auth::id();
         $films = DB::table('playlist')
-        ->selectRaw('namePlaylist,image,id,title,year,description,runtimeStr,id_playlist')
+        ->selectRaw('namePlaylist,image,id_media,title,year,description,runtimeStr,id_playlist')
         ->join('medias', 'medias.id', '=', 'playlist.id_media')
         ->where('id_user', $id)
         ->where('id_playlist', $playlist)
         ->get();
+        
         $result2 = DB::table('playlist')
         ->selectRaw('namePLaylist')
-        ->distinct()
         ->join('medias', 'medias.id', '=', 'playlist.id_media')
         ->where('id_user', $id)
         ->where('id_playlist', $playlist)
+        ->distinct()
         ->get();
         return view('mediaplaylist',['films'=> $films,'name'=>$result2]);
     }
@@ -137,12 +138,11 @@ class listeMediaController extends Controller
             'id_media'=>$film->id,
             'id_user'=>$id,
     ]);}
-    public function delfav(Media $film) {
+    public function delFav(Media $film) {
         $id=Auth::id();
         $favorites = Favorites::where('id_user',$id)
         ->where('id_media',$film->id)
         ->delete();
-        print_r($favorites);
     }
 
     public function addHistory(Media $film) {
@@ -158,7 +158,6 @@ class listeMediaController extends Controller
         $history = History::where('id_user',$id)
         ->where('id_media',$film->id)
         ->delete();
-        print_r($favorites);
     }
     public function delPlaylist(int $playlist) {
         $id=Auth::id();
@@ -201,7 +200,6 @@ class listeMediaController extends Controller
     public function addPlaylist(string $name,int $film) {
         $id=Auth::id();
         $id_playlist = PLaylist::all();
-        print_r($id_playlist);
         DB::table('playlist')->insert([
             'id_playlist'=>$id_playlist->count()+1,
             'id_media'=>$film,
@@ -210,14 +208,15 @@ class listeMediaController extends Controller
     ]);}
     public function getHistory() {
         $id=Auth::id();
-         // join between history and favs to return only fav in history
         $fav = DB::table('favorites')
         ->selectRaw('id,title,image,runtimeStr,description')
         ->join('medias', 'medias.id', '=', 'favorites.id_media')
-        ->join('history', 'history.id_media', '=', 'favorites.id_media')
+        ->join('history','history.id_media','=', 'favorites.id_media')
         ->distinct()
+        ->where('favorites.id_user', $id)
         ->where('history.id_user', $id)
-        ->get();
+        ->get('title');
+       
        
         $result = DB::table('history')
             ->selectRaw('id,date,title,runtimeStr,year,description,image')
@@ -246,11 +245,21 @@ class listeMediaController extends Controller
     public function getListePlaylist() {
         $id=Auth::id();
         $films = DB::table('playlist')
-        ->selectRaw('namePlaylist,image,id,id_playlist')
+        ->selectRaw('namePlaylist,id_playlist')
         ->join('medias', 'medias.id', '=', 'playlist.id_media')
         ->where('id_user', $id)
+        ->groupBy('namePlaylist')
+        ->groupBy('id_playlist')
         ->get();
-        return view('playlist',['films'=> $films]);
+
+        $namePlaylist = DB::table('playlist')
+        ->selectRaw('namePlaylist,image')
+        ->join('medias', 'medias.id', '=', 'playlist.id_media')
+        ->where('id_user', $id)
+        ->groupBy('namePlaylist')
+        ->groupBy('image')
+        ->get();
+        return view('playlist',['films'=> $films,'names'=>$namePlaylist]);
     }
     public function getDetails(Media $id) {
         $film = DB::table('medias')

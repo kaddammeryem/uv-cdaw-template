@@ -1,46 +1,15 @@
 @extends('layouts.header')
-@section('title', 'Home')
+@section('title', 'Profile')
 <html>
-    @section('head')
-        @parent
-        <link href="../../public/css/profile.css" rel="stylesheet">
-        
-    @endsection
-        @section('sidebar')
-        @parent
-        <?php $urlProfile = route('profile');?>
-        <?php $urlHomeDisc = route('homedisc');?> 
-        <?php $urlHistory = route('history');?>
-        <?php $urlHomeCo = route('homeco');?>
-        @section('history')
-        <div class="history">
-            <button class="btn btn-link" id='in' type="submit" onclick="window.location= '{{ route('history') }}'">
-                <span style="color:white">History</span>
-            </button>
-            <button class="btn btn-link" id='in' type="submit">
-                <span style="color:white">Playlist</span>
-             </button>
-        </div> 
-        @endsection
-        @section('sign')
-        <div class='sign'>
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item dropdown" style=" list-style-type: none">
-                    <button class="btn btn-outline-primary " style="color:white" id='in'   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-user" style="color: white;"></i>
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Profile</a>
-                        <hr>
-                        <a class="dropdown-item" href=<?php print_r($urlHomeDisc)?>>Log out</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        @endsection
-       @endsection
-       @section('content')
-        <div class="container">
+@section('head')
+    @parent
+    <link href="../../public/css/profile.css" rel="stylesheet">
+@endsection
+@section('sidebar')
+    @parent
+@endsection
+@section('content')
+    <div class="container">
         <form action="updateuser" submit="updatePassword" method="post">
                     @csrf
             <div class="row gutters">
@@ -51,7 +20,7 @@
                             <div class="account-settings">
                                 <div class="user-profile">
                                     <div class="user-avatar">
-                                        <input type='image' id="ig" style="height:100px;border-radius:100%" src="{{$user[0]->profile_photo_path}}">
+                                        <input type='image' id="image" style="height:100px;border-radius:100%" src="{{$user[0]->profile_photo_path}}">
                                         <input id="imgupload" type="file" style="display:none" onchange="handleFiles(this.files)" >
                                     </div>
                                     <h5 class="user-name">{{$user[0]->name}}</h5>
@@ -114,10 +83,7 @@
                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                     <div class="row mb-4">
                                         <div class="col-md-6">
-                
-                                            <div >
-                                           
-                            
+                                            <div >                           
                                                 <label for="inputPassword5">New Password</label>
                                                 <input type="password" class="form-control" wire:model.defer="state.password"  name="password" placeholder="Enter new password" />
                                                 @if ( $errors->count() > 0 )
@@ -150,46 +116,40 @@
                         </div>
                     </div>
                 </div>
-
             </form>
-            </div>
-           
         </div>
+    </div>
         @endsection
         @section('footer')
         @parent
-        @section('home')
-        <li><a href=<?php print_r($urlHomeCo)?>>Home</a></li>
-        @endsection
         <script>
+
+            "use strict";
+            //-------------- Add event handler on image and pass it to input file -----------
             document.querySelector("input[type='image']").addEventListener('click',(event)=>{
             event.preventDefault();
-
-
             document.querySelector("input[type='file']").click();
-           })
-           let ik=document.getElementById('ig');
+            })
+            // We change the source image with the filename
             function handleFiles(files) {
                 for (let i = 0; i < files.length; i++) {
                     const file = files[i];
-                    let ig=document.getElementById('ig');
-                    ig.src=file.name;
-                    
-                    //A COMPLETER ICI
+                    let img=document.getElementById('image');
+                    img.src=file.name;
                     const reader = new FileReader();
                     reader.onload = (function(aImg) 
-                    {
-                         return function(e) {
-                             aImg.src = e.target.result; };
-                             })
-                    (ig);
-
+                        {
+                            return function(e) 
+                            {
+                                aImg.src = e.target.result; 
+                            };
+                        }
+                    )
+                    (img);
                     reader.readAsDataURL(file);
                     let route="{{route('updateimage',['imageurl'=>'val'])}}".replace('val',file.name);
                     const response=fetch(route);
                   }
-                
-                 
                 }
                
         </script>
