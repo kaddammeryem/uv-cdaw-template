@@ -69,3 +69,8 @@ On n'a pas eu le temps pour ajouter les fonctionnalités suivantes :
                 - Bannir un utilisateur.
                 - Promouvoir un utilisateur au rang de modérateur.
                 - Supprimer le rôle de modérateur à un utilisateur.
+
+
+
+
+URL Vidéo : https://youtu.be/nDndGi7j7Zs
