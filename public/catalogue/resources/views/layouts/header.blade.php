@@ -15,7 +15,7 @@
         @section('sidebar')
           <nav class="navbar navbar-expand-lg" id="navigation">
             <div class="container-fluid">
-              <a class="navbar-brand" href="{{route('homeco')}}" id='brand'>Logo</a>
+              <a class="navbar-brand" style=" color:white;" ><img src="../../public/image/MS.png" style="max-width: 55px; height:50px ;"></a>
               <div class="collapse navbar-collapse" id="navbarSupportedContent">   
                 <div class='formu'>    
                   <form class='formulaire' class="myform" action="medias">

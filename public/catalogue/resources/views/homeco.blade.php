@@ -328,7 +328,7 @@
                     event.stopPropagation();  
                     // We have id of icons contained in a film's card = equal to the id of film;
                     // So we take the element clicked and we change its classname
-                    i=document.getElementById(id); 
+                    let i=document.getElementById(id); 
                     // If not clicked, we add the film to the table history (we pass it to the controller)
                     if(i.className == 'fas fa-eye-slash'){
                         i.className = 'fas fa-eye';
@@ -408,6 +408,7 @@
                     // We use the replace because we cannot read the id parameter inside the route
                     let route="{{route('addplaylist',['name'=>'input','film'=>'id'])}}".replace('id',id);
                     route=route.replace('input',input);
+                    console.log(route);
                     const response=fetch(route);
                     // Then we reload the page because we need to get the new id of the playlist
                     window.location="{{route('homeco')}}";

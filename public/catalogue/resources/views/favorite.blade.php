@@ -18,7 +18,7 @@
 					<div class="card-columns">
 						@foreach($films as $film)
 						<div class="card" data-id="{{$film->id_media}}">
-							<img class="card-img-top" src='{{$film->image}}' alt="Card image cap">
+							<img class="card-img-top" src='{{$film->image}}' alt="Card image cap"  onclick="window.location='{{route('details',[$film->id_media])}}'">
 							<div class="card-body"  >
 								<h5 class="card-title" style="color:white">{{$film->title}}</h5>
 								<p class="card-text">
@@ -26,9 +26,9 @@
 								</p>
 							</div>
 							<div class='detadd'>
-								<button type="button" onclick="window.location='{{route('details',[$film->id_media])}}'"id='details' class="btn" >
+								<button type="button" id='details' class="btn" >
                                     <i class="fas fa-info"></i>
-                                </button>
+</button>
                                 <button class="btn" type="button" id="details" onclick="deleteFavorite({{$film->id_media}})">
                                         <i   class="fas fa-heart"></i>
                                 </button>

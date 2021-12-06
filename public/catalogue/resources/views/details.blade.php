@@ -1,11 +1,6 @@
 
 <html>
 <head>
-        <?php $urlProfile = route('profile');?>
-        <?php $urlHomeDisc = route('homedisc');?> 
-        <?php $urlHistory = route('history');?>
-        <?php $urlHomeCo = route('homeco');?>
-        <?php $medias = route('medias');?>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -19,14 +14,14 @@
         <div style="background-color:black;margin-bottom:10px">
         <nav class="navbar navbar-expand-lg" id="navigation">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#" id='brand'>Logo</a>
+                <a class="navbar-brand" style=" color:white;" ><img src="../../image/MS.png" style="max-width: 55px; height:50px ;"></a>
                 <div class='sign'>
                     <div class="history">
                         <button class="btn btn-link" id='in' type="submit" onclick="window.location= '{{ route('history') }}'">
-                            <span style="color:white">History</span>
+                            <span style="color:white" >History</span>
                         </button>
-                        <button class="btn btn-link" id='in' type="submit">
-                            <span style="color:white">Playlist</span>
+                        <button class="btn btn-link" id='in' type="submit" onclick="window.location= '{{ route('playlist') }}'">
+                            <span style="color:white" >Playlist</span>
                         </button>
                     </div> 
                     <ul class="navbar-nav mr-auto">
@@ -35,9 +30,11 @@
                                 <i class="fas fa-user" style="color: white;"></i>
                             </button>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Profile</a>
+                                <a class="dropdown-item" href="{{route('profile')}}">Profile</a>
                                 <hr>
-                                <a class="dropdown-item" href=<?php print_r($urlHomeDisc)?>>Log out</a>
+                                <a class="dropdown-item" href="{{ route('favorites') }}">My Favorites</a>
+                                <hr>
+                                <a class="dropdown-item" href="{{route('logout')}}" >Log out</a>
                             </div>
                         </li>
                     </ul>
@@ -47,6 +44,7 @@
         </div>
         <div style="display:flex;justify-content:center;align-items:center;background-color: #080808;">
         <div class="historique">
+        
             <div class="card" style="width: 50rem;display:flex;flex-direction:row;margin:10px">
                 <img style="width:40%;height:inherit" src='{{$film[0]->image}}' alt="Card image cap">
                 <div class="card-body"  >
@@ -120,6 +118,7 @@
                         @endforeach
                 </div>
             </div>
+
         <footer style="background-color:black">
             <div class="container">
               <div class="row">
@@ -134,8 +133,8 @@
                   <h3>Discover</h3>
                   <ul class="list-unstyled" id="discover">
                     <li><a href="#">Playlist</a></li>
-                    <li><a href=<?php print_r($urlHistory)?>>History</a></li>
-                    <li><a href=<?php print_r($urlProfile)?>>Profile</a></li>
+                    <li><a >History</a></li>
+                    <li><a >Profile</a></li>
                   </ul>
                 </div>
                 <div class="col-md">

@@ -316,7 +316,6 @@ class listeMediaController extends Controller
 
     // ------------------------ Details view ------------------
     public function getDetails(Media $id) {
-        // We get info about the film
         $film = DB::table('medias')
         ->selectRaw('id_media,title,genres,year,nom,prenom,fonction,image,description,runtimeStr')
         ->join('participation', 'participation.id_media', '=', 'medias.id')
@@ -330,6 +329,7 @@ class listeMediaController extends Controller
         ->join('users', 'users.id', '=', 'comments.id_user')
         ->get();
         return view('details',['film'=>$film,'comments'=>$comments,'user'=>$id_user]);
+
     }
 
    

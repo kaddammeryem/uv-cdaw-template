@@ -1,6 +1,9 @@
 body{
     background-color: #080808
 }
+#navigation{
+    background-color:black;
+}
 .content{
     display:flex;
     flex-direction: column;
@@ -21,7 +24,7 @@ body{
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    background-color: #FFC312;
+    background-color: black;
 }
 
 #details{
