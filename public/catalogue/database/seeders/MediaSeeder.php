@@ -5,7 +5,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
-class serieseeder extends Seeder
+class MediaSeeder extends Seeder
 {
     public function run()
     {
@@ -32,9 +32,9 @@ class serieseeder extends Seeder
                     )
                 );
                 $context  = stream_context_create($options);
-                $result = file_get_contents($url);
+                $result2 = file_get_contents($url);
                 $series = json_decode($result2,true,512,JSON_OBJECT_AS_ARRAY);
-                DB::table('series')->insert([
+                DB::table('medias')->insert([
                     'title' => $series['title'],
                     'image' => $series['image'],
                     'type' => 'serie',
@@ -69,12 +69,12 @@ class serieseeder extends Seeder
                     )
                 );
                 $context  = stream_context_create($options);
-                $result = file_get_contents($url);
+                $result2 = file_get_contents($url);
                 $movies=json_decode($result2,true,512,JSON_OBJECT_AS_ARRAY);
-                DB::table('series')->insert([
+                DB::table('medias')->insert([
                 'title' => $movies['title'],
                 'image' => $movies['image'],
-                'type' => 'serie',
+                'type' => 'film',
                 'genres' => $movies['genres'],
                 'year' => $movies['year'],
                 'runtimeStr' => $movies['runtimeStr'],
