@@ -8,9 +8,9 @@
     @endsection
     @section('sidebar')
         @parent
-       @endsection
-       @section('content')
-       <div id="oldP">
+        @endsection
+        @section('content')
+        <div id="oldP">
         <div class="container">
             <div id="carouselExample" class="carousel slide w-100" data-bs-ride="carousel" data-bs-interval="3000">
                 <div class="carousel-indicators">
@@ -60,8 +60,8 @@
         <div class="container-fluid">
             <div class="scrolling-wrapper row flex-nowrap" >
                 @php
-                     $i = 0;
-                     @endphp
+                    $i = 0;
+                    @endphp
                      @php
                      $j = 0;
                      @endphp
@@ -271,7 +271,7 @@
                                         </button>
                                     @endif
                                 @else
-                                <button class="likeBtn btn" onclick="like({{$film->id}})">
+                                    <button class="likeBtn btn" onclick="like({{$film->id}})">
                                         <i  data-id= "{{$film->id}}" class="far fa-heart"></i>
                                 </button>
                                 @endif
