@@ -52,7 +52,7 @@ class listeMediaController extends Controller
             // then we join it with medias to get infos about the movies where the actor played
             if($request->input('critere')=="actor"){
                 $films = DB::table('participation')
-                ->selectRaw('id_media,id_participant,nom,title,runtimeStr,image,genres')
+                ->selectRaw('medias.id,id_participant,nom,title,runtimeStr,image,genres')
                 ->join('participants', 'participants.id', '=', 'participation.id_participant')
                 ->join('medias', 'medias.id', '=', 'participation.id_media')
                 ->where('nom', $request->input('search'))

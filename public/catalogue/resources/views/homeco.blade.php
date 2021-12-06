@@ -273,7 +273,7 @@
                                 @else
                                 <button class="likeBtn btn" onclick="like({{$film->id}})">
                                         <i  data-id= "{{$film->id}}" class="far fa-heart"></i>
-                                    </button>
+                                </button>
                                 @endif
                             </div>
                         </div>

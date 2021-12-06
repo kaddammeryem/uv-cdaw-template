@@ -8,6 +8,8 @@
     @endsection
     @section('sidebar')
         @parent
+        <a class="navbar-brand" style=" color:white;" href="{{route('homeco')}}"><img src="../../public/image/MS.png" style="max-width: 55px; height:50px ;"></a>
+
     @endsection
     @section('content')
         <div class="historique">

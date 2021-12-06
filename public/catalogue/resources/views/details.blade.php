@@ -14,7 +14,7 @@
         <div style="background-color:black;margin-bottom:10px">
         <nav class="navbar navbar-expand-lg" id="navigation">
             <div class="container-fluid">
-                <a class="navbar-brand" style=" color:white;" ><img src="../../image/MS.png" style="max-width: 55px; height:50px ;"></a>
+                <a class="navbar-brand" style=" color:white;" ><img src="../../image/MS.png" href="{{route('homeco')}}" style="max-width: 55px; height:50px ;"></a>
                 <div class='sign'>
                     <div class="history">
                         <button class="btn btn-link" id='in' type="submit" onclick="window.location= '{{ route('history') }}'">

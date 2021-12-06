@@ -28,7 +28,7 @@
 							<div class='detadd'>
 								<button type="button" id='details' class="btn" >
                                     <i class="fas fa-info"></i>
-</button>
+                                </button>
                                 <button class="btn" type="button" id="details" onclick="deleteFavorite({{$film->id_media}})">
                                         <i   class="fas fa-heart"></i>
                                 </button>

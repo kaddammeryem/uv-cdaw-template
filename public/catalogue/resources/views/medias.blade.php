@@ -246,7 +246,7 @@
                         console.log(route);
                         const response=fetch(route);
                         console.log(response);
-                        window.location="{{route('homeco')}}";  
+                        window.location="{{route('medias')}}";  
                     }
 
             </script>
